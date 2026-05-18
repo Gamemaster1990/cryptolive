@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — CryptoLive</title>
+    <meta name="description" content="About CryptoLive — a free, real-time cryptocurrency price tracker. Learn more about our mission." />
+    <link rel="canonical" href="https://yourdomain.com/about.html" />
+    <meta name="robots" content="index, follow" />
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg: #0b0e17;
+            --bg-card: #1a2332;
+            --bg-card-hover: #1f2a3d;
+            --border: #1e2d3d;
+            --text: #f0f4fa;
+            --text-muted: #8892a8;
+            --accent: #3b82f6;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .page-wrap {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        .top-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 0;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .top-nav .back-home { font-size: 0.85rem; color: var(--text-muted); }
+        .top-nav .back-home:hover { color: var(--accent); }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--border);
+        }
+        p { color: #c8d0e0; margin-bottom: 1rem; }
+        ul { margin: 0 0 1rem 1.5rem; }
+        li { color: #c8d0e0; margin-bottom: 0.4rem; }
+        strong { color: var(--text); }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+        .feature-card .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .feature-card .label { font-weight: 600; font-size: 0.95rem; }
+        .feature-card .desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+        .page-footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .page-footer a { color: var(--text-muted); }
+        .page-footer a:hover { color: var(--text); }
+        .page-footer .dot { margin: 0 0.4rem; }
+
+        @media (max-width: 480px) {
+            .page-wrap { padding: 1.5rem 1rem 3rem; }
+            h1 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <nav class="top-nav">
+        <a class="back-home" href="/">← Back to CryptoLive</a>
+    </nav>
+
+    <h1>About CryptoLive</h1>
+    <p class="subtitle">Live cryptocurrency prices — free, fast, and always up to date.</p>
+
+    <p>CryptoLive is a <strong>free, lightweight cryptocurrency price tracker</strong> built for anyone who wants to monitor the crypto market without the bloat, ads, and signup requirements of major exchange platforms.</p>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="icon">🪙</div>
+            <div class="label">Top 50 Coins</div>
+            <div class="desc">Live prices of the top cryptocurrencies by market cap</div>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🔄</div>
+            <div class="label">Auto-Refresh</div>
+            <div class="desc">Prices update every 60 seconds automatically</div>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🔍</div>
+            <div class="label">Instant Search</div>
+            <div class="desc">Search any coin by name or ticker symbol</div>
+        </div>
+        <div class="feature-card">
+            <div class="icon">📱</div>
+            <div class="label">Works Everywhere</div>
+            <div class="desc">Responsive design — works on mobile, tablet, and desktop</div>
+        </div>
+        <div class="feature-card">
+            <div class="icon">💰</div>
+            <div class="label">100% Free</div>
+            <div class="desc">No hidden costs, no premium tiers, no signup required</div>
+        </div>
+        <div class="feature-card">
+            <div class="icon">🔒</div>
+            <div class="label">Privacy First</div>
+            <div class="desc">No accounts, no tracking beyond basic analytics</div>
+        </div>
+    </div>
+
+    <h2>Our Mission</h2>
+    <p>Major crypto tracking platforms have become bloated with ads, affiliate promotions, and paywalled features. We built CryptoLive to be the opposite — a <strong>clean, fast, no-nonsense</strong> dashboard that shows you exactly what you need: prices, changes, and market data. Nothing more, nothing less.</p>
+
+    <h2>How It Works</h2>
+    <p>CryptoLive fetches real-time data from the <strong>CoinGecko API</strong> (a free, public cryptocurrency data source). When you visit the site, it loads the top 50 coins by market cap and displays their:</p>
+    <ul>
+        <li>Current price (USD)</li>
+        <li>24-hour price change percentage</li>
+        <li>Market capitalization rank</li>
+        <li>Total market cap and 24h volume (aggregated)</li>
+    </ul>
+    <p>The page automatically refreshes every 60 seconds, so you always see the latest prices without manually reloading.</p>
+
+    <h2>What We Don't Do</h2>
+    <ul>
+        <li>❌ No user accounts or registration</li>
+        <li>❌ No email collection</li>
+        <li>❌ No paid tiers or premium features</li>
+        <li>❌ No affiliate links</li>
+        <li>❌ No crypto trading or exchange services</li>
+    </ul>
+
+    <h2>Disclaimer</h2>
+    <p>CryptoLive is for <strong>informational purposes only</strong>. Prices displayed may be delayed and are not guaranteed to be accurate. We do not provide financial advice. See our full <a href="/disclaimer.html">Disclaimer</a> for details.</p>
+
+    <h2>Contact</h2>
+    <p>Have feedback or questions? <a href="/contact.html">Get in touch</a>.</p>
+
+    <footer class="page-footer">
+        <a href="/">Home</a><span class="dot">·</span>
+        <a href="/privacy-policy.html">Privacy Policy</a><span class="dot">·</span>
+        <a href="/about.html">About</a><span class="dot">·</span>
+        <a href="/contact.html">Contact</a><span class="dot">·</span>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <p style="margin-top:0.75rem;">&copy; 2025 CryptoLive. All rights reserved.</p>
+    </footer>
+
+</div>
+</body>
+</html>

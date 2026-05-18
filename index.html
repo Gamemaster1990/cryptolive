@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Crypto Prices | Real-Time Cryptocurrency Tracker</title>
+    <meta name="description" content="Track live cryptocurrency prices, market caps, and 24h changes in real-time. Free crypto price tracker with auto-refresh." />
+    <meta name="keywords" content="crypto, cryptocurrency, bitcoin, ethereum, prices, live tracker, market cap" />
+    <link rel="canonical" href="https://yourdomain.com/" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Live Crypto Prices | Real-Time Cryptocurrency Tracker" />
+    <meta property="og:description" content="Track live cryptocurrency prices, market caps, and 24h changes in real-time." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com/" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Live Crypto Prices Tracker" />
+    <meta name="twitter:description" content="Track live crypto prices in real-time — free, no signup needed." />
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        // Default consent denied until user accepts (GDPR compliance)
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied'
+        });
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- AdSense Auto Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+            crossorigin="anonymous"></script>
+
+    <!-- Cookie Consent Styles -->
+    <style>
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #131a2b;
+            border-top: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            z-index: 9999;
+            display: none;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
+            animation: slideUp 0.3s ease-out;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .cookie-banner.show { display: block; }
+        .cookie-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .cookie-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            flex: 1;
+            min-width: 200px;
+        }
+        .cookie-text a { color: var(--accent); }
+        .cookie-btns {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+        }
+        .cookie-btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        .cookie-btn.accept {
+            background: var(--accent);
+            color: white;
+        }
+        .cookie-btn.accept:hover { opacity: 0.9; }
+        .cookie-btn.decline {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+        }
+        .cookie-btn.decline:hover {
+            background: var(--bg-card);
+            color: var(--text-primary);
+        }
+        @media (max-width: 480px) {
+            .cookie-inner { flex-direction: column; align-items: stretch; }
+            .cookie-btns { justify-content: flex-end; }
+        }
+    </style>
+
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --bg-primary: #0b0e17;
+            --bg-secondary: #131a2b;
+            --bg-card: #1a2332;
+            --bg-card-hover: #1f2a3d;
+            --text-primary: #f0f4fa;
+            --text-secondary: #8892a8;
+            --green: #00c853;
+            --green-bg: rgba(0, 200, 83, 0.12);
+            --red: #ff5252;
+            --red-bg: rgba(255, 82, 82, 0.12);
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.25);
+            --border: #1e2d3d;
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+            --radius: 12px;
+        }
+        html { font-size: 16px; scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-secondary); }
+
+        /* ===== HEADER ===== */
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .header-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #f7931a, #3b82f6);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .refresh-info {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .refresh-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--green);
+            display: inline-block;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        .refresh-dot.paused { background: var(--text-secondary); animation: none; }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .refresh-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.45rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .refresh-btn:hover { background: var(--bg-card-hover); border-color: var(--accent); }
+        .refresh-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .refresh-btn.spinning svg { animation: spin 0.6s linear; }
+
+        /* ===== SEARCH ===== */
+        .search-container {
+            max-width: 1280px;
+            margin: 1.5rem auto 0;
+            padding: 0 1.5rem;
+        }
+        .search-bar {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.75rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-bar input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+        .search-bar input::placeholder { color: var(--text-secondary); }
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            pointer-events: none;
+        }
+
+        /* ===== STATS BAR ===== */
+        .stats-bar {
+            max-width: 1280px;
+            margin: 1rem auto 0;
+            padding: 0 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .stat-label { color: var(--text-secondary); }
+        .stat-value { font-weight: 600; }
+
+        /* ===== GRID ===== */
+        main {
+            max-width: 1280px;
+            margin: 1.5rem auto;
+            padding: 0 1.5rem 3rem;
+        }
+        .crypto-grid {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        /* ===== CARD ===== */
+        .crypto-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem;
+            display: grid;
+            grid-template-columns: 2.5rem 2.5rem 1fr auto;
+            align-items: center;
+            gap: 0.75rem;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            cursor: default;
+            animation: fadeIn 0.3s ease-out both;
+        }
+        .crypto-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .crypto-card .rank {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-align: center;
+            width: 1.8rem;
+        }
+        .crypto-card .coin-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        .crypto-card .coin-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .crypto-card .coin-info {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        .crypto-card .coin-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .crypto-card .coin-symbol {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+        }
+        .crypto-card .coin-price {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+        .crypto-card .price-value {
+            font-weight: 600;
+            font-size: 0.95rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .crypto-card .price-change {
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 0.1rem 0.5rem;
+            border-radius: 6px;
+            display: inline-block;
+            text-align: center;
+            font-variant-numeric: tabular-nums;
+        }
+        .price-change.positive { color: var(--green); background: var(--green-bg); }
+        .price-change.negative { color: var(--red); background: var(--red-bg); }
+
+        /* ===== SKELETON LOADING ===== */
+        .skeleton {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1rem 1.25rem;
+            display: grid;
+            grid-template-columns: 2.5rem 2.5rem 1fr auto;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .skeleton .s-shape {
+            background: linear-gradient(90deg, var(--bg-card-hover) 25%, var(--border) 50%, var(--bg-card-hover) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s ease-in-out infinite;
+            border-radius: 6px;
+        }
+        @keyframes shimmer {
+            0%   { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .skeleton .s-rank { width: 1.8rem; height: 1rem; }
+        .skeleton .s-icon { width: 28px; height: 28px; border-radius: 50%; }
+        .skeleton .s-name { width: 8rem; height: 1rem; }
+        .skeleton .s-symbol { width: 3rem; height: 0.7rem; margin-top: 0.3rem; }
+        .skeleton .s-price { width: 6rem; height: 1rem; }
+        .skeleton .s-change { width: 4rem; height: 1.2rem; margin-top: 0.3rem; }
+        @media (min-width: 640px) {
+            .skeleton .s-price { margin-left: 0; }
+            .skeleton .s-change { margin-left: 0; margin-top: 0; }
+        }
+
+        /* ===== AD CONTAINER ===== */
+        .ad-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0.5rem 1.5rem;
+            text-align: center;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+        .ad-placeholder { padding: 1.5rem; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 2rem 1.5rem 3rem;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border);
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        footer a { color: var(--text-secondary); }
+        footer a:hover { color: var(--text-primary); }
+
+        /* ===== ERROR ===== */
+        .error-message {
+            background: var(--red-bg);
+            border: 1px solid var(--red);
+            border-radius: var(--radius);
+            padding: 1rem 1.5rem;
+            text-align: center;
+            color: var(--red);
+            margin-bottom: 1rem;
+        }
+        .error-message button {
+            background: var(--red);
+            border: none;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+        }
+        .error-message button:hover { opacity: 0.9; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (min-width: 640px) {
+            .crypto-card {
+                grid-template-columns: 2.5rem 2.5rem 1fr 9rem 7rem;
+            }
+            .crypto-card .coin-price {
+                flex-direction: row;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            .crypto-card .price-change { min-width: 5rem; }
+            .skeleton {
+                grid-template-columns: 2.5rem 2.5rem 1fr 9rem 7rem;
+            }
+        }
+        @media (min-width: 768px) {
+            .crypto-grid { gap: 0.5rem; }
+            header { padding: 1rem 2rem; }
+            main { padding: 1.5rem 2rem 3rem; }
+        }
+        @media (max-width: 480px) {
+            .header-inner { flex-direction: column; align-items: stretch; }
+            .header-right { justify-content: space-between; }
+            .stats-bar { gap: 0.75rem; }
+            .stat-item { font-size: 0.75rem; }
+            .crypto-card { padding: 0.75rem 1rem; gap: 0.5rem; }
+            .crypto-card .coin-name { font-size: 0.85rem; }
+            .crypto-card .price-value { font-size: 0.85rem; }
+        }
+
+        /* ===== TOGGLE THEME / MISC ===== */
+        .text-muted { color: var(--text-secondary); }
+        .mt-2 { margin-top: 0.5rem; }
+        .text-center { text-align: center; }
+    </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+    <div class="header-inner">
+        <div class="logo">
+            <span class="logo-icon">📈</span>
+            <span>CryptoLive</span>
+        </div>
+        <div class="header-right">
+            <span class="refresh-info">
+                <span class="refresh-dot" id="refreshDot"></span>
+                <span id="refreshLabel">Auto-refresh: 60s</span>
+            </span>
+            <button class="refresh-btn" id="refreshBtn" onclick="refreshNow()" title="Refresh now">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+                Refresh
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ===== SEARCH ===== -->
+<div class="search-container">
+    <div class="search-bar">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search by name or symbol..." oninput="filterCoins()" autocomplete="off" />
+    </div>
+</div>
+
+<!-- ===== STATS ===== -->
+<div class="stats-bar" id="statsBar">
+    <div class="stat-item">
+        <span class="stat-label">📊 Coins tracked:</span>
+        <span class="stat-value" id="coinCount">—</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">💰 Total market cap:</span>
+        <span class="stat-value" id="totalMarketCap">—</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-label">📈 24h volume:</span>
+        <span class="stat-value" id="totalVolume">—</span>
+    </div>
+</div>
+
+<!-- ===== AD (TOP) ===== -->
+<div class="ad-container">
+    <span class="ad-placeholder">📢 AdSense Ad — replace with your AdSense code</span>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main>
+    <div id="errorContainer"></div>
+    <div id="cryptoGrid" class="crypto-grid">
+        <!-- Skeleton loader -->
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
+    </div>
+</main>
+
+<!-- ===== AD (BOTTOM) ===== -->
+<div class="ad-container">
+    <span class="ad-placeholder">📢 AdSense Ad — replace with your AdSense code</span>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <p>Data provided by <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a> API · Prices update every 60 seconds</p>
+    <p style="margin-top:0.5rem;">
+        <a href="/">Home</a> ·
+        <a href="/about.html">About</a> ·
+        <a href="/contact.html">Contact</a> ·
+        <a href="/privacy-policy.html">Privacy</a> ·
+        <a href="/disclaimer.html">Disclaimer</a> ·
+        <a href="/sitemap.xml">Sitemap</a>
+    </p>
+    <p style="margin-top:0.25rem;">Last updated: <span id="lastUpdated">—</span></p>
+    <p style="margin-top:0.75rem;">&copy; 2025 <span id="footerSiteName">CryptoLive</span>. All rights reserved.</p>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+(async function() {
+    'use strict';
+
+    const GRID       = document.getElementById('cryptoGrid');
+    const ERROR_DIV  = document.getElementById('errorContainer');
+    const SEARCH_INP = document.getElementById('searchInput');
+    const COIN_CNT   = document.getElementById('coinCount');
+    const MCAP_EL    = document.getElementById('totalMarketCap');
+    const VOL_EL     = document.getElementById('totalVolume');
+    const REFRESH_BTN= document.getElementById('refreshBtn');
+    const DOT        = document.getElementById('refreshDot');
+    const LABEL      = document.getElementById('refreshLabel');
+
+    const COINGECKO_BASE = 'https://api.coingecko.com/api/v3';
+    const REFRESH_INTERVAL_MS = 60_000;
+
+    const LAST_UPDATED_EL = document.getElementById('lastUpdated');
+    let allCoins    = [];
+    let filtered    = [];
+    let timerId     = null;
+    let isPaused    = false;
+
+    // --- helpers ---
+    function formatPrice(n) {
+        if (n == null) return '—';
+        if (n >= 1) return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if (n >= 0.01) return '$' + n.toFixed(4);
+        return '$' + n.toFixed(8);
+    }
+    function formatLarge(n) {
+        if (n == null) return '—';
+        if (n >= 1e12) return '$' + (n / 1e12).toFixed(2) + 'T';
+        if (n >= 1e9)  return '$' + (n / 1e9).toFixed(2) + 'B';
+        if (n >= 1e6)  return '$' + (n / 1e6).toFixed(2) + 'M';
+        return '$' + n.toLocaleString('en-US');
+    }
+    function changeClass(v) {
+        if (v == null) return '';
+        return v >= 0 ? 'positive' : 'negative';
+    }
+    function changeSign(v) {
+        if (v == null) return '—';
+        return (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+    }
+
+    // --- fetch ---
+    async function fetchCoins() {
+        const url = COINGECKO_BASE + '/coins/markets'
+            + '?vs_currency=usd'
+            + '&order=market_cap_desc'
+            + '&per_page=50'
+            + '&page=1'
+            + '&sparkline=false'
+            + '&price_change_percentage=24h';
+
+        const res = await fetch(url, {
+            headers: { 'Accept': 'application/json' },
+            // Next line helps avoid CORS in some environments
+            mode: 'cors',
+        });
+        if (!res.ok) {
+            const text = await res.text().catch(() => '');
+            throw new Error(`CoinGecko API error ${res.status}: ${text || res.statusText}`);
+        }
+        const data = await res.json();
+        if (!Array.isArray(data)) throw new Error('Unexpected API response format');
+        return data;
+    }
+
+    // --- render ---
+    function render(coins) {
+        if (!coins.length) {
+            GRID.innerHTML = '<div class="text-muted text-center" style="padding:3rem;">No coins found matching your search.</div>';
+            COIN_CNT.textContent = '0';
+            return;
+        }
+
+        let html = '';
+        coins.forEach((c, i) => {
+            const chg = c.price_change_percentage_24h;
+            html += `<div class="crypto-card" style="animation-delay:${Math.min(i, 15) * 0.03}s">
+                <span class="rank">#${c.market_cap_rank || '—'}</span>
+                <div class="coin-icon">${c.image ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />` : c.symbol?.charAt(0).toUpperCase()}</div>
+                <div class="coin-info">
+                    <span class="coin-name">${c.name}</span>
+                    <span class="coin-symbol">${c.symbol}</span>
+                </div>
+                <div class="coin-price">
+                    <span class="price-value">${formatPrice(c.current_price)}</span>
+                    <span class="price-change ${changeClass(chg)}">${changeSign(chg)}</span>
+                </div>
+            </div>`;
+        });
+        GRID.innerHTML = html;
+
+        // Update stats
+        COIN_CNT.textContent = coins.length;
+        const totMcap = coins.reduce((s, c) => s + (c.market_cap || 0), 0);
+        const totVol  = coins.reduce((s, c) => s + (c.total_volume || 0), 0);
+        MCAP_EL.textContent = formatLarge(totMcap);
+        VOL_EL.textContent  = formatLarge(totVol);
+        LAST_UPDATED_EL.textContent = new Date().toLocaleTimeString();
+    }
+
+    // --- load ---
+    async function load(showRefreshAnimation = false) {
+        if (showRefreshAnimation) {
+            REFRESH_BTN.classList.add('spinning');
+            REFRESH_BTN.disabled = true;
+        }
+
+        try {
+            const data = await fetchCoins();
+            allCoins = data;
+            ERROR_DIV.innerHTML = '';
+            applyFilter();
+        } catch (err) {
+            console.error(err);
+            ERROR_DIV.innerHTML = `<div class="error-message">
+                <strong>⚠️ Failed to load prices</strong><br/>
+                <span style="font-size:0.85rem;">${err.message}. CoinGecko free API has rate limits — try again in a minute.</span><br/>
+                <button onclick="refreshNow()">Retry</button>
+            </div>`;
+            // Keep old data visible if we have it
+            if (allCoins.length) applyFilter();
+        } finally {
+            REFRESH_BTN.classList.remove('spinning');
+            REFRESH_BTN.disabled = false;
+        }
+    }
+
+    function applyFilter() {
+        const q = SEARCH_INP.value.trim().toLowerCase();
+        if (!q) {
+            filtered = allCoins;
+        } else {
+            filtered = allCoins.filter(c =>
+                c.name.toLowerCase().includes(q) ||
+                c.symbol.toLowerCase().includes(q)
+            );
+        }
+        render(filtered);
+    }
+
+    window.filterCoins = function() { applyFilter(); };
+
+    // --- refresh ---
+    window.refreshNow = function() {
+        if (REFRESH_BTN.disabled) return;
+        load(true);
+        resetTimer();
+    };
+
+    function resetTimer() {
+        if (timerId) { clearInterval(timerId); timerId = null; }
+        timerId = setInterval(() => load(false), REFRESH_INTERVAL_MS);
+    }
+
+    function pauseAutoRefresh() {
+        if (isPaused) return;
+        isPaused = true;
+        if (timerId) { clearInterval(timerId); timerId = null; }
+        DOT.classList.add('paused');
+        LABEL.textContent = 'Auto-refresh: paused';
+    }
+
+    function resumeAutoRefresh() {
+        if (!isPaused) return;
+        isPaused = false;
+        DOT.classList.remove('paused');
+        LABEL.textContent = 'Auto-refresh: 60s';
+        resetTimer();
+    }
+
+    // Pause on visibility change (tab hidden)
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) pauseAutoRefresh();
+        else resumeAutoRefresh();
+    });
+
+    // --- init ---
+    await load();
+    resetTimer();
+})();
+</script>
+
+<!-- AdSense auto-ads fallback (uncomment when you have publisher ID) -->
+<!--
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+-->
+
+<!-- ===== COOKIE CONSENT BANNER ===== -->
+<div class="cookie-banner" id="cookieBanner">
+    <div class="cookie-inner">
+        <div class="cookie-text">
+            We use cookies to improve your experience and show relevant ads.
+            <a href="/privacy-policy.html">Learn more</a>.
+        </div>
+        <div class="cookie-btns">
+            <button class="cookie-btn decline" onclick="declineCookies()">Decline</button>
+            <button class="cookie-btn accept" onclick="acceptCookies()">Accept</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Cookie consent handling
+    (function() {
+        const banner = document.getElementById('cookieBanner');
+        if (!localStorage.getItem('cookieConsent')) {
+            banner.classList.add('show');
+        }
+    })();
+
+    window.acceptCookies = function() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        document.getElementById('cookieBanner').classList.remove('show');
+        // Enable GA4 and AdSense if disabled
+        if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted',
+                'ad_storage': 'granted'
+            });
+        }
+    };
+
+    window.declineCookies = function() {
+        localStorage.setItem('cookieConsent', 'declined');
+        document.getElementById('cookieBanner').classList.remove('show');
+        // Disable analytics and ad cookies
+        if (typeof gtag !== 'undefined') {
+            gtag('consent', 'update', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied'
+            });
+        }
+    };
+</script>
+
+</body>
+</html>
