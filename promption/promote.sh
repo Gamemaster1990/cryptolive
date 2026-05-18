@@ -207,7 +207,7 @@ get_tweet_text() {
         btc_sign=$(echo "$BTC_CHANGE" | head -c 1)
         [ "$btc_sign" = "+" ] && btc_arrow="📈" || btc_arrow="📉"
     fi
-    printf "Bitcoin %s %s (%s 24h)\n\nTrack live prices for BTC, ETH, SOL \& more in real-time.\nFree • No signup • Auto-refresh\n\n👉 %s\n\n#Bitcoin #Crypto #Ethereum #Solana #FreeTool\n" \
+    printf "Bitcoin %s %s (%s 24h)\n\nTrack live prices for BTC, ETH, SOL & more in real-time.\nFree • No signup • Auto-refresh\n\n👉 %s\n\n#Bitcoin #Crypto #Ethereum #Solana #FreeTool\n" \
         "$btc_arrow" "$btc_fmt" "$BTC_CHANGE" "$SITE_URL"
 }
 
