@@ -301,7 +301,7 @@
             align-items: center;
             gap: 0.75rem;
             transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-            cursor: default;
+            cursor: pointer;
             animation: fadeIn 0.3s ease-out both;
         }
         .crypto-card:hover {
@@ -390,6 +390,11 @@
             align-items: center;
             gap: 0.75rem;
         }
+        @media (min-width: 640px) {
+            .skeleton {
+                grid-template-columns: 1.8rem 2.5rem 1fr 8rem 6rem 80px 2rem;
+            }
+        }
         .skeleton .s-shape {
             background: linear-gradient(90deg, var(--bg-card-hover) 25%, var(--border) 50%, var(--bg-card-hover) 75%);
             background-size: 200% 100%;
@@ -405,10 +410,15 @@
         .skeleton .s-name { width: 8rem; height: 1rem; }
         .skeleton .s-symbol { width: 3rem; height: 0.7rem; margin-top: 0.3rem; }
         .skeleton .s-price { width: 6rem; height: 1rem; }
-        .skeleton .s-change { width: 4rem; height: 1.2rem; margin-top: 0.3rem; }
+        .skeleton .s-change { width: 4.5rem; height: 1.2rem; }
+        .skeleton .s-sparkline { width: 80px; height: 32px; display: none; }
+        .skeleton .s-fav { width: 1.5rem; height: 1.5rem; border-radius: 4px; }
         @media (min-width: 640px) {
             .skeleton .s-price { margin-left: 0; }
             .skeleton .s-change { margin-left: 0; margin-top: 0; }
+        }
+        @media (min-width: 768px) {
+            .skeleton .s-sparkline { display: block; }
         }
 
         /* ===== AD CONTAINER ===== */
@@ -466,18 +476,12 @@
 
         /* ===== RESPONSIVE ===== */
         @media (min-width: 640px) {
-            .crypto-card {
-                grid-template-columns: 2.5rem 2.5rem 1fr 9rem 7rem;
-            }
             .crypto-card .coin-price {
                 flex-direction: row;
                 align-items: center;
                 gap: 0.75rem;
             }
             .crypto-card .price-change { min-width: 5rem; }
-            .skeleton {
-                grid-template-columns: 2.5rem 2.5rem 1fr 9rem 7rem;
-            }
         }
         @media (min-width: 768px) {
             .crypto-grid { gap: 0.5rem; }
@@ -498,6 +502,141 @@
         .text-muted { color: var(--text-secondary); }
         .mt-2 { margin-top: 0.5rem; }
         .text-center { text-align: center; }
+        /* ===== SORT CONTROLS ===== */
+        .controls-bar {
+            max-width: 1280px;
+            margin: 0.75rem auto 0;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+        .currency-picker {
+            display: flex;
+            gap: 0.3rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.2rem;
+        }
+        .currency-btn {
+            padding: 0.35rem 0.7rem;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .currency-btn:hover { color: var(--text-primary); }
+        .currency-btn.active {
+            background: var(--accent);
+            color: white;
+        }
+        .sort-hint {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .sort-hint span { cursor: pointer; padding: 0.15rem 0.4rem; border-radius: 4px; transition: background 0.15s; }
+        .sort-hint span:hover { background: var(--bg-card); color: var(--text-primary); }
+        .sort-hint span.active-sort { color: var(--accent); font-weight: 600; }
+
+        /* ===== SPARKLINE ===== */
+        .sparkline-cell {
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        @media (min-width: 768px) {
+            .sparkline-cell { display: flex; }
+        }
+        .sparkline-cell svg {
+            width: 80px;
+            height: 32px;
+            display: block;
+        }
+
+        /* ===== EXPANDED DETAIL ===== */
+        .crypto-detail {
+            display: none;
+            grid-column: 1 / -1;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-top: none;
+            border-radius: 0 0 var(--radius) var(--radius);
+            padding: 1rem 1.5rem;
+            margin-top: -0.5rem;
+            margin-bottom: 0;
+            animation: slideDown 0.2s ease-out;
+        }
+        .crypto-detail.open { display: block; }
+        @keyframes slideDown {
+            from { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; }
+            to   { opacity: 1; max-height: 300px; padding-top: 1rem; padding-bottom: 1rem; }
+        }
+        .crypto-detail .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.75rem;
+        }
+        .crypto-detail .detail-item {}
+        .crypto-detail .detail-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .crypto-detail .detail-value {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.1rem;
+            font-variant-numeric: tabular-nums;
+        }
+        .crypto-card.expandable {
+            border-radius: var(--radius) var(--radius) 0 0;
+            border-bottom-color: transparent;
+        }
+        .crypto-card.expandable + .crypto-detail {
+            margin-bottom: 0.75rem;
+        }
+
+        /* ===== FAVORITE STAR ===== */
+        .fav-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0.2rem;
+            transition: color 0.15s, transform 0.15s;
+            line-height: 1;
+            opacity: 0.4;
+        }
+        .fav-btn:hover { opacity: 0.8; transform: scale(1.15); }
+        .fav-btn.favorited { color: #fbbf24; opacity: 1; }
+        @media (min-width: 640px) {
+            .fav-btn { opacity: 0.2; }
+            .crypto-card:hover .fav-btn { opacity: 0.6; }
+            .fav-btn.favorited { opacity: 1; }
+        }
+
+        /* ===== GRID LAYOUT UPDATE ===== */
+        @media (min-width: 640px) {
+            .crypto-card {
+                grid-template-columns: 1.8rem 2.5rem 1fr 8rem 6rem 80px 2rem;
+            }
+            .skeleton {
+                grid-template-columns: 1.8rem 2.5rem 1fr 8rem 6rem 80px 2rem;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -553,6 +692,23 @@
     </div>
 </div>
 
+<!-- ===== CONTROLS: CURRENCY + SORT ===== -->
+<div class="controls-bar">
+    <div class="currency-picker" id="currencyPicker">
+        <button class="currency-btn active" data-currency="usd">USD</button>
+        <button class="currency-btn" data-currency="eur">EUR</button>
+        <button class="currency-btn" data-currency="gbp">GBP</button>
+        <button class="currency-btn" data-currency="jpy">JPY</button>
+    </div>
+    <div class="sort-hint">
+        <span>Sort:</span>
+        <span class="active-sort" data-sort="rank">Rank</span>
+        <span data-sort="price">Price</span>
+        <span data-sort="change">24h %</span>
+        <span data-sort="name">Name</span>
+    </div>
+</div>
+
 <!-- ===== AD (TOP) ===== -->
 <div class="ad-container">
     <span class="ad-placeholder">📢 AdSense Ad — replace with your AdSense code</span>
@@ -563,16 +719,16 @@
     <div id="errorContainer"></div>
     <div id="cryptoGrid" class="crypto-grid">
         <!-- Skeleton loader -->
-        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
-        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
-        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
-        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
-        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
-        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
-        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
-        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
-        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
-        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div><div class="s-shape s-sparkline"></div><div class="s-shape s-fav"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div><div class="s-shape s-sparkline"></div><div class="s-shape s-fav"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div><div class="s-shape s-sparkline"></div><div class="s-shape s-fav"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div><div class="s-shape s-sparkline"></div><div class="s-shape s-fav"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div><div class="s-shape s-sparkline"></div><div class="s-shape s-fav"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div><div class="s-shape s-sparkline"></div><div class="s-shape s-fav"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div><div class="s-shape s-sparkline"></div><div class="s-shape s-fav"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div><div class="s-shape s-sparkline"></div><div class="s-shape s-fav"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div><div class="s-shape s-sparkline"></div><div class="s-shape s-fav"></div></div>
+        <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div><div class="s-shape s-sparkline"></div><div class="s-shape s-fav"></div></div>
     </div>
 </main>
 
@@ -601,61 +757,86 @@
 (async function() {
     'use strict';
 
-    const GRID       = document.getElementById('cryptoGrid');
-    const ERROR_DIV  = document.getElementById('errorContainer');
-    const SEARCH_INP = document.getElementById('searchInput');
-    const COIN_CNT   = document.getElementById('coinCount');
-    const MCAP_EL    = document.getElementById('totalMarketCap');
-    const VOL_EL     = document.getElementById('totalVolume');
-    const REFRESH_BTN= document.getElementById('refreshBtn');
-    const DOT        = document.getElementById('refreshDot');
-    const LABEL      = document.getElementById('refreshLabel');
+    const GRID        = document.getElementById('cryptoGrid');
+    const ERROR_DIV   = document.getElementById('errorContainer');
+    const SEARCH_INP  = document.getElementById('searchInput');
+    const COIN_CNT    = document.getElementById('coinCount');
+    const MCAP_EL     = document.getElementById('totalMarketCap');
+    const VOL_EL      = document.getElementById('totalVolume');
+    const REFRESH_BTN = document.getElementById('refreshBtn');
+    const DOT         = document.getElementById('refreshDot');
+    const LABEL       = document.getElementById('refreshLabel');
+    const CURR_PICKER = document.getElementById('currencyPicker');
 
     const COINGECKO_BASE = 'https://api.coingecko.com/api/v3';
     const REFRESH_INTERVAL_MS = 60_000;
-
     const LAST_UPDATED_EL = document.getElementById('lastUpdated');
+
     let allCoins    = [];
     let filtered    = [];
     let timerId     = null;
     let isPaused    = false;
+    let activeCurrency = 'usd';
+    let sortField = 'rank';
+    let sortAsc = true;
+    let expandedCoin = null;
+    let favorites = new Set();
+
+    // Load favorites from localStorage
+    try {
+        const saved = JSON.parse(localStorage.getItem('cryptolive_favs') || '[]');
+        favorites = new Set(saved);
+    } catch(e) {}
+
+    const CURRENCY_SYMBOLS = { usd: '$', eur: '€', gbp: '£', jpy: '¥' };
+    const CURRENCY_LOCALES = { usd: 'en-US', eur: 'de-DE', gbp: 'en-GB', jpy: 'ja-JP' };
 
     // --- helpers ---
-    function formatPrice(n) {
+    function formatPrice(n, currency) {
         if (n == null) return '—';
-        if (n >= 1) return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        if (n >= 0.01) return '$' + n.toFixed(4);
-        return '$' + n.toFixed(8);
+        const sym = CURRENCY_SYMBOLS[currency || activeCurrency] || '$';
+        const loc = CURRENCY_LOCALES[currency || activeCurrency] || 'en-US';
+        if (n >= 1) return sym + n.toLocaleString(loc, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        if (n >= 0.01) return sym + n.toFixed(4);
+        return sym + n.toFixed(8);
     }
-    function formatLarge(n) {
+    function formatLarge(n, currency) {
         if (n == null) return '—';
-        if (n >= 1e12) return '$' + (n / 1e12).toFixed(2) + 'T';
-        if (n >= 1e9)  return '$' + (n / 1e9).toFixed(2) + 'B';
-        if (n >= 1e6)  return '$' + (n / 1e6).toFixed(2) + 'M';
-        return '$' + n.toLocaleString('en-US');
+        const sym = CURRENCY_SYMBOLS[currency || activeCurrency] || '$';
+        if (n >= 1e12) return sym + (n / 1e12).toFixed(2) + 'T';
+        if (n >= 1e9)  return sym + (n / 1e9).toFixed(2) + 'B';
+        if (n >= 1e6)  return sym + (n / 1e6).toFixed(2) + 'M';
+        return sym + n.toLocaleString('en-US');
     }
-    function changeClass(v) {
-        if (v == null) return '';
-        return v >= 0 ? 'positive' : 'negative';
-    }
-    function changeSign(v) {
-        if (v == null) return '—';
-        return (v >= 0 ? '+' : '') + v.toFixed(2) + '%';
+    function changeClass(v) { return v == null ? '' : v >= 0 ? 'positive' : 'negative'; }
+    function changeSign(v) { return v == null ? '—' : (v >= 0 ? '+' : '') + v.toFixed(2) + '%'; }
+
+    // Sparkline SVG generator
+    function sparklineSVG(prices) {
+        if (!prices || prices.length < 2) return '';
+        const w = 80, h = 32;
+        const min = Math.min(...prices);
+        const max = Math.max(...prices);
+        const range = max - min || 1;
+        const px = (i) => (i / (prices.length - 1)) * w;
+        const py = (v) => h - ((v - min) / range) * (h - 4) - 2;
+        const d = prices.map((v, i) => `${i === 0 ? 'M' : 'L'}${px(i).toFixed(1)},${py(v).toFixed(1)}`).join('');
+        const color = prices[0] <= prices[prices.length - 1] ? 'var(--green)' : 'var(--red)';
+        return `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg"><path d="${d}" fill="none" stroke="${color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
     }
 
     // --- fetch ---
     async function fetchCoins() {
         const url = COINGECKO_BASE + '/coins/markets'
-            + '?vs_currency=usd'
+            + '?vs_currency=' + activeCurrency
             + '&order=market_cap_desc'
             + '&per_page=50'
             + '&page=1'
-            + '&sparkline=false'
+            + '&sparkline=true'
             + '&price_change_percentage=24h';
 
         const res = await fetch(url, {
             headers: { 'Accept': 'application/json' },
-            // Next line helps avoid CORS in some environments
             mode: 'cors',
         });
         if (!res.ok) {
@@ -667,6 +848,36 @@
         return data;
     }
 
+    // --- sorting ---
+    function sortCoins(coins) {
+        const sorted = [...coins];
+        sorted.sort((a, b) => {
+            let va, vb;
+            switch (sortField) {
+                case 'rank':
+                    va = a.market_cap_rank || 9999;
+                    vb = b.market_cap_rank || 9999;
+                    break;
+                case 'price':
+                    va = a.current_price || 0;
+                    vb = b.current_price || 0;
+                    break;
+                case 'change':
+                    va = a.price_change_percentage_24h || 0;
+                    vb = b.price_change_percentage_24h || 0;
+                    break;
+                case 'name':
+                    va = a.name || '';
+                    vb = b.name || '';
+                    return sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+                default:
+                    return 0;
+            }
+            return sortAsc ? va - vb : vb - va;
+        });
+        return sorted;
+    }
+
     // --- render ---
     function render(coins) {
         if (!coins.length) {
@@ -675,10 +886,15 @@
             return;
         }
 
+        const sorted = sortCoins(coins);
         let html = '';
-        coins.forEach((c, i) => {
+        sorted.forEach((c, i) => {
             const chg = c.price_change_percentage_24h;
-            html += `<div class="crypto-card" style="animation-delay:${Math.min(i, 15) * 0.03}s">
+            const isFav = favorites.has(c.id);
+            const isExpanded = expandedCoin === c.id;
+            const sparkData = c.sparkline_in_7d?.price;
+
+            html += `<div class="crypto-card${isExpanded ? ' expandable' : ''}" data-id="${c.id}" style="animation-delay:${Math.min(i, 15) * 0.03}s">
                 <span class="rank">#${c.market_cap_rank || '—'}</span>
                 <div class="coin-icon">${c.image ? `<img src="${c.image}" alt="${c.name}" loading="lazy" />` : c.symbol?.charAt(0).toUpperCase()}</div>
                 <div class="coin-info">
@@ -689,7 +905,41 @@
                     <span class="price-value">${formatPrice(c.current_price)}</span>
                     <span class="price-change ${changeClass(chg)}">${changeSign(chg)}</span>
                 </div>
+                <div class="sparkline-cell">${sparkData ? sparklineSVG(sparkData) : ''}</div>
+                <button class="fav-btn${isFav ? ' favorited' : ''}" data-id="${c.id}" onclick="event.stopPropagation();toggleFav('${c.id}')">${isFav ? '★' : '☆'}</button>
             </div>`;
+
+            // Expanded detail panel
+            if (isExpanded) {
+                html += `<div class="crypto-detail open" data-id="${c.id}">
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">Market Cap</div>
+                            <div class="detail-value">${formatLarge(c.market_cap)}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">24h Volume</div>
+                            <div class="detail-value">${formatLarge(c.total_volume)}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">24h High</div>
+                            <div class="detail-value">${formatPrice(c.high_24h)}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">24h Low</div>
+                            <div class="detail-value">${formatPrice(c.low_24h)}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">All-Time High</div>
+                            <div class="detail-value">${formatPrice(c.ath)}</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Circ. Supply</div>
+                            <div class="detail-value">${c.circulating_supply ? (c.circulating_supply / 1e6).toFixed(1) + 'M' : '—'}</div>
+                        </div>
+                    </div>
+                </div>`;
+            }
         });
         GRID.innerHTML = html;
 
@@ -700,7 +950,35 @@
         MCAP_EL.textContent = formatLarge(totMcap);
         VOL_EL.textContent  = formatLarge(totVol);
         LAST_UPDATED_EL.textContent = new Date().toLocaleTimeString();
+
+        // Update sort indicators
+        document.querySelectorAll('.sort-hint span[data-sort]').forEach(el => {
+            el.classList.toggle('active-sort', el.dataset.sort === sortField);
+        });
     }
+
+    // --- expand/collapse coin detail ---
+    GRID.addEventListener('click', function(e) {
+        const card = e.target.closest('.crypto-card');
+        if (!card) return;
+        const id = card.dataset.id;
+        if (!id) return;
+        // Don't expand if clicking the fav button
+        if (e.target.closest('.fav-btn')) return;
+        expandedCoin = expandedCoin === id ? null : id;
+        applyFilter();
+    });
+
+    // --- toggle favorite ---
+    window.toggleFav = function(id) {
+        if (favorites.has(id)) {
+            favorites.delete(id);
+        } else {
+            favorites.add(id);
+        }
+        try { localStorage.setItem('cryptolive_favs', JSON.stringify([...favorites])); } catch(e) {}
+        applyFilter();
+    };
 
     // --- load ---
     async function load(showRefreshAnimation = false) {
@@ -721,7 +999,6 @@
                 <span style="font-size:0.85rem;">${err.message}. CoinGecko free API has rate limits — try again in a minute.</span><br/>
                 <button onclick="refreshNow()">Retry</button>
             </div>`;
-            // Keep old data visible if we have it
             if (allCoins.length) applyFilter();
         } finally {
             REFRESH_BTN.classList.remove('spinning');
@@ -731,15 +1008,10 @@
 
     function applyFilter() {
         const q = SEARCH_INP.value.trim().toLowerCase();
-        if (!q) {
-            filtered = allCoins;
-        } else {
-            filtered = allCoins.filter(c =>
-                c.name.toLowerCase().includes(q) ||
-                c.symbol.toLowerCase().includes(q)
-            );
-        }
-        render(filtered);
+        let filteredList = q
+            ? allCoins.filter(c => c.name.toLowerCase().includes(q) || c.symbol.toLowerCase().includes(q))
+            : allCoins;
+        render(filteredList);
     }
 
     window.filterCoins = function() { applyFilter(); };
@@ -772,10 +1044,36 @@
         resetTimer();
     }
 
-    // Pause on visibility change (tab hidden)
+    // Pause on visibility change
     document.addEventListener('visibilitychange', () => {
         if (document.hidden) pauseAutoRefresh();
         else resumeAutoRefresh();
+    });
+
+    // --- currency switcher ---
+    CURR_PICKER.addEventListener('click', function(e) {
+        const btn = e.target.closest('.currency-btn');
+        if (!btn) return;
+        const currency = btn.dataset.currency;
+        if (currency === activeCurrency) return;
+        activeCurrency = currency;
+        document.querySelectorAll('.currency-btn').forEach(b => b.classList.toggle('active', b.dataset.currency === currency));
+        expandedCoin = null;
+        load();
+    });
+
+    // --- sort controls ---
+    document.querySelector('.sort-hint').addEventListener('click', function(e) {
+        const el = e.target.closest('span[data-sort]');
+        if (!el) return;
+        const field = el.dataset.sort;
+        if (field === sortField) {
+            sortAsc = !sortAsc;
+        } else {
+            sortField = field;
+            sortAsc = field === 'rank';
+        }
+        applyFilter();
     });
 
     // --- init ---

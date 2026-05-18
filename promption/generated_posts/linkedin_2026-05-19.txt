@@ -1,15 +1,18 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  🐦  TWEET  (copy & paste)
+  💼  LINKEDIN POST  (copy & paste)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Bitcoin 📉 $76,870.00 (-1.71% 24h)
+I built a free cryptocurrency price tracker over a weekend — and I'm sharing it with you.
 
-Track live prices for BTC, ETH, SOL & more in real-time.
-Free • No signup • Auto-refresh
+No signup required. No ads. No bloat. Just live prices that auto-refresh.
 
-👉 https://gamemaster1990.github.io/cryptolive
+Bitcoin is at $76,870.00 right now (-1.71% 24h).
 
-#Bitcoin #Crypto #Ethereum #Solana #FreeTool
+Check it out: https://gamemaster1990.github.io/cryptolive
+
+Built with the free CoinGecko API and hosted on GitHub Pages — zero server costs, zero maintenance.
+
+Would love your feedback! 🚀
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

@@ -1,15 +1,20 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  🐦  TWEET  (copy & paste)
+  🏗️  INDIEMAKERS / INDIEHACKERS POST
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Bitcoin 📉 $76,870.00 (-1.71% 24h)
+Title: Launched a free crypto tracker — built in a weekend with zero server costs
 
-Track live prices for BTC, ETH, SOL & more in real-time.
-Free • No signup • Auto-refresh
+Body:
+Stack: Vanilla JS + CoinGecko free API + GitHub Pages (free hosting)
 
-👉 https://gamemaster1990.github.io/cryptolive
+• Single HTML file (no build tools)
+• Auto-refresh every 60s
+• Dark mode
+• AdSense-ready for monetization later
 
-#Bitcoin #Crypto #Ethereum #Solana #FreeTool
+BTC: $76,870.00 (-1.71% 24h)
+
+Would love your feedback: https://gamemaster1990.github.io/cryptolive
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

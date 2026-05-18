@@ -1,0 +1,25 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🤖  REDDIT POST  (copy & paste)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Title:
+I built a lightweight, free crypto price tracker that refreshes itself — no ads, no signup
+
+Body:
+
+I got tired of CoinMarketCap and CoinGecko loading tons of scripts and ads on mobile, so I built this: https://gamemaster1990.github.io/cryptolive
+
+• Top 50 coins by market cap
+• Auto-refreshes every 60 seconds
+• Dark mode, works on mobile
+• Search any coin instantly
+• No ads (for now), no signup, no bloat
+
+BTC: $76,870.00 (24h: -1.71%)
+ETH: $2,115.97
+SOL: $84.85
+
+Just thought some of you might find it useful. Feedback welcome!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
