@@ -6,7 +6,7 @@
 
 # --- Your Site ---
 SITE_NAME="CryptoLive"
-SITE_URL="https://gamemaster1990.github.io/cryptolive"
+SITE_URL="https://cryptolive.space"
 SITE_DESC="Free real-time cryptocurrency price tracker — no ads, no signup"
 
 # --- Social Handles (without @) ---
