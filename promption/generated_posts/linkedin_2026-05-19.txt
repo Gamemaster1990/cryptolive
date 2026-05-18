@@ -6,9 +6,9 @@ I built a free cryptocurrency price tracker over a weekend — and I'm sharing i
 
 No signup required. No ads. No bloat. Just live prices that auto-refresh.
 
-Bitcoin is at $76,870.00 right now (-1.71% 24h).
+Bitcoin is at $77,078.00 right now (-1.26% 24h).
 
-Check it out: https://gamemaster1990.github.io/cryptolive
+Check it out: https://cryptolive.space
 
 Built with the free CoinGecko API and hosted on GitHub Pages — zero server costs, zero maintenance.
 

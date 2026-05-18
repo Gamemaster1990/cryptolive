@@ -12,9 +12,9 @@ Stack: Vanilla JS + CoinGecko free API + GitHub Pages (free hosting)
 • Dark mode
 • AdSense-ready for monetization later
 
-BTC: $76,870.00 (-1.71% 24h)
+BTC: $77,078.00 (-1.26% 24h)
 
-Would love your feedback: https://gamemaster1990.github.io/cryptolive
+Would love your feedback: https://cryptolive.space
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 

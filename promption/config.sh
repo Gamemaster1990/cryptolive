@@ -20,6 +20,22 @@ COINGECKO_API="https://api.coingecko.com/api/v3"
 LOG_FILE="promotion_log.txt"
 POSTS_DIR="generated_posts"
 
+# --- API Credentials (for auto-posting with --post flag) ---
+# ⚠️ Get these from developer.twitter.com (requires approved dev account)
+# Fill these in config.sh, then run: bash promote.sh tweet --post
+TWITTER_API_KEY=""
+TWITTER_API_SECRET=""
+TWITTER_ACCESS_TOKEN=""
+TWITTER_ACCESS_SECRET=""
+
+# ⚠️ Get from https://www.reddit.com/prefs/apps → create a "script" app
+REDDIT_CLIENT_ID=""
+REDDIT_CLIENT_SECRET=""
+
+# ⚠️ Get from https://www.linkedin.com/developers/ (requires approved app)
+LINKEDIN_ACCESS_TOKEN=""
+LINKEDIN_PERSON_URN=""
+
 # -- Colors --
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'

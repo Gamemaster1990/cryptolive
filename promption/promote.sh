@@ -197,6 +197,53 @@ IH_EOF
 }
 
 # ================================================================
+#  RAW CONTENT (for auto-posting, no formatting boxes)
+# ================================================================
+
+get_tweet_text() {
+    local btc_fmt btc_sign btc_arrow
+    btc_fmt=$(format_price "$BTC_PRICE")
+    if [ "$BTC_CHANGE" != "—" ]; then
+        btc_sign=$(echo "$BTC_CHANGE" | head -c 1)
+        [ "$btc_sign" = "+" ] && btc_arrow="📈" || btc_arrow="📉"
+    fi
+    printf "Bitcoin %s %s (%s 24h)\n\nTrack live prices for BTC, ETH, SOL \& more in real-time.\nFree • No signup • Auto-refresh\n\n👉 %s\n\n#Bitcoin #Crypto #Ethereum #Solana #FreeTool\n" \
+        "$btc_arrow" "$btc_fmt" "$BTC_CHANGE" "$SITE_URL"
+}
+
+get_reddit_title() {
+    echo "I built a lightweight, free crypto price tracker that refreshes itself — no ads, no signup"
+}
+
+get_reddit_body() {
+    local btc_fmt eth_fmt sol_fmt
+    btc_fmt=$(format_price "$BTC_PRICE")
+    eth_fmt=$(format_price "$ETH_PRICE")
+    sol_fmt=$(format_price "$SOL_PRICE")
+    printf "I got tired of CoinMarketCap and CoinGecko loading tons of scripts and ads on mobile, so I built this: %s\n\n• Top 50 coins by market cap\n• Auto-refreshes every 60 seconds\n• Dark mode, works on mobile\n• Search any coin instantly\n• No ads (for now), no signup, no bloat\n\nBTC: %s (24h: %s)\nETH: %s\nSOL: %s\n\nJust thought some of you might find it useful. Feedback welcome!\n" \
+        "$SITE_URL" "$btc_fmt" "$BTC_CHANGE" "$eth_fmt" "$sol_fmt"
+}
+
+get_linkedin_text() {
+    local btc_fmt
+    btc_fmt=$(format_price "$BTC_PRICE")
+    printf "I built a free cryptocurrency price tracker over a weekend — and I'm sharing it with you.\n\nNo signup required. No ads. No bloat. Just live prices that auto-refresh.\n\nBitcoin is at %s right now (%s 24h).\n\nCheck it out: %s\n\nBuilt with the free CoinGecko API and hosted on GitHub Pages — zero server costs, zero maintenance.\n\nWould love your feedback! 🚀\n" \
+        "$btc_fmt" "$BTC_CHANGE" "$SITE_URL"
+}
+
+get_indie_title() {
+    echo "Launched a free crypto tracker — built in a weekend with zero server costs"
+}
+
+get_indie_body() {
+    local btc_fmt
+    btc_fmt=$(format_price "$BTC_PRICE")
+    printf "Stack: Vanilla JS + CoinGecko free API + GitHub Pages (free hosting)\n\n• Single HTML file (no build tools)\n• Auto-refresh every 60s\n• Dark mode\n• AdSense-ready for monetization later\n\nBTC: %s (%s 24h)\n\nWould love your feedback: %s\n" \
+        "$btc_fmt" "$BTC_CHANGE" "$SITE_URL"
+}
+
+
+# ================================================================
 #  SCHEDULER
 # ================================================================
 
@@ -288,8 +335,18 @@ if ! command -v python3 &>/dev/null; then
     exit 1
 fi
 
-# Parse command
-CMD="${1:-help}"
+# Parse flags
+POST_FLAG=false
+POSITIONAL_ARGS=()
+for arg in "$@"; do
+    case "$arg" in
+        --post|-p) POST_FLAG=true ;;
+        *) POSITIONAL_ARGS+=("$arg") ;;
+    esac
+done
+
+# Parse command (first positional arg)
+CMD="${POSITIONAL_ARGS[0]:-help}"
 
 case "$CMD" in
     tweet)
@@ -303,7 +360,17 @@ case "$CMD" in
         # Save to file
         generate_tweet > "$DIR/$POSTS_DIR/tweet_$DATE_STAMP.txt"
         echo -e "${GREEN}✅  Saved to $POSTS_DIR/tweet_$DATE_STAMP.txt${NC}"
-        echo -e "${YELLOW}💡  Pro-tip: Schedule this tweet with the Twitter web app for best timing (8-10am ET)${NC}"
+        if $POST_FLAG; then
+            echo -e "${CYAN}📡 Posting to Twitter/X...${NC}"
+            tweet_text=$(get_tweet_text)
+            python3 "$DIR/poster_twitter.py" "$tweet_text"
+            if [ $? -eq 0 ]; then
+                log_action "Twitter" "Posted tweet"
+            fi
+        else
+            echo -e "${YELLOW}💡  Pro-tip: Add --post to auto-post this tweet!${NC}"
+            echo -e "${YELLOW}💡  Schedule with the Twitter web app for best timing (8-10am ET)${NC}"
+        fi
         ;;
 
     reddit)
@@ -316,7 +383,18 @@ case "$CMD" in
         log_action "Reddit" "Generated Reddit post"
         generate_reddit_post > "$DIR/$POSTS_DIR/reddit_$DATE_STAMP.txt"
         echo -e "${GREEN}✅  Saved to $POSTS_DIR/reddit_$DATE_STAMP.txt${NC}"
-        echo -e "${YELLOW}💡  Tip: Post to r/CryptoCurrency, r/SideProject, or r/InternetIsBeautiful${NC}"
+        if $POST_FLAG; then
+            echo -e "${CYAN}📡 Posting to Reddit...${NC}"
+            reddit_title=$(get_reddit_title)
+            reddit_body=$(get_reddit_body)
+            python3 "$DIR/poster_reddit.py" "$reddit_title" "$reddit_body"
+            if [ $? -eq 0 ]; then
+                log_action "Reddit" "Posted to Reddit"
+            fi
+        else
+            echo -e "${YELLOW}💡  Tip: Add --post to auto-post to Reddit!${NC}"
+            echo -e "${YELLOW}💡  Post to r/CryptoCurrency, r/SideProject, or r/InternetIsBeautiful${NC}"
+        fi
         ;;
 
     linkedin)
@@ -328,6 +406,16 @@ case "$CMD" in
         log_action "LinkedIn" "Generated LinkedIn post"
         generate_linkedin_post > "$DIR/$POSTS_DIR/linkedin_$DATE_STAMP.txt"
         echo -e "${GREEN}✅  Saved to $POSTS_DIR/linkedin_$DATE_STAMP.txt${NC}"
+        if $POST_FLAG; then
+            echo -e "${CYAN}📡 Posting to LinkedIn...${NC}"
+            linkedin_text=$(get_linkedin_text)
+            python3 "$DIR/poster_linkedin.py" "$linkedin_text"
+            if [ $? -eq 0 ]; then
+                log_action "LinkedIn" "Posted to LinkedIn"
+            fi
+        else
+            echo -e "${YELLOW}💡  Add --post to auto-post to LinkedIn!${NC}"
+        fi
         ;;
 
     indie)
@@ -339,6 +427,14 @@ case "$CMD" in
         log_action "IndieMakers" "Generated IndieHackers post"
         generate_indiehackers_post > "$DIR/$POSTS_DIR/indie_$DATE_STAMP.txt"
         echo -e "${GREEN}✅  Saved to $POSTS_DIR/indie_$DATE_STAMP.txt${NC}"
+        if $POST_FLAG; then
+            echo -e "${CYAN}📡 Posting to IndieHackers/IndieMakers...${NC}"
+            indie_title=$(get_indie_title)
+            indie_body=$(get_indie_body)
+            echo -e "${YELLOW}⚠️  IndieHackers doesn't have a public write API yet.${NC}"
+            echo -e "${YELLOW}   Copy the post from $POSTS_DIR/indie_$DATE_STAMP.txt${NC}"
+            log_action "IndieMakers" "IndieHackers has no API — manual post needed"
+        fi
         ;;
 
     share)
@@ -371,6 +467,30 @@ case "$CMD" in
         echo ""
         log_action "All" "Generated all content types"
         echo -e "${GREEN}✅  All content saved to $POSTS_DIR/ for $DATE_STAMP${NC}"
+        echo ""
+        if $POST_FLAG; then
+            echo "╔══════════════════════════════════════════════╗"
+            echo "║     📤  POSTING TO PLATFORMS               ║"
+            echo "╚══════════════════════════════════════════════╝"
+            echo ""
+            echo -e "${CYAN}📡 Posting tweet to Twitter/X...${NC}"
+            tweet_text=$(get_tweet_text)
+            python3 "$DIR/poster_twitter.py" "$tweet_text" && log_action "Twitter" "Posted tweet"
+            echo ""
+            echo -e "${CYAN}📡 Posting to Reddit...${NC}"
+            reddit_title=$(get_reddit_title)
+            reddit_body=$(get_reddit_body)
+            python3 "$DIR/poster_reddit.py" "$reddit_title" "$reddit_body" && log_action "Reddit" "Posted to Reddit"
+            echo ""
+            echo -e "${CYAN}📡 Posting to LinkedIn...${NC}"
+            linkedin_text=$(get_linkedin_text)
+            python3 "$DIR/poster_linkedin.py" "$linkedin_text" && log_action "LinkedIn" "Posted to LinkedIn"
+            echo ""
+            echo -e "${YELLOW}⚠️  IndieHackers has no write API — copy from $POSTS_DIR/indie_$DATE_STAMP.txt${NC}"
+            echo -e "${YELLOW}⚠️  Share text is for manual sharing — copy from $POSTS_DIR/share_$DATE_STAMP.txt${NC}"
+            echo ""
+            echo -e "${GREEN}✅  Auto-posting complete!${NC}"
+        fi
         ;;
 
     schedule)
@@ -410,27 +530,32 @@ case "$CMD" in
         echo "║     🚀  CryptoLive Promotion Automation     ║"
         echo "╚══════════════════════════════════════════════╝"
         echo ""
-        echo "  Usage: bash promote.sh <command>"
+        echo "  Usage: bash promote.sh <command> [--post|-p]"
         echo ""
         echo "  Commands:"
-        echo "    tweet       Generate a tweet with live BTC price"
-        echo "    reddit      Generate a Reddit post with live prices"
-        echo "    linkedin    Generate a LinkedIn post"
-        echo "    indie       Generate an IndieHackers/IndieMakers post"
-        echo "    share       Generate quick share text (WhatsApp/DM)"
-        echo "    all         Generate ALL content types at once"
-        echo "    schedule    Show today's promotion schedule"
-        echo "    log         Show posting history"
-        echo "    install-cron  Install daily reminder"
-        echo "    help        Show this menu"
+        echo "    tweet           Generate a tweet with live BTC price"
+        echo "    reddit          Generate a Reddit post with live prices"
+        echo "    linkedin        Generate a LinkedIn post"
+        echo "    indie           Generate an IndieHackers/IndieMakers post"
+        echo "    share           Generate quick share text (WhatsApp/DM)"
+        echo "    all             Generate ALL content types at once"
+        echo "    schedule        Show today's promotion schedule"
+        echo "    log             Show posting history"
+        echo "    install-cron    Install daily reminder"
+        echo "    help            Show this menu"
+        echo ""
+        echo "  Flags:"
+        echo "    --post, -p      Auto-post to the platform (requires API keys)"
         echo ""
         echo "  Examples:"
-        echo "    bash promote.sh tweet     →  Generate a tweet"
-        echo "    bash promote.sh all       →  Generate everything"
-        echo "    bash promote.sh schedule  →  What to post today"
+        echo "    bash promote.sh tweet          →  Generate a tweet (copy-paste)"
+        echo "    bash promote.sh tweet --post   →  Generate AND post to Twitter"
+        echo "    bash promote.sh all --post     →  Post to all platforms"
+        echo "    bash promote.sh schedule       →  What to post today"
         echo ""
         echo "  First time? Edit config.sh with your info, then:"
-        echo "    bash promote.sh all"
+        echo "    1. bash promote.sh all         →  Generate content"
+        echo "    2. Set API keys in config.sh   →  bash promote.sh all --post"
         echo ""
         ;;
 esac

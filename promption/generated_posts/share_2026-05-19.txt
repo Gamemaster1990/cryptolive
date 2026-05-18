@@ -3,7 +3,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Check out this free crypto price tracker I built:
-https://gamemaster1990.github.io/cryptolive
+https://cryptolive.space
 No signup, no ads, just live prices. 🚀
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
