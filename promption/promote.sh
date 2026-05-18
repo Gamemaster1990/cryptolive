@@ -1,12 +1,16 @@
 #!/bin/bash
 # ================================================================
 #  🚀 CryptoLive — Promotion Automation
-#  Generates ready-to-post content with LIVE crypto prices
+#  Generates unique marketing content with LIVE crypto prices,
+#  trending coins, global market data, and latest news.
 #  Usage: bash promote.sh [command]
 #
 #  Commands:
-#    tweet       — Generate a tweet with current Bitcoin price
+#    tweet       — Generate a tweet
 #    reddit      — Generate a Reddit post
+#    linkedin    — Generate a LinkedIn post
+#    indie       — Generate an IndieHackers post
+#    share       — Generate share text (WhatsApp/DM)
 #    all         — Generate all content types
 #    schedule    — Show today's promotion schedule
 #    log         — Show posting history
@@ -19,19 +23,46 @@ mkdir -p "$DIR/$POSTS_DIR"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 DATE_STAMP=$(date '+%Y-%m-%d')
 
-# --- Fetch live crypto data from CoinGecko ---
-fetch_crypto_data() {
+# Globals for fetched data
+BTC_PRICE="—"
+BTC_CHANGE="—"
+ETH_PRICE="—"
+SOL_PRICE="—"
+XRP_PRICE="—"
+ADA_PRICE="—"
+GLOBAL_MCAP="—"
+GLOBAL_VOLUME="—"
+BTC_DOM="—"
+MCAP_CHANGE="—"
+TRENDING_COIN="—"
+TRENDING_SYMBOL="—"
+TOP_GAINER="—"
+TOP_GAINER_CHANGE="—"
+TOP_LOSER="—"
+TOP_LOSER_CHANGE="—"
+NEWS_HEADLINE=""
+NEWS_SOURCE=""
+
+# ================================================================
+#  VARIANT PICKER — picks 1..N based on date for daily consistency
+# ================================================================
+pick_variant() {
+    local max="$1"
+    # Portable: use date directly as a number, no md5 dependency
+    echo $(( ($(date '+%Y%m%d') % max) + 1 ))
+}
+
+# ================================================================
+#  DATA FETCHING
+# ================================================================
+
+fetch_prices() {
     local url="$COINGECKO_API/simple/price?ids=bitcoin,ethereum,solana,cardano,ripple&vs_currencies=usd&include_24hr_change=true"
     local data
-
     data=$(curl -s --max-time 10 "$url" 2>/dev/null)
 
     if [ $? -ne 0 ] || [ -z "$data" ] || [ "$data" = "{}" ]; then
         echo "⚠️  Could not fetch live prices (rate limit?). Using fallback."
-        BTC_PRICE="—"
-        BTC_CHANGE="—"
-        ETH_PRICE="—"
-        SOL_PRICE="—"
         return 1
     fi
 
@@ -39,209 +70,679 @@ fetch_crypto_data() {
     BTC_CHANGE=$(echo "$data" | python3 -c "import sys,json; d=json.load(sys.stdin); c=d.get('bitcoin',{}).get('usd_24h_change',0); print(f\"{c:+.2f}%\")" 2>/dev/null)
     ETH_PRICE=$(echo "$data" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('ethereum',{}).get('usd','—'))" 2>/dev/null)
     SOL_PRICE=$(echo "$data" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('solana',{}).get('usd','—'))" 2>/dev/null)
+    XRP_PRICE=$(echo "$data" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('ripple',{}).get('usd','—'))" 2>/dev/null)
+    ADA_PRICE=$(echo "$data" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('cardano',{}).get('usd','—'))" 2>/dev/null)
 
     [ -z "$BTC_PRICE" ] && BTC_PRICE="—"
     [ -z "$BTC_CHANGE" ] && BTC_CHANGE="—"
     [ -z "$ETH_PRICE" ] && ETH_PRICE="—"
     [ -z "$SOL_PRICE" ] && SOL_PRICE="—"
+    [ -z "$XRP_PRICE" ] && XRP_PRICE="—"
+    [ -z "$ADA_PRICE" ] && ADA_PRICE="—"
 }
 
-# --- Format price with commas ---
+fetch_global_data() {
+    local data
+    data=$(curl -s --max-time 10 "$COINGECKO_API/global" 2>/dev/null)
+
+    if [ $? -eq 0 ] && [ -n "$data" ] && [ "$data" != "{}" ]; then
+        GLOBAL_MCAP=$(echo "$data" | python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); print(d.get('total_market_cap',{}).get('usd','—'))" 2>/dev/null)
+        GLOBAL_VOLUME=$(echo "$data" | python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); print(d.get('total_volume',{}).get('usd','—'))" 2>/dev/null)
+        BTC_DOM=$(echo "$data" | python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); print(f\"{d.get('market_cap_percentage',{}).get('btc',0):.1f}%\")" 2>/dev/null)
+        MCAP_CHANGE=$(echo "$data" | python3 -c "import sys,json; d=json.load(sys.stdin).get('data',{}); print(f\"{d.get('market_cap_change_percentage_24h_usd',0):+.2f}%\")" 2>/dev/null)
+    fi
+    [ -z "$GLOBAL_MCAP" ] && GLOBAL_MCAP="—"
+    [ -z "$GLOBAL_VOLUME" ] && GLOBAL_VOLUME="—"
+    [ -z "$BTC_DOM" ] && BTC_DOM="—"
+    [ -z "$MCAP_CHANGE" ] && MCAP_CHANGE="—"
+}
+
+fetch_trending() {
+    local data
+    data=$(curl -s --max-time 10 "$COINGECKO_API/search/trending" 2>/dev/null)
+
+    if [ $? -eq 0 ] && [ -n "$data" ] && [ "$data" != "{}" ]; then
+        TRENDING_COIN=$(echo "$data" | python3 -c "
+import sys,json
+d=json.load(sys.stdin).get('coins',[])
+if d:
+    c=d[0].get('item',{})
+    print(c.get('name','—'))
+else:
+    print('—')
+" 2>/dev/null)
+        TRENDING_SYMBOL=$(echo "$data" | python3 -c "
+import sys,json
+d=json.load(sys.stdin).get('coins',[])
+if d:
+    c=d[0].get('item',{})
+    print(c.get('symbol','—').upper())
+else:
+    print('—')
+" 2>/dev/null)
+    fi
+    [ -z "$TRENDING_COIN" ] && TRENDING_COIN="—"
+    [ -z "$TRENDING_SYMBOL" ] && TRENDING_SYMBOL="—"
+}
+
+fetch_movers() {
+    local data
+    data=$(curl -s --max-time 10 "$COINGECKO_API/coins/markets?vs_currency=usd&order=volume_desc&per_page=30&page=1&price_change_percentage_24h" 2>/dev/null)
+
+    if [ $? -eq 0 ] && [ -n "$data" ] && [ "$data" != "{}" ]; then
+        # Top gainer and loser
+        local gainers
+        gainers=$(echo "$data" | python3 -c "
+import sys,json
+d=json.load(sys.stdin)
+sorted_coins=sorted(d, key=lambda x: x.get('price_change_percentage_24h',0) or 0, reverse=True)
+g=sorted_coins[0]
+l=sorted_coins[-1]
+print(f\"{g['name']}|{g['price_change_percentage_24h']:+.2f}%|{l['name']}|{l['price_change_percentage_24h']:+.2f}%\")
+" 2>/dev/null)
+
+        if [ -n "$gainers" ] && [ "$gainers" != "—" ]; then
+            TOP_GAINER=$(echo "$gainers" | cut -d'|' -f1)
+            TOP_GAINER_CHANGE=$(echo "$gainers" | cut -d'|' -f2)
+            TOP_LOSER=$(echo "$gainers" | cut -d'|' -f3)
+            TOP_LOSER_CHANGE=$(echo "$gainers" | cut -d'|' -f4)
+        fi
+    fi
+    [ -z "$TOP_GAINER" ] && TOP_GAINER="—"
+    [ -z "$TOP_GAINER_CHANGE" ] && TOP_GAINER_CHANGE="—"
+    [ -z "$TOP_LOSER" ] && TOP_LOSER="—"
+    [ -z "$TOP_LOSER_CHANGE" ] && TOP_LOSER_CHANGE="—"
+}
+
+fetch_news() {
+    local data
+    data=$(curl -s --max-time 8 "https://news.google.com/rss/search?q=cryptocurrency+bitcoin&hl=en-US&gl=US&ceid=US:en" 2>/dev/null)
+
+    if [ $? -eq 0 ] && [ -n "$data" ]; then
+        local results
+        results=$(echo "$data" | python3 -c "
+import sys, html
+from xml.etree import ElementTree as ET
+try:
+    r=ET.fromstring(sys.stdin.read())
+    items=r.findall('.//item')
+    for i in items[:5]:
+        title = html.unescape(i.find('title').text or '')
+        source = html.unescape(i.find('source').text or '') if i.find('source') is not None else ''
+        print(f'{title}|{source}')
+except:
+    pass
+" 2>/dev/null)
+        if [ -n "$results" ]; then
+            NEWS_HEADLINE=$(echo "$results" | head -1 | cut -d'|' -f1)
+            NEWS_SOURCE=$(echo "$results" | head -1 | cut -d'|' -f2)
+        fi
+    fi
+    [ -z "$NEWS_HEADLINE" ] && NEWS_HEADLINE=""
+    [ -z "$NEWS_SOURCE" ] && NEWS_SOURCE=""
+}
+
+fetch_all_data() {
+    echo -e "${CYAN}📡 Fetching live crypto prices...${NC}"
+    fetch_prices
+    echo -e "${CYAN}📡 Fetching global market data...${NC}"
+    fetch_global_data
+    echo -e "${CYAN}📡 Fetching trending coins...${NC}"
+    fetch_trending
+    echo -e "${CYAN}📡 Fetching top movers...${NC}"
+    fetch_movers
+    echo -e "${CYAN}📡 Fetching latest news...${NC}"
+    fetch_news
+    echo -e "${GREEN}✅  All data loaded!${NC}"
+    echo "    BTC: \$$BTC_PRICE ($BTC_CHANGE) | ETH: \$$ETH_PRICE | SOL: \$$SOL_PRICE"
+    echo "    Trending: $TRENDING_COIN ($TRENDING_SYMBOL)"
+    echo "    Top gainer: $TOP_GAINER ($TOP_GAINER_CHANGE)"
+    if [ -n "$NEWS_HEADLINE" ]; then
+        echo "    📰 $NEWS_HEADLINE"
+    fi
+}
+
+# === Format helpers ===
 format_price() {
     local price="$1"
     if [ "$price" = "—" ]; then echo "—"; return; fi
-    # Format with 2 decimal places if >= 1, else 4 decimal places
-    # Format with 2 decimal places if >= 1, else show raw
-    # Use awk for portable number formatting
     echo "$price" | awk '{
         if ($1 >= 1) printf("$%\047.2f", $1);
         else printf("$%.4f", $1);
-    }' 2>/dev/null || echo "\$$price"
+    }' 2>/dev/null || echo "$$price"
+}
+
+format_large() {
+    local n="$1"
+    if [ "$n" = "—" ]; then echo "—"; return; fi
+    echo "$n" | awk '{
+        if ($1 >= 1e12) printf("$%.2fT", $1/1e12);
+        else if ($1 >= 1e9) printf("$%.2fB", $1/1e9);
+        else if ($1 >= 1e6) printf("$%.2fM", $1/1e6);
+        else printf("$%.0f", $1);
+    }' 2>/dev/null || echo "$$n"
+}
+
+btc_arrow() {
+    if [ "$BTC_CHANGE" = "—" ]; then echo ""; return; fi
+    local sign
+    sign=$(echo "$BTC_CHANGE" | head -c 1)
+    if [ "$sign" = "+" ]; then echo "📈"; else echo "📉"; fi
+}
+
+btc_sign() {
+    if [ "$BTC_CHANGE" = "—" ]; then echo ""; return; fi
+    local sign
+    sign=$(echo "$BTC_CHANGE" | head -c 1)
+    if [ "$sign" = "+" ]; then echo "🟢"; else echo "🔴"; fi
 }
 
 # ================================================================
-#  CONTENT GENERATORS
+#  CONTENT GENERATORS — each has 3 variants for unique content
 # ================================================================
 
 generate_tweet() {
-    local btc_fmt btc_sign btc_arrow
+    local v
+    v=$(pick_variant 3)
+
+    local btc_fmt eth_fmt
     btc_fmt=$(format_price "$BTC_PRICE")
+    eth_fmt=$(format_price "$ETH_PRICE")
+    local arrow
+    arrow=$(btc_arrow)
+    local sign
+    sign=$(btc_sign)
+    local mcap_fmt
+    mcap_fmt=$(format_large "$GLOBAL_MCAP")
 
-    if [ "$BTC_CHANGE" != "—" ]; then
-        btc_sign=$(echo "$BTC_CHANGE" | head -c 1)
-        if [ "$btc_sign" = "+" ]; then
-            btc_arrow="📈"
-        else
-            btc_arrow="📉"
-        fi
-    else
-        btc_arrow=""
-    fi
-
-    cat << TWEET_EOF
+    case $v in
+        1)
+            # Hook: News + Live Price
+            cat << TWEET_EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  🐦  TWEET  (copy & paste)
+  🐦  TWEET (copy & paste)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Bitcoin $btc_arrow $btc_fmt ($BTC_CHANGE 24h)
+📰 ${NEWS_HEADLINE:-Crypto market is moving}
 
-Track live prices for BTC, ETH, SOL & more in real-time.
+Bitcoin $arrow $btc_fmt ($BTC_CHANGE 24h)
+Market cap: $mcap_fmt | BTC dominance: $BTC_DOM
+
+Track all 50 coins live → $SITE_URL
 Free • No signup • Auto-refresh
 
-👉 $SITE_URL
-
-#Bitcoin #Crypto #Ethereum #Solana #FreeTool
+#Bitcoin #CryptoNews #Ethereum #Solana
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 TWEET_EOF
+            ;;
+        2)
+            # Hook: Trending coin spotlight
+            cat << TWEET_EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🐦  TWEET (copy & paste)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔥 Trending on CoinGecko: $TRENDING_COIN ($TRENDING_SYMBOL)
+
+Bitcoin $arrow $btc_fmt ($BTC_CHANGE 24h)
+Ethereum: $eth_fmt
+
+See what's moving → $SITE_URL
+Live prices • No bloat • No signup
+
+#Bitcoin #Crypto #Altcoins #Trending
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TWEET_EOF
+            ;;
+        3)
+            # Hook: Top mover
+            cat << TWEET_EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🐦  TWEET (copy & paste)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 Today's biggest movers:
+🟢 $TOP_GAINER $TOP_GAINER_CHANGE
+🔴 $TOP_LOSER $TOP_LOSER_CHANGE
+
+Bitcoin $arrow $btc_fmt ($BTC_CHANGE 24h)
+
+Track every coin in real-time → $SITE_URL
+Auto-refresh • Free • No signup
+
+#Bitcoin #Crypto #Altcoins #Trading
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TWEET_EOF
+            ;;
+    esac
 }
 
 generate_reddit_post() {
-    local btc_fmt
-    btc_fmt=$(format_price "$BTC_PRICE")
+    local v
+    v=$(pick_variant 3)
 
-    cat << REDDIT_EOF
+    local btc_fmt eth_fmt sol_fmt ada_fmt
+    btc_fmt=$(format_price "$BTC_PRICE")
+    eth_fmt=$(format_price "$ETH_PRICE")
+    sol_fmt=$(format_price "$SOL_PRICE")
+    ada_fmt=$(format_price "$ADA_PRICE")
+    local arrow
+    arrow=$(btc_arrow)
+    local mcap_fmt vol_fmt
+    mcap_fmt=$(format_large "$GLOBAL_MCAP")
+    vol_fmt=$(format_large "$GLOBAL_VOLUME")
+
+    case $v in
+        1)
+            # Story: News-driven
+            cat << REDDIT_EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   🤖  REDDIT POST  (copy & paste)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Title:
-I built a lightweight, free crypto price tracker that refreshes itself — no ads, no signup
+Crypto market update: ${NEWS_HEADLINE:-crypto is heating up} — plus a free tool to track it live
 
 Body:
 
-I got tired of CoinMarketCap and CoinGecko loading tons of scripts and ads on mobile, so I built this: $SITE_URL
+Saw this headline earlier and wanted to share my thoughts:
 
-• Top 50 coins by market cap
-• Auto-refreshes every 60 seconds
-• Dark mode, works on mobile
-• Search any coin instantly
-• No ads (for now), no signup, no bloat
+📰 "${NEWS_HEADLINE:-Crypto market update}"
 
-BTC: $btc_fmt (24h: $BTC_CHANGE)
-ETH: $(format_price "$ETH_PRICE")
-SOL: $(format_price "$SOL_PRICE")
+Meanwhile here's where the market stands as of now:
 
-Just thought some of you might find it useful. Feedback welcome!
+• BTC: $btc_fmt ($BTC_CHANGE 24h) $arrow
+• ETH: $eth_fmt
+• SOL: $sol_fmt
+• ADA: $ada_fmt
+
+Global crypto market cap: $mcap_fmt
+24h volume: $vol_fmt
+BTC dominance: $BTC_DOM
+
+I've been using $SITE_URL to track prices in real-time. It auto-refreshes every 60s, shows the top 50 coins, and has no ads or signup — just clean data. Click any coin for detailed stats (market cap, volume, 24h high/low, ATH).
+
+Not selling anything, just sharing a tool I built and use daily. Would love your thoughts!
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 REDDIT_EOF
+            ;;
+        2)
+            # Story: Trending coin spotlight
+            cat << REDDIT_EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🤖  REDDIT POST  (copy & paste)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Title:
+$TRENDING_COIN ($TRENDING_SYMBOL) is trending on CoinGecko right now — here's what the rest of the market looks like
+
+Body:
+
+Noticed that $TRENDING_COIN is trending on CoinGecko at the moment. Here's a quick snapshot of the broader market:
+
+• BTC: $btc_fmt ($BTC_CHANGE 24h)
+• ETH: $eth_fmt
+• SOL: $sol_fmt
+• XRP: $(format_price "$XRP_PRICE")
+
+📊 Market stats:
+• Total market cap: $mcap_fmt
+• 24h volume: $vol_fmt
+• BTC dominance: $BTC_DOM
+• Market cap change (24h): $MCAP_CHANGE
+
+I built $SITE_URL to track all of this without the bloat of other sites. It loads instantly, updates every 60 seconds, and works great on mobile. No signup required, no affiliate nonsense.
+
+Check it out if you want a cleaner way to watch the market. Feedback always welcome!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+REDDIT_EOF
+            ;;
+        3)
+            # Story: Market movers + pain point
+            cat << REDDIT_EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🤖  REDDIT POST  (copy & paste)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Title:
+Today's top movers: $TOP_GAINER (+$TOP_GAINER_CHANGE) and $TOP_LOSER ($TOP_LOSER_CHANGE) — plus a quick market overview
+
+Body:
+
+Checking the crypto market and here's what's happening right now:
+
+📈 Top gainer: $TOP_GAINER ($TOP_GAINER_CHANGE)
+📉 Top loser: $TOP_LOSER ($TOP_LOSER_CHANGE)
+
+Bitcoin: $btc_fmt ($BTC_CHANGE 24h)
+Ethereum: $eth_fmt
+Solana: $sol_fmt
+
+Global market cap: $mcap_fmt (${MCAP_CHANGE} 24h)
+BTC dominance: $BTC_DOM
+
+I got tired of sites loading tons of ads and scripts just to show prices, so I built $SITE_URL — a lightweight tracker that shows top 50 coins with auto-refresh, search, sparkline charts, and detailed stats for each coin.
+
+Free, no signup, no BS. Just a tool I actually use every day.
+
+Would love to hear what you think! 🫡
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+REDDIT_EOF
+            ;;
+    esac
 }
 
 generate_linkedin_post() {
-    local btc_fmt
-    btc_fmt=$(format_price "$BTC_PRICE")
+    local v
+    v=$(pick_variant 3)
 
-    cat << LINKEDIN_EOF
+    local btc_fmt eth_fmt
+    btc_fmt=$(format_price "$BTC_PRICE")
+    eth_fmt=$(format_price "$ETH_PRICE")
+    local arrow mcap_fmt
+    arrow=$(btc_arrow)
+    mcap_fmt=$(format_large "$GLOBAL_MCAP")
+
+    case $v in
+        1)
+            # Angle: News + Market insight
+            cat << LINKEDIN_EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   💼  LINKEDIN POST  (copy & paste)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-I built a free cryptocurrency price tracker over a weekend — and I'm sharing it with you.
+📰 ${NEWS_HEADLINE:-Interesting development in crypto today}
 
-No signup required. No ads. No bloat. Just live prices that auto-refresh.
+Meanwhile, the numbers:
+• Bitcoin $arrow $btc_fmt ($BTC_CHANGE 24h)
+• Global crypto market cap: $mcap_fmt
+• BTC dominance: $BTC_DOM
 
-Bitcoin is at $btc_fmt right now ($BTC_CHANGE 24h).
+I track all this (and 50+ coins) in real-time using a lightweight tool I built: $SITE_URL
 
-Check it out: $SITE_URL
+It auto-refreshes every 60 seconds, works on mobile, and requires zero signup. No bloat, no premium tier — just live data.
 
-Built with the free CoinGecko API and hosted on GitHub Pages — zero server costs, zero maintenance.
+If you follow the crypto space, give it a shot. Would love your feedback! 🚀
 
-Would love your feedback! 🚀
+#Crypto #Bitcoin #Blockchain #FinTech #WebDev
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 LINKEDIN_EOF
-}
-
-generate_share_text() {
-    cat << SHARE_EOF
+            ;;
+        2)
+            # Angle: Trending + builder story
+            cat << LINKEDIN_EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  📱  QUICK SHARE TEXT (WhatsApp / DM / SMS)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Check out this free crypto price tracker I built:
-$SITE_URL
-No signup, no ads, just live prices. 🚀
-
+  💼  LINKEDIN POST  (copy & paste)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-SHARE_EOF
+🔥 $TRENDING_COIN ($TRENDING_SYMBOL) is trending in crypto right now.
+
+Here's the market at a glance:
+• Bitcoin $arrow $btc_fmt ($BTC_CHANGE 24h)
+• Ethereum: $eth_fmt
+• Market cap: $mcap_fmt
+
+I built $SITE_URL over a weekend to track these numbers without signing up for anything or waiting for ads to load. It's been getting steady organic traffic ever since.
+
+Stack: CoinGecko API + vanilla JS + GitHub Pages = $0 server cost.
+
+If you're curious about the crypto space or just want a cleaner way to check prices, try it out. Completely free, no catch.
+
+#Bitcoin #Crypto #SideProject #IndieDev #JavaScript
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LINKEDIN_EOF
+            ;;
+        3)
+            # Angle: Market movers + value prop
+            cat << LINKEDIN_EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  💼  LINKEDIN POST  (copy & paste)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 Today's crypto market snapshot:
+
+🟢 Top gainer: $TOP_GAINER ($TOP_GAINER_CHANGE)
+🔴 Top loser: $TOP_LOSER ($TOP_LOSER_CHANGE)
+• Bitcoin $arrow $btc_fmt ($BTC_CHANGE 24h)
+• Market cap: $mcap_fmt
+
+I've been tracking crypto for years, and the biggest problem is that most price trackers are bloated with ads, popups, and signup walls.
+
+So I built $SITE_URL — a fast, free tracker that shows you what matters: live prices, charts, and market data. No account needed, refreshes automatically, works on any device.
+
+If you trade or just follow crypto, check it out. Built it for myself, sharing it with anyone who finds it useful.
+
+#Crypto #Bitcoin #Trading #Technology #Productivity
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+LINKEDIN_EOF
+            ;;
+    esac
 }
 
 generate_indiehackers_post() {
-    cat << IH_EOF
+    local v
+    v=$(pick_variant 3)
+
+    local btc_fmt
+    btc_fmt=$(format_price "$BTC_PRICE")
+    local mcap_fmt
+    mcap_fmt=$(format_large "$GLOBAL_MCAP")
+
+    case $v in
+        1)
+            # Angle: Tech stack + traffic
+            cat << IH_EOF
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   🏗️  INDIEMAKERS / INDIEHACKERS POST
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Title: Launched a free crypto tracker — built in a weekend with zero server costs
+Title: My free crypto tracker gets daily traffic — $0 server cost using CoinGecko + GitHub Pages
 
 Body:
-Stack: Vanilla JS + CoinGecko free API + GitHub Pages (free hosting)
 
-• Single HTML file (no build tools)
-• Auto-refresh every 60s
-• Dark mode
-• AdSense-ready for monetization later
+Launched $SITE_URL as a weekend project and it's been getting consistent organic traffic ever since.
 
-BTC: $(format_price "$BTC_PRICE") ($BTC_CHANGE 24h)
+The stack:
+→ CoinGecko API (free, no key needed)
+→ Vanilla JS (no framework, single HTML file)
+→ GitHub Pages (free hosting, custom domain)
+→ Google AdSense (auto-ads integrated)
 
-Would love your feedback: $SITE_URL
+Current market snapshot:
+• BTC: $btc_fmt
+• Global market cap: $mcap_fmt
+• Trending: $TRENDING_COIN ($TRENDING_SYMBOL)
+• 📰 "${NEWS_HEADLINE:-Crypto market update}"
+
+Features users engage with most:
+• Auto-refresh every 60s — keeps them coming back
+• Search by name/ticker — utility
+• Sparkline charts — visual appeal
+• Expandable detail panels — depth
+• Favorites system — builds habit
+
+What I'd do differently:
+• Add push notifications for price alerts
+• Add a portfolio tracker (but that needs a backend)
+• More social sharing features
+
+Would love feedback from this community! 🔗 $SITE_URL
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 IH_EOF
+            ;;
+        2)
+            # Angle: Growth/monetization
+            cat << IH_EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🏗️  INDIEMAKERS / INDIEHACKERS POST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Title: Building a free AdSense-supported crypto tracker — the numbers so far
+
+Body:
+
+Here's my progress with $SITE_URL, a zero-cost crypto price tracker monetized through AdSense:
+
+Stack:
+• CoinGecko API (free)
+• Vanilla JS (no framework)
+• GitHub Pages (free hosting)
+• AdSense auto-ads
+
+Market right now:
+• BTC: $btc_fmt ($BTC_CHANGE 24h)
+• BTC dominance: $BTC_DOM
+• Top gainer: $TOP_GAINER ($TOP_GAINER_CHANGE)
+• Global market cap: $mcap_fmt
+
+What's working:
+• Auto-refresh creates repeat visits
+• No signup = lower bounce rate
+• Dark mode = better retention
+• Mobile-first design = more page views
+
+Key lesson: You don't need VC funding or a complex backend to build something useful. One HTML file, one free API, zero server costs.
+
+What tools are you using to keep your projects at $0? 👇
+
+🔗 $SITE_URL
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+IH_EOF
+            ;;
+        3)
+            # Angle: Build story + learnings
+            cat << IH_EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🏗️  INDIEMAKERS / INDIEHACKERS POST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Title: I spent a weekend building a crypto tracker and learned more about SEO than coding
+
+Body:
+
+$SITE_URL started as a simple project: a page that shows live crypto prices. What surprised me was how much I learned about growth, not just dev.
+
+The product:
+• Single HTML file
+• CoinGecko free API
+• GitHub Pages hosting
+• $0 operating cost
+
+Current stats: organic traffic from search, steady growth, AdSense applied.
+
+Market check:
+• BTC: $btc_fmt ($BTC_CHANGE 24h)
+• Trending: $TRENDING_COIN
+• 📰 ${NEWS_HEADLINE:-Crypto market update}
+
+Biggest learnings:
+1. SEO matters more than features — clean meta tags and fast load times drove most traffic
+2. Auto-refresh is a retention hack — people leave the tab open
+3. No signup = better conversion — zero friction wins
+4. GitHub Pages + Cloudflare = bulletproof for $0
+5. AdSense approval is achievable with original content
+
+What weekend project surprised you with unexpected traffic?
+
+🔗 $SITE_URL
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+IH_EOF
+            ;;
+    esac
 }
 
-# ================================================================
-#  RAW CONTENT (for auto-posting, no formatting boxes)
-# ================================================================
+generate_share_text() {
+    local v
+    v=$(pick_variant 3)
 
-get_tweet_text() {
-    local btc_fmt btc_sign btc_arrow
-    btc_fmt=$(format_price "$BTC_PRICE")
-    if [ "$BTC_CHANGE" != "—" ]; then
-        btc_sign=$(echo "$BTC_CHANGE" | head -c 1)
-        [ "$btc_sign" = "+" ] && btc_arrow="📈" || btc_arrow="📉"
-    fi
-    printf "Bitcoin %s %s (%s 24h)\n\nTrack live prices for BTC, ETH, SOL & more in real-time.\nFree • No signup • Auto-refresh\n\n👉 %s\n\n#Bitcoin #Crypto #Ethereum #Solana #FreeTool\n" \
-        "$btc_arrow" "$btc_fmt" "$BTC_CHANGE" "$SITE_URL"
-}
-
-get_reddit_title() {
-    echo "I built a lightweight, free crypto price tracker that refreshes itself — no ads, no signup"
-}
-
-get_reddit_body() {
-    local btc_fmt eth_fmt sol_fmt
-    btc_fmt=$(format_price "$BTC_PRICE")
-    eth_fmt=$(format_price "$ETH_PRICE")
-    sol_fmt=$(format_price "$SOL_PRICE")
-    printf "I got tired of CoinMarketCap and CoinGecko loading tons of scripts and ads on mobile, so I built this: %s\n\n• Top 50 coins by market cap\n• Auto-refreshes every 60 seconds\n• Dark mode, works on mobile\n• Search any coin instantly\n• No ads (for now), no signup, no bloat\n\nBTC: %s (24h: %s)\nETH: %s\nSOL: %s\n\nJust thought some of you might find it useful. Feedback welcome!\n" \
-        "$SITE_URL" "$btc_fmt" "$BTC_CHANGE" "$eth_fmt" "$sol_fmt"
-}
-
-get_linkedin_text() {
     local btc_fmt
     btc_fmt=$(format_price "$BTC_PRICE")
-    printf "I built a free cryptocurrency price tracker over a weekend — and I'm sharing it with you.\n\nNo signup required. No ads. No bloat. Just live prices that auto-refresh.\n\nBitcoin is at %s right now (%s 24h).\n\nCheck it out: %s\n\nBuilt with the free CoinGecko API and hosted on GitHub Pages — zero server costs, zero maintenance.\n\nWould love your feedback! 🚀\n" \
-        "$btc_fmt" "$BTC_CHANGE" "$SITE_URL"
-}
+    local arrow
+    arrow=$(btc_arrow)
 
-get_indie_title() {
-    echo "Launched a free crypto tracker — built in a weekend with zero server costs"
-}
+    case $v in
+        1)
+            cat << SHARE_EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  📱  QUICK SHARE TEXT (WhatsApp / DM / SMS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-get_indie_body() {
-    local btc_fmt
-    btc_fmt=$(format_price "$BTC_PRICE")
-    printf "Stack: Vanilla JS + CoinGecko free API + GitHub Pages (free hosting)\n\n• Single HTML file (no build tools)\n• Auto-refresh every 60s\n• Dark mode\n• AdSense-ready for monetization later\n\nBTC: %s (%s 24h)\n\nWould love your feedback: %s\n" \
-        "$btc_fmt" "$BTC_CHANGE" "$SITE_URL"
-}
+Hey! Check out this free crypto price tracker I built 👇
+$SITE_URL
 
+📰 ${NEWS_HEADLINE:-Check this free crypto tracker out}
+BTC $arrow $btc_fmt ($BTC_CHANGE 24h)
+
+Tracks 50+ coins, auto-refreshes, no signup. Just works! 🚀
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SHARE_EOF
+            ;;
+        2)
+            cat << SHARE_EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  📱  QUICK SHARE TEXT (WhatsApp / DM / SMS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hey! This crypto tracker I built is completely free and shows live prices for 50+ coins:
+
+$SITE_URL
+
+🔥 $TRENDING_COIN is trending right now
+BTC $arrow $btc_fmt ($BTC_CHANGE 24h)
+
+No signup needed, just open and watch 🚀
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SHARE_EOF
+            ;;
+        3)
+            cat << SHARE_EOF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  📱  QUICK SHARE TEXT (WhatsApp / DM / SMS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Hey! If you're into crypto, you'll like this free tracker I made:
+
+$SITE_URL
+
+📈 $TOP_GAINER is up $TOP_GAINER_CHANGE today
+BTC $arrow $btc_fmt ($BTC_CHANGE 24h)
+
+Live prices, auto-refresh, zero ads. Bookmark it! 🚀
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SHARE_EOF
+            ;;
+    esac
+}
 
 # ================================================================
 #  SCHEDULER
@@ -328,116 +829,54 @@ show_log() {
 #  MAIN
 # ================================================================
 
-# Check for jq or python3 for JSON parsing
+# Check for python3
 if ! command -v python3 &>/dev/null; then
     echo -e "${RED}⚠️  python3 is required for JSON parsing.${NC}"
     echo "Install it: brew install python3"
     exit 1
 fi
 
-# Parse flags
-POST_FLAG=false
-POSITIONAL_ARGS=()
-for arg in "$@"; do
-    case "$arg" in
-        --post|-p) POST_FLAG=true ;;
-        *) POSITIONAL_ARGS+=("$arg") ;;
-    esac
-done
-
-# Parse command (first positional arg)
-CMD="${POSITIONAL_ARGS[0]:-help}"
+CMD="${1:-help}"
 
 case "$CMD" in
     tweet)
-        echo -e "${CYAN}📡 Fetching live crypto prices...${NC}"
-        fetch_crypto_data
-        echo -e "${GREEN}✅  Live data loaded!${NC}"
-        echo "    BTC: \$$BTC_PRICE  |  ETH: \$$ETH_PRICE  |  SOL: \$$SOL_PRICE"
+        fetch_all_data
         echo ""
         generate_tweet
         log_action "Twitter" "Generated tweet (BTC: \$$BTC_PRICE)"
-        # Save to file
         generate_tweet > "$DIR/$POSTS_DIR/tweet_$DATE_STAMP.txt"
         echo -e "${GREEN}✅  Saved to $POSTS_DIR/tweet_$DATE_STAMP.txt${NC}"
-        if $POST_FLAG; then
-            echo -e "${CYAN}📡 Posting to Twitter/X...${NC}"
-            tweet_text=$(get_tweet_text)
-            python3 "$DIR/poster_twitter.py" "$tweet_text"
-            if [ $? -eq 0 ]; then
-                log_action "Twitter" "Posted tweet"
-            fi
-        else
-            echo -e "${YELLOW}💡  Pro-tip: Add --post to auto-post this tweet!${NC}"
-            echo -e "${YELLOW}💡  Schedule with the Twitter web app for best timing (8-10am ET)${NC}"
-        fi
         ;;
 
     reddit)
-        echo -e "${CYAN}📡 Fetching live crypto prices...${NC}"
-        fetch_crypto_data
-        echo -e "${GREEN}✅  Live data loaded!${NC}"
-        echo "    BTC: \$$BTC_PRICE  |  ETH: \$$ETH_PRICE  |  SOL: \$$SOL_PRICE"
+        fetch_all_data
         echo ""
         generate_reddit_post
         log_action "Reddit" "Generated Reddit post"
         generate_reddit_post > "$DIR/$POSTS_DIR/reddit_$DATE_STAMP.txt"
         echo -e "${GREEN}✅  Saved to $POSTS_DIR/reddit_$DATE_STAMP.txt${NC}"
-        if $POST_FLAG; then
-            echo -e "${CYAN}📡 Posting to Reddit...${NC}"
-            reddit_title=$(get_reddit_title)
-            reddit_body=$(get_reddit_body)
-            python3 "$DIR/poster_reddit.py" "$reddit_title" "$reddit_body"
-            if [ $? -eq 0 ]; then
-                log_action "Reddit" "Posted to Reddit"
-            fi
-        else
-            echo -e "${YELLOW}💡  Tip: Add --post to auto-post to Reddit!${NC}"
-            echo -e "${YELLOW}💡  Post to r/CryptoCurrency, r/SideProject, or r/InternetIsBeautiful${NC}"
-        fi
         ;;
 
     linkedin)
-        echo -e "${CYAN}📡 Fetching live crypto prices...${NC}"
-        fetch_crypto_data
-        echo -e "${GREEN}✅  Live data loaded!${NC}"
+        fetch_all_data
         echo ""
         generate_linkedin_post
         log_action "LinkedIn" "Generated LinkedIn post"
         generate_linkedin_post > "$DIR/$POSTS_DIR/linkedin_$DATE_STAMP.txt"
         echo -e "${GREEN}✅  Saved to $POSTS_DIR/linkedin_$DATE_STAMP.txt${NC}"
-        if $POST_FLAG; then
-            echo -e "${CYAN}📡 Posting to LinkedIn...${NC}"
-            linkedin_text=$(get_linkedin_text)
-            python3 "$DIR/poster_linkedin.py" "$linkedin_text"
-            if [ $? -eq 0 ]; then
-                log_action "LinkedIn" "Posted to LinkedIn"
-            fi
-        else
-            echo -e "${YELLOW}💡  Add --post to auto-post to LinkedIn!${NC}"
-        fi
         ;;
 
     indie)
-        echo -e "${CYAN}📡 Fetching live crypto prices...${NC}"
-        fetch_crypto_data
-        echo -e "${GREEN}✅  Live data loaded!${NC}"
+        fetch_all_data
         echo ""
         generate_indiehackers_post
         log_action "IndieMakers" "Generated IndieHackers post"
         generate_indiehackers_post > "$DIR/$POSTS_DIR/indie_$DATE_STAMP.txt"
         echo -e "${GREEN}✅  Saved to $POSTS_DIR/indie_$DATE_STAMP.txt${NC}"
-        if $POST_FLAG; then
-            echo -e "${CYAN}📡 Posting to IndieHackers/IndieMakers...${NC}"
-            indie_title=$(get_indie_title)
-            indie_body=$(get_indie_body)
-            echo -e "${YELLOW}⚠️  IndieHackers doesn't have a public write API yet.${NC}"
-            echo -e "${YELLOW}   Copy the post from $POSTS_DIR/indie_$DATE_STAMP.txt${NC}"
-            log_action "IndieMakers" "IndieHackers has no API — manual post needed"
-        fi
         ;;
 
     share)
+        fetch_all_data
         echo ""
         generate_share_text
         log_action "Share" "Generated share text"
@@ -446,9 +885,7 @@ case "$CMD" in
         ;;
 
     all)
-        echo -e "${CYAN}📡 Fetching live crypto prices...${NC}"
-        fetch_crypto_data
-        echo -e "${GREEN}✅  Live data loaded!${NC}"
+        fetch_all_data
         echo ""
         echo "╔══════════════════════════════════════════════╗"
         echo "║     📢  GENERATING ALL CONTENT              ║"
@@ -468,29 +905,7 @@ case "$CMD" in
         log_action "All" "Generated all content types"
         echo -e "${GREEN}✅  All content saved to $POSTS_DIR/ for $DATE_STAMP${NC}"
         echo ""
-        if $POST_FLAG; then
-            echo "╔══════════════════════════════════════════════╗"
-            echo "║     📤  POSTING TO PLATFORMS               ║"
-            echo "╚══════════════════════════════════════════════╝"
-            echo ""
-            echo -e "${CYAN}📡 Posting tweet to Twitter/X...${NC}"
-            tweet_text=$(get_tweet_text)
-            python3 "$DIR/poster_twitter.py" "$tweet_text" && log_action "Twitter" "Posted tweet"
-            echo ""
-            echo -e "${CYAN}📡 Posting to Reddit...${NC}"
-            reddit_title=$(get_reddit_title)
-            reddit_body=$(get_reddit_body)
-            python3 "$DIR/poster_reddit.py" "$reddit_title" "$reddit_body" && log_action "Reddit" "Posted to Reddit"
-            echo ""
-            echo -e "${CYAN}📡 Posting to LinkedIn...${NC}"
-            linkedin_text=$(get_linkedin_text)
-            python3 "$DIR/poster_linkedin.py" "$linkedin_text" && log_action "LinkedIn" "Posted to LinkedIn"
-            echo ""
-            echo -e "${YELLOW}⚠️  IndieHackers has no write API — copy from $POSTS_DIR/indie_$DATE_STAMP.txt${NC}"
-            echo -e "${YELLOW}⚠️  Share text is for manual sharing — copy from $POSTS_DIR/share_$DATE_STAMP.txt${NC}"
-            echo ""
-            echo -e "${GREEN}✅  Auto-posting complete!${NC}"
-        fi
+        echo -e "${YELLOW}💡  Open the files in $POSTS_DIR/ and copy-paste each one manually.${NC}"
         ;;
 
     schedule)
@@ -530,32 +945,31 @@ case "$CMD" in
         echo "║     🚀  CryptoLive Promotion Automation     ║"
         echo "╚══════════════════════════════════════════════╝"
         echo ""
-        echo "  Usage: bash promote.sh <command> [--post|-p]"
+        echo "  Usage: bash promote.sh <command>"
         echo ""
         echo "  Commands:"
-        echo "    tweet           Generate a tweet with live BTC price"
-        echo "    reddit          Generate a Reddit post with live prices"
+        echo "    tweet           Generate a tweet with live data"
+        echo "    reddit          Generate a Reddit post"
         echo "    linkedin        Generate a LinkedIn post"
-        echo "    indie           Generate an IndieHackers/IndieMakers post"
-        echo "    share           Generate quick share text (WhatsApp/DM)"
+        echo "    indie           Generate an IndieHackers post"
+        echo "    share           Generate share text (WhatsApp/DM)"
         echo "    all             Generate ALL content types at once"
         echo "    schedule        Show today's promotion schedule"
         echo "    log             Show posting history"
         echo "    install-cron    Install daily reminder"
         echo "    help            Show this menu"
         echo ""
-        echo "  Flags:"
-        echo "    --post, -p      Auto-post to the platform (requires API keys)"
+        echo "  Each run fetches: latest crypto news, trending coins,"
+        echo "  global market data, and live prices — completely unique"
+        echo "  content generated fresh every day."
         echo ""
         echo "  Examples:"
-        echo "    bash promote.sh tweet          →  Generate a tweet (copy-paste)"
-        echo "    bash promote.sh tweet --post   →  Generate AND post to Twitter"
-        echo "    bash promote.sh all --post     →  Post to all platforms"
+        echo "    bash promote.sh tweet          →  Generate tweet"
+        echo "    bash promote.sh all            →  Generate all content"
         echo "    bash promote.sh schedule       →  What to post today"
         echo ""
-        echo "  First time? Edit config.sh with your info, then:"
-        echo "    1. bash promote.sh all         →  Generate content"
-        echo "    2. Set API keys in config.sh   →  bash promote.sh all --post"
+        echo "  First time? Edit config.sh with your site info, then:"
+        echo "    bash promote.sh all    →  Open files in generated_posts/ and paste"
         echo ""
         ;;
 esac

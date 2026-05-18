@@ -39,8 +39,11 @@ bash promote.sh log
 
 1. **Fetches live prices** from CoinGecko's free API (BTC, ETH, SOL)
 2. **Generates platform-specific content** with those prices baked in
-3. **Saves to `generated_posts/`** so you can copy-paste
-4. **Logs every action** so you know what you posted and when
+3. **Saves to `generated_posts/`** as text files — you copy & paste manually
+4. **Logs every action** so you know what you generated and when
+
+> ⚠️ **No auto-posting.** API-based posting has been removed due to issues with social platform APIs.
+> All content is saved to plain text files for manual copy-paste.
 
 ## Daily Routine (~5 min/day)
 
@@ -60,7 +63,6 @@ Sunday:    Rest
 |------|------|
 | Hosting (GitHub Pages) | Free |
 | CoinGecko API | Free |
-| Twitter/X | Free |
-| Reddit | Free |
-| LinkedIn | Free |
+| Content generation | Free |
+| Manual posting (your time) | Free |
 | **Total** | **$0** |

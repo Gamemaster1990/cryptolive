@@ -421,24 +421,6 @@
             .skeleton .s-sparkline { display: block; }
         }
 
-        /* ===== AD CONTAINER ===== */
-        .ad-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0.5rem 1.5rem;
-            text-align: center;
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--bg-secondary);
-            border: 1px dashed var(--border);
-            border-radius: var(--radius);
-            color: var(--text-secondary);
-            font-size: 0.75rem;
-        }
-        .ad-placeholder { padding: 1.5rem; }
-
         /* ===== FOOTER ===== */
         footer {
             text-align: center;
@@ -709,11 +691,6 @@
     </div>
 </div>
 
-<!-- ===== AD (TOP) ===== -->
-<div class="ad-container">
-    <span class="ad-placeholder">📢 AdSense Ad — replace with your AdSense code</span>
-</div>
-
 <!-- ===== MAIN CONTENT ===== -->
 <main>
     <div id="errorContainer"></div>
@@ -731,11 +708,6 @@
         <div class="skeleton"><div class="s-shape s-rank"></div><div class="s-shape s-icon"></div><div><div class="s-shape s-name"></div><div class="s-shape s-symbol"></div></div><div class="s-shape s-price"></div><div class="s-shape s-change"></div><div class="s-shape s-sparkline"></div><div class="s-shape s-fav"></div></div>
     </div>
 </main>
-
-<!-- ===== AD (BOTTOM) ===== -->
-<div class="ad-container">
-    <span class="ad-placeholder">📢 AdSense Ad — replace with your AdSense code</span>
-</div>
 
 <!-- ===== FOOTER ===== -->
 <footer>
@@ -1081,13 +1053,6 @@
     resetTimer();
 })();
 </script>
-
-<!-- AdSense auto-ads fallback (uncomment when you have publisher ID) -->
-<!--
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
--->
 
 <!-- ===== COOKIE CONSENT BANNER ===== -->
 <div class="cookie-banner" id="cookieBanner">
