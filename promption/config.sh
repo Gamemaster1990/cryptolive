@@ -6,12 +6,12 @@
 
 # --- Your Site ---
 SITE_NAME="CryptoLive"
-SITE_URL="https://yourdomain.com"
+SITE_URL="https://gamemaster1990.github.io/cryptolive"
 SITE_DESC="Free real-time cryptocurrency price tracker — no ads, no signup"
 
 # --- Social Handles (without @) ---
-TWITTER_HANDLE="your_twitter_handle"
-REDDIT_USERNAME="your_reddit_username"
+TWITTER_HANDLE="newkidspoem"
+REDDIT_USERNAME="Gamemaster1990"
 
 # --- CoinGecko API (no key needed) ---
 COINGECKO_API="https://api.coingecko.com/api/v3"
