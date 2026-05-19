@@ -6,14 +6,14 @@
     <title>Live Crypto Prices | Real-Time Cryptocurrency Tracker</title>
     <meta name="description" content="Track live cryptocurrency prices, market caps, and 24h changes in real-time. Free crypto price tracker with auto-refresh." />
     <meta name="keywords" content="crypto, cryptocurrency, bitcoin, ethereum, prices, live tracker, market cap" />
-    <link rel="canonical" href="https://cryptolive.space/" />
+    <link rel="canonical" href="https://www.cryptolive.space/" />
     <meta name="robots" content="index, follow" />
 
     <!-- Open Graph -->
     <meta property="og:title" content="Live Crypto Prices | Real-Time Cryptocurrency Tracker" />
     <meta property="og:description" content="Track live cryptocurrency prices, market caps, and 24h changes in real-time." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://cryptolive.space/" />
+    <meta property="og:url" content="https://www.cryptolive.space/" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -33,10 +33,6 @@
         });
         gtag('config', 'G-5619GV6WJ6');
     </script>
-
-    <!-- AdSense Auto Ads -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913"
-            crossorigin="anonymous"></script>
 
     <!-- Cookie Consent Styles -->
     <style>
@@ -709,6 +705,38 @@
     </div>
 </main>
 
+<!-- ===== STATIC CONTENT (for SEO & AdSense review) ===== -->
+<section style="max-width:1280px;margin:0 auto;padding:0 1.5rem 2rem;">
+    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 2rem;">
+        <h2 style="font-size:1.2rem;font-weight:700;margin-bottom:0.75rem;">📈 Real-Time Cryptocurrency Price Tracker</h2>
+        <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7;margin-bottom:1rem;">
+            CryptoLive is a <strong style="color:var(--text-primary);">free, lightweight cryptocurrency price tracker</strong> that lets you monitor the crypto market without the bloat of major exchange platforms. No signup required, no hidden fees—just live prices at your fingertips.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1rem 0;">
+            <div style="background:var(--bg-secondary);border-radius:8px;padding:1rem;">
+                <div style="font-size:0.8rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.25rem;">Top 50 Coins</div>
+                <div style="font-size:0.85rem;color:var(--text-primary);">Live prices of the top cryptocurrencies by market cap, updated every 60 seconds from the CoinGecko API.</div>
+            </div>
+            <div style="background:var(--bg-secondary);border-radius:8px;padding:1rem;">
+                <div style="font-size:0.8rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.25rem;">Multiple Currencies</div>
+                <div style="font-size:0.85rem;color:var(--text-primary);">View prices in USD, EUR, GBP, or JPY. Switch between currencies instantly with the currency picker.</div>
+            </div>
+            <div style="background:var(--bg-secondary);border-radius:8px;padding:1rem;">
+                <div style="font-size:0.8rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.25rem;">Instant Search</div>
+                <div style="font-size:0.85rem;color:var(--text-primary);">Search any cryptocurrency by name or ticker symbol. Filter through the top 50 coins in real-time as you type.</div>
+            </div>
+            <div style="background:var(--bg-secondary);border-radius:8px;padding:1rem;">
+                <div style="font-size:0.8rem;color:var(--text-secondary);text-transform:uppercase;letter-spacing:0.03em;margin-bottom:0.25rem;">Price Alerts & Details</div>
+                <div style="font-size:0.85rem;color:var(--text-primary);">Click any coin to view detailed metrics including market cap, 24h high/low, all-time high, and circulating supply.</div>
+            </div>
+        </div>
+        <p style="color:var(--text-secondary);font-size:0.85rem;margin-top:0.5rem;">
+            Data sourced from <a href="https://www.coingecko.com/" target="_blank" rel="noopener" style="color:var(--accent);">CoinGecko</a> — one of the most reliable free cryptocurrency data APIs.
+            Prices update automatically every 60 seconds. The auto-refresh pauses when you switch tabs to save bandwidth.
+        </p>
+    </div>
+</section>
+
 <!-- ===== FOOTER ===== -->
 <footer>
     <p>Data provided by <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a> API · Prices update every 60 seconds</p>
@@ -717,6 +745,7 @@
         <a href="about.html">About</a> ·
         <a href="contact.html">Contact</a> ·
         <a href="privacy-policy.html">Privacy</a> ·
+        <a href="terms.html">Terms</a> ·
         <a href="disclaimer.html">Disclaimer</a> ·
         <a href="sitemap.xml">Sitemap</a>
     </p>
@@ -1058,7 +1087,7 @@
 <div class="cookie-banner" id="cookieBanner">
     <div class="cookie-inner">
         <div class="cookie-text">
-            We use cookies to improve your experience and show relevant ads.
+            We use cookies to improve your experience, analyze traffic, and show personalized ads via Google AdSense.
             <a href="privacy-policy.html">Learn more</a>.
         </div>
         <div class="cookie-btns">
@@ -1077,16 +1106,28 @@
         }
     })();
 
+    function loadAdSense() {
+        if (document.querySelector('script[src*="adsbygoogle"]')) return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913';
+        s.crossOrigin = 'anonymous';
+        s.onerror = function() { console.warn('AdSense script failed to load'); };
+        document.head.appendChild(s);
+    }
+
     window.acceptCookies = function() {
         localStorage.setItem('cookieConsent', 'accepted');
         document.getElementById('cookieBanner').classList.remove('show');
-        // Enable GA4 and AdSense if disabled
+        // Enable GA4 analytics
         if (typeof gtag !== 'undefined') {
             gtag('consent', 'update', {
                 'analytics_storage': 'granted',
                 'ad_storage': 'granted'
             });
         }
+        // Load AdSense only after user consent
+        loadAdSense();
     };
 
     window.declineCookies = function() {

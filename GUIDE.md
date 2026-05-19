@@ -307,56 +307,71 @@ All required pages are already created in your project. You just need to:
 
 **Time: ~5 minutes/day | Cost: $0**
 
-### Monday — Tweet + SEO Check
+### Monday — Instagram Reel + Tweet + SEO Check
 
 ```bash
-# Generate tweet with live crypto price
 cd promption
+bash promote.sh instagram    # Choose variant 1 (Reel: market snapshot)
 bash promote.sh tweet
 ```
-- Copy the generated tweet from `generated_posts/tweet_YYYY-MM-DD.txt`
-- Post on Twitter/X
+- Post an Instagram Reel with current market prices (screenshot your tracker)
+- Post the generated tweet on Twitter/X
 - Check Google Search Console → see which keywords are bringing traffic
 
-### Tuesday — Share + Engage
+### Tuesday — Instagram Story + Share + Engage
 
 ```bash
+cd promption
+bash promote.sh instagram    # Choose variant 3 (Story: daily price check)
 bash promote.sh share
 ```
+- Post an Instagram Story with BTC price sticker + poll
 - Copy the share text from `generated_posts/share_YYYY-MM-DD.txt`
 - Send to 3 friends via WhatsApp/DM
 - Find 2 crypto-related tweets and reply with value (not spam)
 
-### Wednesday — Tweet + Community
+### Wednesday — Instagram + Tweet + Community
 
 ```bash
-bash promote.sh tweet
+cd promption
+bash promote.sh instagram    # Choose variant 2 (Carousel: app showcase)
 ```
+- Post an Instagram Carousel showing the tracker features
 - Post on Twitter/X (different angle than Monday)
 - Post on IndieMakers or IndieHackers:
   ```bash
   bash promote.sh indie
   ```
 
-### Thursday — Share + Engage
+### Thursday — Instagram Story + Share + Engage
 
 ```bash
-bash promote.sh share
+cd promption
+bash promote.sh instagram    # Choose variant 3 (Story ideas)
 ```
+- Post an Instagram Story with daily price check / trending coin
 - Share to 1 group chat
 - Reply to 2 more crypto tweets
 
-### Friday — LinkedIn + Weekly Review
+### Friday — LinkedIn + Instagram Reel + Weekly Review
 
 ```bash
+cd promption
 bash promote.sh linkedin
+bash promote.sh instagram    # Choose variant 1 (Reel: market snapshot)
 ```
 - Post on LinkedIn
+- Post an Instagram Reel with weekend market outlook
 - Check GA4 → look at weekly traffic numbers
 - Plan next week
 
-### Saturday — Catch-up
+### Saturday — BTS Story + Catch-up
 
+```bash
+cd promption
+bash promote.sh instagram    # Choose variant 3 (BTS Story: 'Behind the Build')
+```
+- Post an Instagram BTS Story about building the tracker
 - Cross-post to any platforms you missed
 - Review your promotion log: `bash promote.sh log`
 
