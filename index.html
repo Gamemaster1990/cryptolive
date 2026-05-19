@@ -35,75 +35,9 @@
         gtag('config', 'G-5619GV6WJ6');
     </script>
 
-    <!-- Cookie Consent Styles -->
-    <style>
-        .cookie-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: #131a2b;
-            border-top: 1px solid var(--border);
-            padding: 1rem 1.5rem;
-            z-index: 9999;
-            display: none;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
-            animation: slideUp 0.3s ease-out;
-        }
-        @keyframes slideUp {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .cookie-banner.show { display: block; }
-        .cookie-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        .cookie-text {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            flex: 1;
-            min-width: 200px;
-        }
-        .cookie-text a { color: var(--accent); }
-        .cookie-btns {
-            display: flex;
-            gap: 0.5rem;
-            flex-shrink: 0;
-        }
-        .cookie-btn {
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s;
-        }
-        .cookie-btn.accept {
-            background: var(--accent);
-            color: white;
-        }
-        .cookie-btn.accept:hover { opacity: 0.9; }
-        .cookie-btn.decline {
-            background: transparent;
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-        }
-        .cookie-btn.decline:hover {
-            background: var(--bg-card);
-            color: var(--text-primary);
-        }
-        @media (max-width: 480px) {
-            .cookie-inner { flex-direction: column; align-items: stretch; }
-            .cookie-btns { justify-content: flex-end; }
-        }
-    </style>
+    <!-- Google AdSense (blocked by Google CMP in EEA until user consents) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913"
+     crossorigin="anonymous"></script>
 
     <style>
         /* ===== RESET & BASE ===== */
@@ -1084,65 +1018,7 @@
 })();
 </script>
 
-<!-- ===== COOKIE CONSENT BANNER ===== -->
-<div class="cookie-banner" id="cookieBanner">
-    <div class="cookie-inner">
-        <div class="cookie-text">
-            We use cookies to improve your experience, analyze traffic, and show personalized ads via Google AdSense.
-            <a href="privacy-policy.html">Learn more</a>.
-        </div>
-        <div class="cookie-btns">
-            <button class="cookie-btn decline" onclick="declineCookies()">Decline</button>
-            <button class="cookie-btn accept" onclick="acceptCookies()">Accept</button>
-        </div>
-    </div>
-</div>
 
-<script>
-    // Cookie consent handling
-    (function() {
-        const banner = document.getElementById('cookieBanner');
-        if (!localStorage.getItem('cookieConsent')) {
-            banner.classList.add('show');
-        }
-    })();
-
-    function loadAdSense() {
-        if (document.querySelector('script[src*="adsbygoogle"]')) return;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913';
-        s.crossOrigin = 'anonymous';
-        s.onerror = function() { console.warn('AdSense script failed to load'); };
-        document.head.appendChild(s);
-    }
-
-    window.acceptCookies = function() {
-        localStorage.setItem('cookieConsent', 'accepted');
-        document.getElementById('cookieBanner').classList.remove('show');
-        // Enable GA4 analytics
-        if (typeof gtag !== 'undefined') {
-            gtag('consent', 'update', {
-                'analytics_storage': 'granted',
-                'ad_storage': 'granted'
-            });
-        }
-        // Load AdSense only after user consent
-        loadAdSense();
-    };
-
-    window.declineCookies = function() {
-        localStorage.setItem('cookieConsent', 'declined');
-        document.getElementById('cookieBanner').classList.remove('show');
-        // Disable analytics and ad cookies
-        if (typeof gtag !== 'undefined') {
-            gtag('consent', 'update', {
-                'analytics_storage': 'denied',
-                'ad_storage': 'denied'
-            });
-        }
-    };
-</script>
 
 </body>
 </html>
