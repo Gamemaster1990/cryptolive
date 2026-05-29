@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blockchain Explained Simply — CryptoLive</title>
+    <meta name="description" content="Blockchain explained in simple terms. Learn how blockchain technology works, what makes it secure, and why it matters beyond cryptocurrency." />
+    <meta name="keywords" content="blockchain explained, how blockchain works, blockchain technology, distributed ledger, decentralization" />
+    <link rel="canonical" href="https://cryptolive.space/blog/blockchain-explained.html" />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-adsense-account" content="ca-pub-8228373593966913" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta property="og:title" content="Blockchain Explained Simply — How the Technology Works" />
+    <meta property="og:description" content="Blockchain explained in simple terms. Learn how blockchain works, why it is secure, and its real-world applications beyond cryptocurrency." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://cryptolive.space/blog/blockchain-explained.html" />
+    <meta property="og:image" content="https://cryptolive.space/logo.png" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Blockchain Explained Simply: How the Technology Behind Cryptocurrency Works",
+        "author": { "@type": "Person", "name": "Himanshu Kathuria", "url": "https://cryptolive.space/about.html" },
+        "publisher": { "@type": "Organization", "name": "CryptoLive", "url": "https://cryptolive.space/" },
+        "datePublished": "2026-05-29",
+        "dateModified": "2026-05-30"
+    }
+    </script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root { --bg: #0b0e17; --bg-card: #1a2332; --bg-card-hover: #1f2a3d; --border: #1e2d3d; --text: #f0f4fa; --text-muted: #8892a8; --accent: #3b82f6; --green: #00c853; }
+        html { scroll-behavior: smooth; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; min-height: 100vh; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .page-wrap { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+        .top-nav { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; margin-bottom: 2rem; border-bottom: 1px solid var(--border); }
+        .top-nav .back-home { font-size: 0.85rem; color: var(--text-muted); }
+        h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .byline { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.2rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
+        h3 { font-size: 1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
+        p { color: #c8d0e0; margin-bottom: 1rem; font-size: 0.95rem; }
+        ul, ol { margin: 0 0 1rem 1.5rem; }
+        li { color: #c8d0e0; margin-bottom: 0.5rem; font-size: 0.95rem; }
+        strong { color: var(--text); }
+        .highlight-box { background: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent); border-radius: 10px; padding: 1.25rem; margin: 1.5rem 0; }
+        .highlight-box p { margin-bottom: 0; color: #c8d0e0; font-size: 0.9rem; }
+        .info-box { background: rgba(0, 200, 83, 0.08); border: 1px solid var(--green); border-radius: 10px; padding: 1.25rem; margin: 1.5rem 0; }
+        .info-box p { margin-bottom: 0; color: #c8d0e0; font-size: 0.9rem; }
+        .page-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.8rem; color: var(--text-muted); }
+        .page-footer a { color: var(--text-muted); }
+        .page-footer a:hover { color: var(--text); }
+        .page-footer .dot { margin: 0 0.4rem; }
+        .toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-bottom: 2rem; }
+        .toc h3 { font-size: 0.95rem; margin-bottom: 0.75rem; }
+        .toc ol { margin: 0; }
+        .toc li { margin-bottom: 0.3rem; font-size: 0.88rem; }
+        .analogy { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin: 1.5rem 0; }
+        .analogy .emoji { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .analogy .title { font-weight: 600; color: var(--text); margin-bottom: 0.3rem; }
+        .analogy .desc { font-size: 0.85rem; color: var(--text-muted); }
+        @media (max-width: 480px) { .page-wrap { padding: 1.5rem 1rem 3rem; } h1 { font-size: 1.4rem; } }
+        .social-links { display:flex; justify-content:center; gap:0.85rem; margin:1rem 0 0.75rem; }
+        .social-links a { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--bg-card); border:1px solid var(--border); transition:all 0.2s; color:var(--text-muted); }
+        .social-links a:hover { background:var(--bg-card-hover); color:var(--accent); transform:translateY(-2px); text-decoration:none; }
+    
+        /* ===== CONSENT BANNER ===== */
+        #consentBanner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: #131a2b;
+            border-top: 1px solid #1e2d3d;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.4);
+            transform: translateY(0);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+        #consentBanner.hidden {
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #consentBanner .banner-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        #consentBanner .banner-text { flex: 1; min-width: 200px; }
+        #consentBanner .banner-title {
+            color: #f0f4fa;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        #consentBanner .banner-description {
+            color: #8892a8;
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+        #consentBanner .banner-description a { color: #3b82f6; text-decoration: underline; }
+        #consentBanner .banner-actions {
+            display: flex;
+            gap: 0.6rem;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+        #consentBanner .btn-reject {
+            background: transparent;
+            border: 1px solid #1e2d3d;
+            color: #8892a8;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            transition: all 0.15s;
+        }
+        #consentBanner .btn-reject:hover {
+            border-color: #3b82f6;
+            color: #f0f4fa;
+        }
+        #consentBanner .btn-accept {
+            background: #3b82f6;
+            border: none;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: opacity 0.15s;
+        }
+        #consentBanner .btn-accept:hover { opacity: 0.9; }
+
+</style>
+
+    <!-- Google Analytics (GA4) with Consent Mode -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5619GV6WJ6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 1000
+        });
+        gtag('set', 'ads_data_redaction', true);
+        gtag('config', 'G-5619GV6WJ6');
+    </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913" crossorigin="anonymous"></script>
+
+    </head>
+<body>
+<div class="page-wrap">
+    <nav class="top-nav">
+        <a class="back-home" href="/">← Back to CryptoLive</a>
+    </nav>
+
+    <h1>Blockchain Explained Simply: How the Technology Behind Cryptocurrency Works</h1>
+    <p class="byline">By Himanshu Kathuria · Updated May 30, 2026 · 9 min read</p>
+
+    <div class="toc">
+        <h3>📑 In This Guide</h3>
+        <ol>
+            <li><a href="#what-is-blockchain">What Is Blockchain?</a></li>
+            <li><a href="#analogy">A Simple Analogy</a></li>
+            <li><a href="#key-features">Key Features of Blockchain</a></li>
+            <li><a href="#how-it-works">How a Blockchain Works Step by Step</a></li>
+            <li><a href="#types">Types of Blockchains</a></li>
+            <li><a href="#beyond-crypto">Blockchain Beyond Cryptocurrency</a></li>
+            <li><a href="#limitations">Limitations and Challenges</a></li>
+            <li><a href="#future">The Future of Blockchain</a></li>
+        </ol>
+    </div>
+
+    <p>Blockchain is often described as one of the most important inventions since the internet. But what exactly is it, and why is it so revolutionary?</p>
+
+    <p>In simple terms, a <strong>blockchain is a shared digital record book</strong> (a ledger) that stores data in connected sections called "blocks." Once data is recorded in a block, it is extremely difficult to change, and everyone on the network can see the same information.</p>
+
+    <p>This guide explains blockchain technology in plain language — no engineering degree required.</p>
+
+    <h2 id="what-is-blockchain">What Is Blockchain?</h2>
+    <p>A <strong>blockchain</strong> is a <strong>distributed, decentralized, digital ledger</strong> that records transactions across many computers in such a way that the registered transactions cannot be altered retroactively. Each block contains a number of transactions, and every time a new transaction occurs on the blockchain, a record of that transaction is added to every participant's ledger.</p>
+
+    <p>The name comes from its structure: blocks of data are linked together in a chain. Each block references the previous block using a cryptographic hash, creating an unbroken chain stretching back to the very first block (called the "genesis block").</p>
+
+    <h2 id="analogy">A Simple Analogy: The Google Docs Comparison</h2>
+
+    <div class="analogy">
+        <div class="emoji">📄</div>
+        <div class="title">Traditional Database = A Microsoft Word Document</div>
+        <div class="desc">You create a document and share it with others. But only one person can edit it at a time, and the document is stored on your computer. If your computer crashes, you lose the document. If someone wants to verify your document is authentic, they have to trust that you haven't changed it.</div>
+    </div>
+
+    <div class="analogy">
+        <div class="emoji">🔗</div>
+        <div class="title">Blockchain = A Google Document</div>
+        <div class="desc">Multiple people can see and edit the document simultaneously. Every change is logged and visible to everyone. There is no single "master copy" — the document exists across all participants' devices simultaneously. If one person's computer crashes, the document still exists on everyone else's computer. And because every change is permanently recorded, you can see exactly who changed what and when.</div>
+    </div>
+
+    <p>Of course, this analogy is simplified. Blockchain has additional properties like cryptographic security, consensus mechanisms, and immutability that make it much more powerful than a shared document.</p>
+
+    <h2 id="key-features">Key Features of Blockchain</h2>
+    <p>Four key features make blockchain revolutionary:</p>
+
+    <h3>1. Decentralization</h3>
+    <p>Traditional databases are <strong>centralized</strong> — they are stored on a single server or a set of servers controlled by one organization (like a bank, a government, or a company). This creates a single point of failure and gives that organization control over the data. Blockchain distributes the data across <strong>thousands of independent computers</strong> (called nodes) worldwide. No single entity controls the network.</p>
+
+    <h3>2. Transparency</h3>
+    <p>On most public blockchains, anyone can view the entire transaction history. This transparency builds trust because users can verify transactions independently rather than relying on a central authority.</p>
+
+    <h3>3. Immutability</h3>
+    <p>Once data is recorded on a blockchain, it is <strong>extremely difficult to change</strong>. To alter a single block, an attacker would need to change every subsequent block on every copy of the blockchain across the entire network — a task that becomes exponentially harder as the chain grows.</p>
+
+    <h3>4. Security</h3>
+    <p>Blockchain uses advanced cryptography to secure transactions. Each block is linked to the previous block using a cryptographic hash, and transactions are verified through consensus mechanisms. The Bitcoin blockchain, for example, has never been successfully hacked in its 17+ year history.</p>
+
+    <h2 id="how-it-works">How a Blockchain Works Step by Step</h2>
+    <p>Here is the process of how a transaction gets recorded on a blockchain:</p>
+
+    <ol>
+        <li><strong>A transaction is requested</strong> — Someone wants to send cryptocurrency to another person, or record some data on the blockchain.</li>
+        <li><strong>The transaction is broadcast</strong> — The transaction is sent to a network of peer-to-peer computers (nodes) for verification.</li>
+        <li><strong>Nodes verify the transaction</strong> — The network of nodes checks that the sender has sufficient funds and that the transaction follows the network's rules. This is done using the blockchain's <strong>consensus mechanism</strong>.</li>
+        <li><strong>The transaction is combined with others</strong> — Once verified, the transaction is grouped with other transactions into a <strong>block</strong>.</li>
+        <li><strong>The block is added to the blockchain</strong> — The new block is permanently added to the existing blockchain in a way that is transparent and unalterable.</li>
+        <li><strong>The transaction is complete</strong> — The recipient receives the funds, and the transaction is recorded permanently.</li>
+    </ol>
+
+    <p>This entire process happens automatically, with the network maintaining consensus on the current state of the blockchain at all times.</p>
+
+    <div class="info-box">
+        <strong>💡 Consensus Mechanisms</strong>
+        <p>Blockchains use different methods to agree on which transactions are valid:</p>
+        <p><strong>Proof of Work (PoW)</strong> — Used by Bitcoin. Miners compete to solve complex math problems. The first to solve it gets to add the next block. Energy-intensive but extremely secure.</p>
+        <p><strong>Proof of Stake (PoS)</strong> — Used by Ethereum, Solana, and others. Validators are chosen based on how many coins they stake as collateral. Much more energy-efficient than PoW.</p>
+    </div>
+
+    <h2 id="types">Types of Blockchains</h2>
+    <p>Not all blockchains are the same. There are three main types:</p>
+
+    <h3>Public Blockchains</h3>
+    <p><strong>Examples:</strong> Bitcoin, Ethereum, Solana</p>
+    <p>Anyone can join, read, write, and participate in the consensus process. These are completely open and decentralized. Public blockchains are the most secure but can be slower and less scalable.</p>
+
+    <h3>Private Blockchains</h3>
+    <p><strong>Examples:</strong> Hyperledger, R3 Corda</p>
+    <p>Access is restricted to approved participants. A single organization or consortium controls the network. These are faster and more scalable but sacrifice decentralization and transparency. Private blockchains are often used by businesses for supply chain management and internal record-keeping.</p>
+
+    <h3>Consortium Blockchains</h3>
+    <p><strong>Examples:</strong> Many enterprise blockchain projects</p>
+    <p>Multiple organizations share control of the network. This offers a middle ground between the openness of public blockchains and the control of private blockchains.</p>
+
+    <h2 id="beyond-crypto">Blockchain Beyond Cryptocurrency</h2>
+    <p>While blockchain gained fame through cryptocurrency, its potential applications extend far beyond digital money:</p>
+
+    <ul>
+        <li><strong>Supply Chain Management</strong> — Track products from manufacturer to consumer with an immutable record of each step</li>
+        <li><strong>Healthcare</strong> — Secure, interoperable medical records that patients control</li>
+        <li><strong>Voting Systems</strong> — Transparent, verifiable elections that are resistant to tampering</li>
+        <li><strong>Real Estate</strong> — Simplified property transfers and title verification</li>
+        <li><strong>Intellectual Property</strong> — Prove ownership and track usage of creative works</li>
+        <li><strong>Digital Identity</strong> — Self-sovereign identity systems where users control their personal data</li>
+        <li><strong>Decentralized Finance (DeFi)</strong> — Financial services (lending, borrowing, trading) without intermediaries</li>
+        <li><strong>Non-Fungible Tokens (NFTs)</strong> — Unique digital assets representing ownership of art, music, or collectibles</li>
+    </ul>
+
+    <h2 id="limitations">Limitations and Challenges</h2>
+    <p>Blockchain is not a perfect technology. It has significant limitations:</p>
+    <ul>
+        <li><strong>Scalability</strong> — Public blockchains process far fewer transactions per second than traditional payment systems like Visa</li>
+        <li><strong>Energy Consumption</strong> — Proof of Work blockchains (like Bitcoin) consume large amounts of electricity</li>
+        <li><strong>Regulatory Uncertainty</strong> — Governments are still figuring out how to regulate blockchain-based systems</li>
+        <li><strong>User Experience</strong> — Interacting with blockchain applications can be complex and intimidating for non-technical users</li>
+        <li><strong>Storage</strong> — Every node stores the entire blockchain, which grows larger over time</li>
+        <li><strong>Irreversibility</strong> — If you make a mistake (send funds to the wrong address), the transaction cannot be reversed</li>
+    </ul>
+
+    <h2 id="future">The Future of Blockchain</h2>
+    <p>Blockchain technology is still in its early stages — many compare it to the internet in the mid-1990s. Several developments are shaping its future:</p>
+    <ul>
+        <li><strong>Layer 2 Solutions</strong> — Technologies built on top of blockchains to improve speed and reduce costs (e.g., Lightning Network for Bitcoin, Arbitrum for Ethereum)</li>
+        <li><strong>Interoperability</strong> — Projects working to connect different blockchains so they can communicate and share data</li>
+        <li><strong>Institutional Adoption</strong> — Major companies and financial institutions are exploring and adopting blockchain technology</li>
+        <li><strong>Improved Scalability</strong> — New consensus mechanisms and architectural innovations are making blockchains faster and more efficient</li>
+    </ul>
+
+    <p>Blockchain represents a fundamental shift in how we think about trust, data ownership, and financial systems. While challenges remain, the technology's potential to transform industries is enormous.</p>
+
+    <div style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);">
+        <h3 style="font-size:1rem;font-weight:600;margin-bottom:0.75rem;">📚 Related Articles</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;">
+            <div style="background:var(--bg-card);border-radius:8px;padding:0.75rem;">
+                <a href="what-is-cryptocurrency.html" style="font-weight:600;font-size:0.9rem;color:var(--text-primary);">What Is Cryptocurrency?</a>
+                <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">Beginner's guide to digital money</div>
+            </div>
+            <div style="background:var(--bg-card);border-radius:8px;padding:0.75rem;">
+                <a href="crypto-market-cap-explained.html" style="font-weight:600;font-size:0.9rem;color:var(--text-primary);">Market Cap Explained</a>
+                <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">How coins are ranked by value</div>
+            </div>
+            <div style="background:var(--bg-card);border-radius:8px;padding:0.75rem;">
+                <a href="how-to-read-crypto-charts.html" style="font-weight:600;font-size:0.9rem;color:var(--text-primary);">How to Read Charts</a>
+                <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">Understanding price movements</div>
+            </div>
+            <div style="background:var(--bg-card);border-radius:8px;padding:0.75rem;">
+                <a href="crypto-security-tips.html" style="font-weight:600;font-size:0.9rem;color:var(--text-primary);">Security Tips</a>
+                <div style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">Protect your digital assets</div>
+            </div>
+        </div>
+    </div>
+
+    <p style="margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border);font-size:0.85rem;color:var(--text-muted);">
+        <strong>Disclaimer:</strong> This article is for educational purposes only. Blockchain technology carries risks and should be approached with careful research. See our <a href="/disclaimer.html">full disclaimer</a>.
+    </p>
+
+    <footer class="page-footer">
+        <a href="/">Home</a><span class="dot">·</span>
+        <a href="/how-to-use.html">How to Use</a><span class="dot">·</span>
+        <a href="/faq.html">FAQ</a><span class="dot">·</span>
+        <a href="/top-cryptocurrencies.html">Top Cryptos</a><span class="dot">·</span>
+        <a href="/about.html">About</a><span class="dot">·</span>
+        <a href="/contact.html">Contact</a><span class="dot">·</span>
+        <a href="/privacy-policy.html">Privacy</a><span class="dot">·</span>
+        <a href="/terms.html">Terms</a><span class="dot">·</span>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/himanshu-kathuria19/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://x.com/cryptolivespace" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/cryptolive2026/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+        </div>
+        <p style="margin-top:0.75rem;">&copy; 2026 CryptoLive. All rights reserved.</p>
+    </footer>
+</div>
+
+<script>
+(function() {
+    'use strict';
+    function initConsentBanner() {
+        const banner = document.getElementById('consentBanner');
+        const acceptBtn = document.getElementById('consentAccept');
+        const rejectBtn = document.getElementById('consentReject');
+        const savedConsent = localStorage.getItem('cryptolive_consent');
+        if (savedConsent === 'accepted' || savedConsent === 'rejected') {
+            banner.remove();
+            return;
+        }
+        banner.classList.remove('hidden');
+        acceptBtn.addEventListener('click', function() {
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted',
+                'ad_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted'
+            });
+            localStorage.setItem('cryptolive_consent', 'accepted');
+            banner.classList.add('hidden');
+            setTimeout(() => { banner.style.display = 'none'; }, 400);
+        });
+        rejectBtn.addEventListener('click', function() {
+            localStorage.setItem('cryptolive_consent', 'rejected');
+            banner.classList.add('hidden');
+            setTimeout(() => { banner.style.display = 'none'; }, 400);
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initConsentBanner);
+    } else {
+        initConsentBanner();
+    }
+})();
+</script>
+
+</body>
+</html>

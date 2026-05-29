@@ -3,209 +3,313 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About — CryptoLive</title>
-    <meta name="description" content="About CryptoLive — a free, real-time cryptocurrency price tracker. Learn more about our mission." />
+    <title>About — CryptoLive: Free Real-Time Crypto Price Tracker</title>
+    <meta name="description" content="About CryptoLive — a free, real-time cryptocurrency price tracker built by Himanshu Kathuria. Learn about our mission, technology, and commitment to providing clean crypto market data." />
     <link rel="canonical" href="https://cryptolive.space/about.html" />
     <meta name="robots" content="index, follow" />
     <meta name="google-adsense-account" content="ca-pub-8228373593966913" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <!-- Open Graph -->
     <meta property="og:title" content="About CryptoLive — Free Crypto Price Tracker" />
-    <meta property="og:description" content="Learn about CryptoLive, the free real-time cryptocurrency price tracker built by Himanshu Kathuria." />
+    <meta property="og:description" content="Learn about CryptoLive, the free real-time cryptocurrency price tracker built by software developer Himanshu Kathuria. Clean, fast, and always free." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://cryptolive.space/about.html" />
     <meta property="og:image" content="https://cryptolive.space/logo.png" />
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About CryptoLive",
+        "description": "CryptoLive is a free, real-time cryptocurrency price tracker built by Himanshu Kathuria.",
+        "mainEntity": {
+            "@type": "Person",
+            "name": "Himanshu Kathuria",
+            "jobTitle": "Software Developer",
+            "url": "https://cryptolive.space/about.html",
+            "sameAs": [
+                "https://www.linkedin.com/in/himanshu-kathuria19/"
+            ]
+        }
+    }
+    </script>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --bg: #0b0e17;
-            --bg-card: #1a2332;
-            --bg-card-hover: #1f2a3d;
-            --border: #1e2d3d;
-            --text: #f0f4fa;
-            --text-muted: #8892a8;
-            --accent: #3b82f6;
-        }
+        :root { --bg: #0b0e17; --bg-card: #1a2332; --bg-card-hover: #1f2a3d; --border: #1e2d3d; --text: #f0f4fa; --text-muted: #8892a8; --accent: #3b82f6; }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.8;
-            min-height: 100vh;
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; min-height: 100vh; }
         a { color: var(--accent); text-decoration: none; }
         a:hover { text-decoration: underline; }
-
-        .page-wrap {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
-        }
-
-        .top-nav {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.75rem 0;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
+        .page-wrap { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+        .top-nav { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; margin-bottom: 2rem; border-bottom: 1px solid var(--border); }
         .top-nav .back-home { font-size: 0.85rem; color: var(--text-muted); }
-        .top-nav .back-home:hover { color: var(--accent); }
-
-        h1 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-        h2 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 2.5rem;
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid var(--border);
-        }
+        h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .subtitle { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; }
+        h2 { font-size: 1.2rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
         p { color: #c8d0e0; margin-bottom: 1rem; }
         ul { margin: 0 0 1rem 1.5rem; }
         li { color: #c8d0e0; margin-bottom: 0.4rem; }
         strong { color: var(--text); }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        .feature-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.25rem;
-            text-align: center;
-        }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+        .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; text-align: center; }
         .feature-card .icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
         .feature-card .label { font-weight: 600; font-size: 0.95rem; }
         .feature-card .desc { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; }
-
-        .page-footer {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
+        .page-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.8rem; color: var(--text-muted); }
         .page-footer a { color: var(--text-muted); }
         .page-footer a:hover { color: var(--text); }
         .page-footer .dot { margin: 0 0.4rem; }
-
-        @media (max-width: 480px) {
-            .page-wrap { padding: 1.5rem 1rem 3rem; }
-            h1 { font-size: 1.4rem; }
+        @media (max-width: 480px) { .page-wrap { padding: 1.5rem 1rem 3rem; } h1 { font-size: 1.4rem; } }
+        .social-links { display:flex; justify-content:center; gap:0.85rem; margin:1rem 0 0.75rem; }
+        .social-links a { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--bg-card); border:1px solid var(--border); transition:all 0.2s; color:var(--text-muted); }
+        .social-links a:hover { background:var(--bg-card-hover); color:var(--accent); transform:translateY(-2px); text-decoration:none; }
+    
+        /* ===== CONSENT BANNER ===== */
+        #consentBanner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+            background: #131a2b;
+            border-top: 1px solid #1e2d3d;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.4);
+            transform: translateY(0);
+            transition: transform 0.4s ease, opacity 0.4s ease;
         }
-    </style>
-</head>
+        #consentBanner.hidden {
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #consentBanner .banner-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        #consentBanner .banner-text { flex: 1; min-width: 200px; }
+        #consentBanner .banner-title {
+            color: #f0f4fa;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        #consentBanner .banner-description {
+            color: #8892a8;
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+        #consentBanner .banner-description a { color: #3b82f6; text-decoration: underline; }
+        #consentBanner .banner-actions {
+            display: flex;
+            gap: 0.6rem;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+        #consentBanner .btn-reject {
+            background: transparent;
+            border: 1px solid #1e2d3d;
+            color: #8892a8;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            transition: all 0.15s;
+        }
+        #consentBanner .btn-reject:hover {
+            border-color: #3b82f6;
+            color: #f0f4fa;
+        }
+        #consentBanner .btn-accept {
+            background: #3b82f6;
+            border: none;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: opacity 0.15s;
+        }
+        #consentBanner .btn-accept:hover { opacity: 0.9; }
+
+</style>
+
+    <!-- Google Analytics (GA4) with Consent Mode -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5619GV6WJ6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 1000
+        });
+        gtag('set', 'ads_data_redaction', true);
+        gtag('config', 'G-5619GV6WJ6');
+    </script>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913" crossorigin="anonymous"></script>
+
+    </head>
 <body>
 <div class="page-wrap">
-
     <nav class="top-nav">
-        <a class="back-home" href=".">← Back to CryptoLive</a>
+        <a class="back-home" href="/">← Back to CryptoLive</a>
     </nav>
 
     <h1>About CryptoLive</h1>
-    <p class="subtitle">Live cryptocurrency prices — free, fast, and always up to date.</p>
+    <p class="subtitle">Live cryptocurrency prices — free, fast, and always up to date. Built with a passion for clean, accessible financial data.</p>
 
-    <p>CryptoLive is a <strong>free, lightweight cryptocurrency price tracker</strong> built for anyone who wants to monitor the crypto market without the bloat, ads, and signup requirements of major exchange platforms.</p>
+    <p><strong>CryptoLive</strong> is a <strong>free, lightweight cryptocurrency price tracker</strong> designed for anyone who wants to monitor the crypto market without the bloat, aggressive advertising, and mandatory signups of major exchange platforms. We provide real-time prices of the top 50 cryptocurrencies ranked by market capitalization, updated automatically every 60 seconds from the CoinGecko API.</p>
+
+    <p>Our mission is simple: <strong>make cryptocurrency price data accessible to everyone</strong> — no accounts, no hidden fees, no unnecessary complexity. Just clean, accurate, real-time prices.</p>
 
     <div class="feature-grid">
-        <div class="feature-card">
-            <div class="icon">🪙</div>
-            <div class="label">Top 50 Coins</div>
-            <div class="desc">Live prices of the top cryptocurrencies by market cap</div>
-        </div>
-        <div class="feature-card">
-            <div class="icon">🔄</div>
-            <div class="label">Auto-Refresh</div>
-            <div class="desc">Prices update every 60 seconds automatically</div>
-        </div>
-        <div class="feature-card">
-            <div class="icon">🔍</div>
-            <div class="label">Instant Search</div>
-            <div class="desc">Search any coin by name or ticker symbol</div>
-        </div>
-        <div class="feature-card">
-            <div class="icon">📱</div>
-            <div class="label">Works Everywhere</div>
-            <div class="desc">Responsive design — works on mobile, tablet, and desktop</div>
-        </div>
-        <div class="feature-card">
-            <div class="icon">💰</div>
-            <div class="label">100% Free</div>
-            <div class="desc">No hidden costs, no premium tiers, no signup required</div>
-        </div>
-        <div class="feature-card">
-            <div class="icon">🔒</div>
-            <div class="label">Privacy First</div>
-            <div class="desc">No accounts, no tracking beyond basic analytics</div>
-        </div>
+        <div class="feature-card"><div class="icon">🪙</div><div class="label">Top 50 Coins</div><div class="desc">Live prices of the top cryptocurrencies by market cap</div></div>
+        <div class="feature-card"><div class="icon">🔄</div><div class="label">Auto-Refresh</div><div class="desc">Prices update every 60 seconds automatically</div></div>
+        <div class="feature-card"><div class="icon">🔍</div><div class="label">Instant Search</div><div class="desc">Search any coin by name or ticker symbol</div></div>
+        <div class="feature-card"><div class="icon">📱</div><div class="label">Works Everywhere</div><div class="desc">Responsive design for mobile, tablet, and desktop</div></div>
+        <div class="feature-card"><div class="icon">💰</div><div class="label">100% Free</div><div class="desc">No hidden costs, no premium tiers, no signup required</div></div>
+        <div class="feature-card"><div class="icon">🔒</div><div class="label">Privacy First</div><div class="desc">No accounts, no tracking beyond basic analytics</div></div>
     </div>
 
     <h2>Our Mission</h2>
-    <p>Major crypto tracking platforms have become bloated with ads, affiliate promotions, and paywalled features. We built CryptoLive to be the opposite — a <strong>clean, fast, no-nonsense</strong> dashboard that shows you exactly what you need: prices, changes, and market data. Nothing more, nothing less.</p>
+    <p>Major cryptocurrency tracking platforms have become bloated with aggressive advertisements, affiliate promotions, and paywalled features. Many require account creation just to view basic price data. We built CryptoLive to be the opposite — a <strong>clean, fast, no-nonsense dashboard</strong> that shows you exactly what you need: prices, changes, and market data. Nothing more, nothing less.</p>
 
-    <h2>How It Works</h2>
-    <p>CryptoLive fetches real-time data from the <strong>CoinGecko API</strong> (a free, public cryptocurrency data source). When you visit the site, it loads the top 50 coins by market cap and displays their:</p>
-    <ul>
-        <li>Current price (USD)</li>
-        <li>24-hour price change percentage</li>
-        <li>Market capitalization rank</li>
-        <li>Total market cap and 24h volume (aggregated)</li>
-    </ul>
-    <p>The page automatically refreshes every 60 seconds, so you always see the latest prices without manually reloading.</p>
+    <p>We believe that <strong>financial data should be freely accessible</strong>. Whether you are a seasoned trader needing a quick market overview, a casual investor checking your portfolio coins, or a student learning about cryptocurrencies for the first time, CryptoLive provides the same high-quality data to everyone equally.</p>
+
+    <h2>Technology & Data</h2>
+    <p>CryptoLive fetches real-time data from the <strong>CoinGecko API</strong>, a free, public cryptocurrency data source that aggregates prices from hundreds of exchanges worldwide. When you visit the site, it loads the top 50 coins by market cap and displays their current price, 24-hour price change percentage, market capitalization rank, total market cap, and 24-hour volume.</p>
+    <p>The site is built with <strong>vanilla JavaScript and CSS</strong> — no heavy frameworks or bloated libraries. This means the page loads in under a second even on slow mobile connections. The auto-refresh feature uses smart tab detection: it pauses when you switch tabs and resumes when you return, saving bandwidth and API resources.</p>
+    <p>Our educational section, including the <a href="blog/what-is-cryptocurrency.html">beginner's guide</a>, <a href="blog/crypto-market-cap-explained.html">market cap explainer</a>, and other articles, provide original educational content written to help users understand the cryptocurrency ecosystem.</p>
 
     <h2>What We Don't Do</h2>
     <ul>
         <li>❌ No user accounts or registration</li>
-        <li>❌ No email collection</li>
+        <li>❌ No email collection or newsletters</li>
         <li>❌ No paid tiers or premium features</li>
-        <li>❌ No affiliate links</li>
+        <li>❌ No affiliate links or promoted coins</li>
         <li>❌ No crypto trading or exchange services</li>
+        <li>❌ No personalized financial advice</li>
+        <li>❌ No data selling or sharing with third parties (beyond standard analytics)</li>
     </ul>
 
     <h2>Disclaimer</h2>
-    <p>CryptoLive is for <strong>informational purposes only</strong>. Prices displayed may be delayed and are not guaranteed to be accurate. We do not provide financial advice. See our full <a href="disclaimer.html">Disclaimer</a> for details.</p>
+    <p>CryptoLive is for <strong>informational and educational purposes only</strong>. Prices displayed may be delayed and are not guaranteed to be accurate. We do not provide financial advice, and no content on this site should be construed as a recommendation to buy, sell, or hold any cryptocurrency. See our full <a href="disclaimer.html">Disclaimer</a> and <a href="terms.html">Terms of Service</a> for details.</p>
 
     <h2>About the Creator</h2>
-    <p>CryptoLive was built by <strong>Himanshu Kathuria</strong>, a software developer with years of experience building web applications and a deep interest in cryptocurrency markets. Himanshu focuses on creating clean, accessible, and performant web tools that solve real problems — without bloat, paywalls, or unnecessary complexity.</p>
-    <p>With a background in full-stack development and a passion for the crypto ecosystem, Himanshu built CryptoLive to address a common frustration: existing crypto trackers are either bloated with unnecessary features, require signups, or are filled with aggressive advertising. CryptoLive is the tool he wished existed — fast, free, and focused on what matters: the prices.</p>
-    <p style="margin-top:1rem;">🔗 <a href="https://www.linkedin.com/in/himanshu-kathuria19/" target="_blank" rel="noopener">Connect on LinkedIn</a> · <a href="https://github.com/Gamemaster1990" target="_blank" rel="noopener">GitHub Profile</a></p>
-    <p style="margin-top:0.5rem;">If you have feedback, suggestions, or just want to say hi, <a href="contact.html">we'd love to hear from you</a>.</p>
+    <p><strong>CryptoLive was built by Himanshu Kathuria</strong>, a software developer with years of experience building web applications and a deep passion for cryptocurrency markets and blockchain technology.</p>
+
+    <p>Himanshu has extensive experience in <strong>full-stack web development</strong>, specializing in building clean, performant, and accessible web applications. His professional background includes developing production software across multiple technology stacks, with a focus on creating user-centric tools that solve real problems without unnecessary complexity.</p>
+
+    <p>His interest in cryptocurrency began several years ago, sparked by the realization that blockchain technology represents one of the most significant technological innovations since the internet. He built CryptoLive to address a personal frustration: existing crypto tracking platforms were either bloated with unnecessary features, required account creation, or were filled with aggressive advertising that compromised the user experience. CryptoLive is the tool he wished had existed — <strong>fast, free, and focused on what matters: the data</strong>.</p>
+
+    <p>Beyond CryptoLive, Himanshu is passionate about:</p>
+    <ul>
+        <li>Building accessible web applications that work for everyone</li>
+        <li>Understanding and explaining complex financial and technological concepts</li>
+        <li>Contributing to open-source projects and the developer community</li>
+        <li>Exploring the intersection of finance, technology, and user experience</li>
+    </ul>
+
+    <div class="social-links" style="justify-content:flex-start;margin:1rem 0 0.75rem;">
+        <a href="https://www.linkedin.com/in/himanshu-kathuria19/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://x.com/cryptolivespace" target="_blank" rel="noopener" aria-label="X (Twitter)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/cryptolive2026/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+    </div>
+    <p>If you have feedback, suggestions, or just want to say hi, <a href="contact.html">we would love to hear from you</a>.</p>
+
+    <h2>Educational Resources</h2>
+    <p>We believe education is key to responsible cryptocurrency participation. CryptoLive offers a growing library of free educational content:</p>
+    <ul>
+        <li><a href="blog/what-is-cryptocurrency.html">What Is Cryptocurrency?</a> — A complete beginner's guide</li>
+        <li><a href="blog/crypto-market-cap-explained.html">Market Cap Explained</a> — Understanding how coins are ranked</li>
+        <li><a href="blog/how-to-read-crypto-charts.html">How to Read Charts</a> — Learn technical analysis basics</li>
+        <li><a href="blog/crypto-security-tips.html">Security Tips</a> — Protect your digital assets</li>
+        <li><a href="blog/blockchain-explained.html">Blockchain Explained</a> — The technology behind crypto</li>
+        <li><a href="faq.html">Cryptocurrency FAQ</a> — Answers to common questions</li>
+        <li><a href="top-cryptocurrencies.html">Top Cryptocurrencies</a> — In-depth coin profiles</li>
+    </ul>
 
     <h2>Contact</h2>
-    <p>Have feedback or questions? <a href="contact.html">Get in touch</a>.</p>
+    <p>Have feedback, questions, or suggestions? We would love to hear from you. <a href="contact.html">Get in touch</a> via email or social media.</p>
 
     <footer class="page-footer">
-        <a href=".">Home</a><span class="dot">·</span>
-        <a href="how-to-use.html">How to Use</a><span class="dot">·</span>
-        <a href="faq.html">FAQ</a><span class="dot">·</span>
-        <a href="top-cryptocurrencies.html">Top Cryptos</a><span class="dot">·</span>
-        <a href="about.html">About</a><span class="dot">·</span>
-        <a href="contact.html">Contact</a><span class="dot">·</span>
-        <a href="privacy-policy.html">Privacy</a><span class="dot">·</span>
-        <a href="terms.html">Terms</a><span class="dot">·</span>
-        <a href="disclaimer.html">Disclaimer</a>
+        <a href="/">Home</a><span class="dot">·</span>
+        <a href="/how-to-use.html">How to Use</a><span class="dot">·</span>
+        <a href="/faq.html">FAQ</a><span class="dot">·</span>
+        <a href="/top-cryptocurrencies.html">Top Cryptos</a><span class="dot">·</span>
+        <a href="/about.html">About</a><span class="dot">·</span>
+        <a href="/contact.html">Contact</a><span class="dot">·</span>
+        <a href="/privacy-policy.html">Privacy</a><span class="dot">·</span>
+        <a href="/terms.html">Terms</a><span class="dot">·</span>
+        <a href="/disclaimer.html">Disclaimer</a>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/himanshu-kathuria19/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://x.com/cryptolivespace" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/cryptolive2026/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+        </div>
         <p style="margin-top:0.75rem;">&copy; 2026 CryptoLive. All rights reserved.</p>
     </footer>
-
 </div>
+
+<script>
+(function() {
+    'use strict';
+    function initConsentBanner() {
+        const banner = document.getElementById('consentBanner');
+        const acceptBtn = document.getElementById('consentAccept');
+        const rejectBtn = document.getElementById('consentReject');
+        const savedConsent = localStorage.getItem('cryptolive_consent');
+        if (savedConsent === 'accepted' || savedConsent === 'rejected') {
+            banner.remove();
+            return;
+        }
+        banner.classList.remove('hidden');
+        acceptBtn.addEventListener('click', function() {
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted',
+                'ad_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted'
+            });
+            localStorage.setItem('cryptolive_consent', 'accepted');
+            banner.classList.add('hidden');
+            setTimeout(() => { banner.style.display = 'none'; }, 400);
+        });
+        rejectBtn.addEventListener('click', function() {
+            localStorage.setItem('cryptolive_consent', 'rejected');
+            banner.classList.add('hidden');
+            setTimeout(() => { banner.style.display = 'none'; }, 400);
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initConsentBanner);
+    } else {
+        initConsentBanner();
+    }
+})();
+</script>
+
 </body>
 </html>
