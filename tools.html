@@ -305,16 +305,6 @@
     </div>
 
 
-</head>
-<body>
-
-<div class="page-wrap">
-
-    <nav class="top-nav">
-        <a class="back-home" href="/">← Back to CryptoLive Price Tracker</a>
-    </nav>
-
-
     <!-- SEO Introduction -->
     <div class="seo-section">
         <h2>Why Use CryptoLive's Free Calculator Tools?</h2>
@@ -336,15 +326,15 @@
         <p class="calc-desc">Calculate your profit or loss on any cryptocurrency trade. Enter your entry price, exit price, and quantity to see your net P&L, return on investment (ROI), total value, and percentage return.</p>
         <div class="calc-form" id="pfForm">
             <div class="fg md">
-                <label>Entry Price ($)</label>
+                <label for="pfEntry">Entry Price ($)</label>
                 <input type="number" id="pfEntry" placeholder="e.g. 45000" min="0" step="any" />
             </div>
             <div class="fg md">
-                <label>Exit Price ($)</label>
+                <label for="pfExit">Exit Price ($)</label>
                 <input type="number" id="pfExit" placeholder="e.g. 52000" min="0" step="any" />
             </div>
             <div class="fg sm">
-                <label>Quantity</label>
+                <label for="pfQty">Quantity</label>
                 <input type="number" id="pfQty" placeholder="e.g. 0.5" min="0" step="any" />
             </div>
             <button type="button" id="pfCalcBtn">Calculate</button>
@@ -367,19 +357,19 @@
         <p class="calc-desc">Calculate the optimal position size based on your account balance, risk tolerance, entry price, and stop-loss level. This is one of the most important risk management tools for any trader — it tells you exactly how many units to buy to limit your maximum loss to a predefined percentage of your account.</p>
         <div class="calc-form" id="psForm">
             <div class="fg md">
-                <label>Account Balance ($)</label>
+                <label for="psBalance">Account Balance ($)</label>
                 <input type="number" id="psBalance" placeholder="e.g. 10000" min="0" step="any" />
             </div>
             <div class="fg sm">
-                <label>Risk %</label>
+                <label for="psRisk">Risk %</label>
                 <input type="number" id="psRisk" placeholder="e.g. 2" min="0.1" max="100" step="0.1" value="2" />
             </div>
             <div class="fg md">
-                <label>Entry Price ($)</label>
+                <label for="psEntry">Entry Price ($)</label>
                 <input type="number" id="psEntry" placeholder="e.g. 50" min="0" step="any" />
             </div>
             <div class="fg md">
-                <label>Stop Loss ($)</label>
+                <label for="psStop">Stop Loss ($)</label>
                 <input type="number" id="psStop" placeholder="e.g. 45" min="0" step="any" />
             </div>
             <button type="button" id="psCalcBtn">Calculate</button>
@@ -407,15 +397,15 @@
         <p class="calc-desc">Compare dollar-cost averaging (DCA) versus a one-time lump sum investment using real 30-day historical price data from CoinGecko. See which strategy would have performed better over the past month for any cryptocurrency.</p>
         <div class="calc-form" id="dcaForm">
             <div class="fg md">
-                <label>Total Investment ($)</label>
+                <label for="dcaTotal">Total Investment ($)</label>
                 <input type="number" id="dcaTotal" placeholder="e.g. 12000" min="1" step="any" />
             </div>
             <div class="fg sm">
-                <label># of Purchases</label>
+                <label for="dcaPurchases"># of Purchases</label>
                 <input type="number" id="dcaPurchases" placeholder="e.g. 12" min="2" max="365" value="12" />
             </div>
             <div class="fg md">
-                <label>Coin</label>
+                <label for="dcaCoin">Coin</label>
                 <select id="dcaCoin">
                     <option value="">Select coin...</option>
                     <option value="bitcoin">Bitcoin (BTC)</option>
@@ -452,7 +442,7 @@
         <p class="calc-desc">Convert between different cryptocurrency units. Enter a value in any denomination and see the equivalent in all others. Supports Bitcoin (BTC ↔ satoshis) and Ethereum (ETH ↔ gwei) with optional USD conversion using live market prices.</p>
         <div class="calc-form" id="ucForm">
             <div class="fg md">
-                <label>Coin Type</label>
+                <label for="ucType">Coin Type</label>
                 <select id="ucType">
                     <option value="bitcoin">Bitcoin (BTC)</option>
                     <option value="ethereum">Ethereum (ETH)</option>
@@ -460,15 +450,15 @@
             </div>
             <div class="unit-row" style="margin-top:0.5rem;">
                 <div class="fg md">
-                    <label id="ucMainLabel">BTC</label>
+                    <label id="ucMainLabel" for="ucMain">BTC</label>
                     <input type="number" id="ucMain" placeholder="e.g. 1" min="0" step="any" />
                 </div>
                 <div class="fg md">
-                    <label id="ucSmallLabel">Satoshis</label>
+                    <label id="ucSmallLabel" for="ucSmall">Satoshis</label>
                     <input type="number" id="ucSmall" placeholder="e.g. 100000000" min="0" step="1" />
                 </div>
                 <div class="fg md">
-                    <label>USD Value</label>
+                    <label for="ucUsd">USD Value</label>
                     <input type="number" id="ucUsd" placeholder="e.g. 65000" min="0" step="any" />
                 </div>
             </div>
@@ -494,7 +484,7 @@
         <p class="calc-desc">Estimate the impermanent loss you would experience as a liquidity provider in a 50/50 automated market maker (AMM) pool. Impermanent loss occurs when the price ratio of pooled assets changes — the more dramatic the change, the greater the loss compared to simply holding both assets.</p>
         <div class="calc-form" id="ilForm">
             <div class="fg md" style="width:100%;">
-                <label>Price Ratio Change (drag slider)</label>
+                <label for="ilRange">Price Ratio Change (drag slider)</label>
                 <div class="il-slider-wrap">
                     <span style="font-size:0.8rem;color:var(--text-muted);">0.1×</span>
                     <input type="range" id="ilRange" min="0.1" max="10" step="0.1" value="2" />
@@ -503,7 +493,7 @@
                 </div>
             </div>
             <div class="fg md">
-                <label>Initial Investment ($)</label>
+                <label for="ilInvestment">Initial Investment ($)</label>
                 <input type="number" id="ilInvestment" placeholder="e.g. 10000" min="0" step="any" />
             </div>
             <button type="button" id="ilCalcBtn">Calculate IL</button>
@@ -532,47 +522,47 @@
         <p class="calc-desc">Plan a multi-level take-profit strategy. Set up to 5 price targets with allocated percentages to systematically lock in profits as the price rises. This approach helps you capture gains at multiple levels while leaving room for further upside.</p>
         <div class="calc-form" id="tpForm">
             <div class="fg md">
-                <label>Entry Price ($)</label>
+                <label for="tpEntry">Entry Price ($)</label>
                 <input type="number" id="tpEntry" placeholder="e.g. 100" min="0" step="any" />
             </div>
             <div class="fg md">
-                <label>Position Size ($)</label>
+                <label for="tpSize">Position Size ($)</label>
                 <input type="number" id="tpSize" placeholder="e.g. 10000" min="0" step="any" />
             </div>
             <div style="width:100%;margin-top:0.5rem;">
                 <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:0.5rem;">Set up to 5 take-profit levels (leave price blank to skip):</p>
                 <div class="tp-row">
-                    <span class="tp-label">TP 1:</span>
+                    <label for="tp1Price" class="tp-label">TP 1:</label>
                     <input type="number" id="tp1Price" placeholder="Price" min="0" step="any" />
-                    <span style="font-size:0.8rem;color:var(--text-muted);">Sell</span>
+                    <label for="tp1Pct" style="font-size:0.8rem;color:var(--text-muted);">Sell</label>
                     <input type="number" id="tp1Pct" placeholder="%" min="0" max="100" step="1" value="25" style="width:60px;" />
                     <span style="font-size:0.8rem;color:var(--text-muted);">%</span>
                 </div>
                 <div class="tp-row">
-                    <span class="tp-label">TP 2:</span>
+                    <label for="tp2Price" class="tp-label">TP 2:</label>
                     <input type="number" id="tp2Price" placeholder="Price" min="0" step="any" />
-                    <span style="font-size:0.8rem;color:var(--text-muted);">Sell</span>
+                    <label for="tp2Pct" style="font-size:0.8rem;color:var(--text-muted);">Sell</label>
                     <input type="number" id="tp2Pct" placeholder="%" min="0" max="100" step="1" value="25" style="width:60px;" />
                     <span style="font-size:0.8rem;color:var(--text-muted);">%</span>
                 </div>
                 <div class="tp-row">
-                    <span class="tp-label">TP 3:</span>
+                    <label for="tp3Price" class="tp-label">TP 3:</label>
                     <input type="number" id="tp3Price" placeholder="Price" min="0" step="any" />
-                    <span style="font-size:0.8rem;color:var(--text-muted);">Sell</span>
+                    <label for="tp3Pct" style="font-size:0.8rem;color:var(--text-muted);">Sell</label>
                     <input type="number" id="tp3Pct" placeholder="%" min="0" max="100" step="1" value="20" style="width:60px;" />
                     <span style="font-size:0.8rem;color:var(--text-muted);">%</span>
                 </div>
                 <div class="tp-row">
-                    <span class="tp-label">TP 4:</span>
+                    <label for="tp4Price" class="tp-label">TP 4:</label>
                     <input type="number" id="tp4Price" placeholder="Price" min="0" step="any" />
-                    <span style="font-size:0.8rem;color:var(--text-muted);">Sell</span>
+                    <label for="tp4Pct" style="font-size:0.8rem;color:var(--text-muted);">Sell</label>
                     <input type="number" id="tp4Pct" placeholder="%" min="0" max="100" step="1" value="15" style="width:60px;" />
                     <span style="font-size:0.8rem;color:var(--text-muted);">%</span>
                 </div>
                 <div class="tp-row">
-                    <span class="tp-label">TP 5:</span>
+                    <label for="tp5Price" class="tp-label">TP 5:</label>
                     <input type="number" id="tp5Price" placeholder="Price" min="0" step="any" />
-                    <span style="font-size:0.8rem;color:var(--text-muted);">Sell</span>
+                    <label for="tp5Pct" style="font-size:0.8rem;color:var(--text-muted);">Sell</label>
                     <input type="number" id="tp5Pct" placeholder="%" min="0" max="100" step="1" value="15" style="width:60px;" />
                     <span style="font-size:0.8rem;color:var(--text-muted);">%</span>
                 </div>
@@ -605,19 +595,19 @@
         <p class="calc-desc">Estimate your cryptocurrency staking rewards over time. See how compound interest grows your staked assets with customizable APY, duration, and compounding frequency. Understand the power of compounding with different reward schedules.</p>
         <div class="calc-form" id="stakeForm">
             <div class="fg md">
-                <label>Staked Amount ($)</label>
+                <label for="stakeAmount">Staked Amount ($)</label>
                 <input type="number" id="stakeAmount" placeholder="e.g. 5000" min="0" step="any" />
             </div>
             <div class="fg sm">
-                <label>APY (%)</label>
+                <label for="stakeApy">APY (%)</label>
                 <input type="number" id="stakeApy" placeholder="e.g. 12" min="0" max="100" step="0.01" value="8" />
             </div>
             <div class="fg sm">
-                <label>Duration (months)</label>
+                <label for="stakeDuration">Duration (months)</label>
                 <input type="number" id="stakeDuration" placeholder="e.g. 12" min="1" max="120" step="1" value="12" />
             </div>
             <div class="fg sm">
-                <label>Compound</label>
+                <label for="stakeCompound">Compound</label>
                 <select id="stakeCompound">
                     <option value="365">Daily</option>
                     <option value="52">Weekly</option>
@@ -653,18 +643,18 @@
         <p class="calc-desc">Estimate your capital gains tax on cryptocurrency sales based on simplified US federal tax rates. Choose between short-term and long-term holding periods to see how the tax treatment differs. For educational purposes only — consult a qualified tax professional.</p>
         <div class="calc-form" id="taxForm">
             <div class="fg lg">
-                <label>Total Realized Profit ($)</label>
+                <label for="taxProfit">Total Realized Profit ($)</label>
                 <input type="number" id="taxProfit" placeholder="e.g. 25000" min="0" step="any" />
             </div>
             <div class="fg md">
-                <label>Holding Period</label>
+                <label for="taxHolding">Holding Period</label>
                 <select id="taxHolding">
                     <option value="short">Short-term (≤1 year)</option>
                     <option value="long">Long-term (>1 year)</option>
                 </select>
             </div>
             <div class="fg md">
-                <label>Annual Income Bracket</label>
+                <label for="taxBracket">Annual Income Bracket</label>
                 <select id="taxBracket">
                     <option value="0-44625">$0 – $44,625</option>
                     <option value="44626-492300" selected>$44,626 – $492,300</option>
