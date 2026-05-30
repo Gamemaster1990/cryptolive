@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /404.html
+Disallow: /promption/
+Disallow: /*.md
+Disallow: /seo_fix.py
 
 Sitemap: https://cryptolive.space/sitemap.xml
