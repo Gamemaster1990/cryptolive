@@ -158,9 +158,12 @@
                     <h3>Profit Calculator</h3>
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">Calculate your profit or loss on a cryptocurrency trade. Enter entry price, exit price, and quantity.</p>
                     <div class="calc-form">
-                        <div class="fg"><label>Entry Price ($)</label><input type="number" id="pfEntry" placeholder="e.g. 45000" step="any" min="0"></div>
-                        <div class="fg"><label>Exit Price ($)</label><input type="number" id="pfExit" placeholder="e.g. 52000" step="any" min="0"></div>
-                        <div class="fg"><label>Quantity</label><input type="number" id="pfQty" placeholder="e.g. 0.5" step="any" min="0"></div>
+                        <div class="fg"><labelfor="pfEntry">Entry Price ($)</label>
+        <input type="number" id="pfEntry" placeholder="e.g. 45000" step="any" min="0"></div>
+                        <div class="fg"><labelfor="pfExit">Exit Price ($)</label>
+        <input type="number" id="pfExit" placeholder="e.g. 52000" step="any" min="0"></div>
+                        <div class="fg"><labelfor="pfQty">Quantity</label>
+        <input type="number" id="pfQty" placeholder="e.g. 0.5" step="any" min="0"></div>
                         <div class="calc-actions"><button class="btn btn-primary" id="pfCalcBtn">Calculate</button></div>
                     </div>
                     <div class="calc-result" id="pfResult">
@@ -179,10 +182,14 @@
                     <h3>Position Size Calculator</h3>
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">Calculate optimal position size based on account balance, risk tolerance, and stop-loss.</p>
                     <div class="calc-form">
-                        <div class="fg"><label>Account Balance ($)</label><input type="number" id="psBalance" placeholder="e.g. 10000" step="any" min="0"></div>
-                        <div class="fg"><label>Risk %</label><input type="number" id="psRisk" placeholder="e.g. 2" step="0.1" min="0.1" max="100" value="2"></div>
-                        <div class="fg"><label>Entry Price ($)</label><input type="number" id="psEntry" placeholder="e.g. 50" step="any" min="0"></div>
-                        <div class="fg"><label>Stop Loss ($)</label><input type="number" id="psStop" placeholder="e.g. 45" step="any" min="0"></div>
+                        <div class="fg"><labelfor="psBalance">Account Balance ($)</label>
+        <input type="number" id="psBalance" placeholder="e.g. 10000" step="any" min="0"></div>
+                        <div class="fg"><labelfor="psRisk">Risk %</label>
+        <input type="number" id="psRisk" placeholder="e.g. 2" step="0.1" min="0.1" max="100" value="2"></div>
+                        <div class="fg"><labelfor="psEntry">Entry Price ($)</label>
+        <input type="number" id="psEntry" placeholder="e.g. 50" step="any" min="0"></div>
+                        <div class="fg"><labelfor="psStop">Stop Loss ($)</label>
+        <input type="number" id="psStop" placeholder="e.g. 45" step="any" min="0"></div>
                         <div class="calc-actions"><button class="btn btn-primary" id="psCalcBtn">Calculate</button></div>
                     </div>
                     <div class="calc-result" id="psResult">
@@ -201,10 +208,14 @@
                     <h3>DCA vs Lump Sum Comparator</h3>
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">Compare dollar-cost averaging vs a one-time lump sum investment.</p>
                     <div class="calc-form">
-                        <div class="fg"><label>Total Investment ($)</label><input type="number" id="dcaTotal" placeholder="e.g. 12000" step="any" min="1"></div>
-                        <div class="fg"><label># of Purchases</label><input type="number" id="dcaPurchases" placeholder="e.g. 12" min="2" max="365" value="12"></div>
-                        <div class="fg"><label>Final Price ($)</label><input type="number" id="dcaFinalPrice" placeholder="e.g. 55000" step="any" min="0"></div>
-                        <div class="fg"><label>Avg Entry ($)</label><input type="number" id="dcaAvgEntry" placeholder="e.g. 42000" step="any" min="0"></div>
+                        <div class="fg"><labelfor="dcaTotal">Total Investment ($)</label>
+        <input type="number" id="dcaTotal" placeholder="e.g. 12000" step="any" min="1"></div>
+                        <div class="fg"><labelfor="dcaPurchases"># of Purchases</label>
+        <input type="number" id="dcaPurchases" placeholder="e.g. 12" min="2" max="365" value="12"></div>
+                        <div class="fg"><labelfor="dcaFinalPrice">Final Price ($)</label>
+        <input type="number" id="dcaFinalPrice" placeholder="e.g. 55000" step="any" min="0"></div>
+                        <div class="fg"><labelfor="dcaAvgEntry">Avg Entry ($)</label>
+        <input type="number" id="dcaAvgEntry" placeholder="e.g. 42000" step="any" min="0"></div>
                         <div class="calc-actions"><button class="btn btn-primary" id="dcaCalcBtn">Compare</button></div>
                     </div>
                     <div class="calc-result" id="dcaResult">
@@ -221,9 +232,12 @@
                     <h3>Crypto Unit Converter</h3>
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">Convert between BTC/ETH units and USD values.</p>
                     <div class="calc-form">
-                        <div class="fg"><label>Coin</label><select id="ucCoin"><option value="bitcoin">Bitcoin (BTC)</option><option value="ethereum">Ethereum (ETH)</option></select></div>
-                        <div class="fg"><label>Amount (Coin)</label><input type="number" id="ucMain" placeholder="e.g. 1" step="any" min="0"></div>
-                        <div class="fg"><label>Price per Coin ($)</label><input type="number" id="ucPrice" placeholder="e.g. 65000" step="any" min="0"></div>
+                        <div class="fg"><labelfor="ucCoin">Coin</label>
+        <select id="ucCoin"><option value="bitcoin">Bitcoin (BTC)</option><option value="ethereum">Ethereum (ETH)</option></select></div>
+                        <div class="fg"><labelfor="ucMain">Amount (Coin)</label>
+        <input type="number" id="ucMain" placeholder="e.g. 1" step="any" min="0"></div>
+                        <div class="fg"><labelfor="ucPrice">Price per Coin ($)</label>
+        <input type="number" id="ucPrice" placeholder="e.g. 65000" step="any" min="0"></div>
                         <div class="calc-actions"><button class="btn btn-primary" id="ucCalcBtn">Convert</button></div>
                     </div>
                     <div class="calc-result" id="ucResult">
@@ -240,13 +254,14 @@
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">Estimate impermanent loss for a 50/50 AMM liquidity pool.</p>
                     <div class="calc-form">
                         <div class="fg" style="flex: 1; min-width: 200px;">
-                            <label>Price Ratio Change</label>
+                            <label for="ilSlider">Price Ratio Change</label>
                             <div class="il-slider">
                                 <input type="range" id="ilSlider" min="0.1" max="10" step="0.1" value="2">
                                 <span class="il-val" id="ilSliderVal">2.0x</span>
                             </div>
                         </div>
-                        <div class="fg"><label>Initial Investment ($)</label><input type="number" id="ilInvestment" placeholder="e.g. 10000" step="any" min="0"></div>
+                        <div class="fg"><labelfor="ilInvestment">Initial Investment ($)</label>
+        <input type="number" id="ilInvestment" placeholder="e.g. 10000" step="any" min="0"></div>
                         <div class="calc-actions"><button class="btn btn-primary" id="ilCalcBtn">Calculate IL</button></div>
                     </div>
                     <p class="calc-hint">1.0x = no change. 2.0x = price doubled.</p>
@@ -266,8 +281,10 @@
                     <h3>Take-Profit Ladder Planner</h3>
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">Plan multi-level take-profit strategy with up to 5 targets.</p>
                     <div class="calc-form">
-                        <div class="fg"><label>Entry Price ($)</label><input type="number" id="tpEntry" placeholder="e.g. 100" step="any" min="0"></div>
-                        <div class="fg"><label>Position Size ($)</label><input type="number" id="tpSize" placeholder="e.g. 10000" step="any" min="0"></div>
+                        <div class="fg"><labelfor="tpEntry">Entry Price ($)</label>
+        <input type="number" id="tpEntry" placeholder="e.g. 100" step="any" min="0"></div>
+                        <div class="fg"><labelfor="tpSize">Position Size ($)</label>
+        <input type="number" id="tpSize" placeholder="e.g. 10000" step="any" min="0"></div>
                     </div>
                     <div style="margin-top: var(--space-md);">
                         <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: var(--space-sm);">Take-Profit Levels (leave price blank to skip):</p>
@@ -289,10 +306,14 @@
                     <h3>Staking Rewards Calculator</h3>
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">Estimate your staking rewards with compound interest over time.</p>
                     <div class="calc-form">
-                        <div class="fg"><label>Staked Amount ($)</label><input type="number" id="stakeAmount" placeholder="e.g. 5000" step="any" min="0"></div>
-                        <div class="fg"><label>APY (%)</label><input type="number" id="stakeApy" placeholder="e.g. 12" step="0.01" min="0" max="100" value="8"></div>
-                        <div class="fg"><label>Duration (months)</label><input type="number" id="stakeDuration" placeholder="e.g. 12" min="1" max="120" value="12"></div>
-                        <div class="fg"><label>Compound</label><select id="stakeCompound"><option value="365">Daily</option><option value="52">Weekly</option><option value="12" selected>Monthly</option><option value="4">Quarterly</option><option value="1">Yearly</option></select></div>
+                        <div class="fg"><labelfor="stakeAmount">Staked Amount ($)</label>
+        <input type="number" id="stakeAmount" placeholder="e.g. 5000" step="any" min="0"></div>
+                        <div class="fg"><labelfor="stakeApy">APY (%)</label>
+        <input type="number" id="stakeApy" placeholder="e.g. 12" step="0.01" min="0" max="100" value="8"></div>
+                        <div class="fg"><labelfor="stakeDuration">Duration (months)</label>
+        <input type="number" id="stakeDuration" placeholder="e.g. 12" min="1" max="120" value="12"></div>
+                        <div class="fg"><labelfor="stakeCompound">Compound</label>
+        <select id="stakeCompound"><option value="365">Daily</option><option value="52">Weekly</option><option value="12" selected>Monthly</option><option value="4">Quarterly</option><option value="1">Yearly</option></select></div>
                         <div class="calc-actions"><button class="btn btn-primary" id="stakeCalcBtn">Calculate</button></div>
                     </div>
                     <div class="calc-result" id="stakeResult">
@@ -310,9 +331,12 @@
                     <h3>Crypto Tax Estimator</h3>
                     <p style="color: var(--text-secondary); font-size: 0.9rem;">Estimate US capital gains tax on crypto sales. For educational purposes only.</p>
                     <div class="calc-form">
-                        <div class="fg"><label>Total Profit ($)</label><input type="number" id="taxProfit" placeholder="e.g. 25000" step="any" min="0"></div>
-                        <div class="fg"><label>Holding Period</label><select id="taxPeriod"><option value="short">Short-term (&le;1 year)</option><option value="long">Long-term (&gt;1 year)</option></select></div>
-                        <div class="fg"><label>Income Bracket</label><select id="taxBracket"><option value="0-44625">$0 – $44,625</option><option value="44626-492300" selected>$44,626 – $492,300</option><option value="492301+">$492,301+</option></select></div>
+                        <div class="fg"><labelfor="taxProfit">Total Profit ($)</label>
+        <input type="number" id="taxProfit" placeholder="e.g. 25000" step="any" min="0"></div>
+                        <div class="fg"><labelfor="taxPeriod">Holding Period</label>
+        <select id="taxPeriod"><option value="short">Short-term (&le;1 year)</option><option value="long">Long-term (&gt;1 year)</option></select></div>
+                        <div class="fg"><labelfor="taxBracket">Income Bracket</label>
+        <select id="taxBracket"><option value="0-44625">$0 – $44,625</option><option value="44626-492300" selected>$44,626 – $492,300</option><option value="492301+">$492,301+</option></select></div>
                         <div class="calc-actions"><button class="btn btn-primary" id="taxCalcBtn">Estimate Tax</button></div>
                     </div>
                     <div class="calc-result" id="taxResult">
