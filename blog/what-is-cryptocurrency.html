@@ -199,6 +199,23 @@ p { margin-bottom: var(--space-md); color: var(--text-secondary); }
     ]
 }
 </script>
+<!-- Deferred AdSense (loads 2s after page load) -->
+<script>
+(function() {
+    var loadAdsense = function() {
+        var s = document.createElement('script');
+        s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913';
+        s.async = true;
+        s.crossOrigin = 'anonymous';
+        document.head.appendChild(s);
+    };
+    if (window.requestIdleCallback) {
+        window.requestIdleCallback(loadAdsense, { timeout: 3000 });
+    } else {
+        setTimeout(loadAdsense, 2000);
+    }
+})();
+</script>
 </head>
 <body>
     <header>

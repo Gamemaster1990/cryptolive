@@ -109,8 +109,23 @@
     var consented = localStorage.getItem(CONFIG.CONSENT_KEY);
     if (consented !== 'accepted') return;
 
-    // Check if already loaded
-    if (window.gtag) return;
+    // Update Google Consent Mode — grants ad storage so AdSense can serve
+    // personalized ads on all pages (blog, about, faq, etc.)
+    // This works even if only the inline gtag stub exists (blog/secondary pages
+    // have `function gtag(){dataLayer.push(arguments);}` in the inline script)
+    if (window.gtag) {
+      gtag('consent', 'update', {
+        'analytics_storage': 'granted',
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted'
+      });
+    }
+
+    // Check if GA4 script is already in DOM (eagerly loaded on index.html)
+    // Use DOM query instead of window.gtag because inline blog scripts define
+    // gtag as a dataLayer pusher, making window.gtag always truthy
+    if (document.querySelector('script[src*="googletagmanager.com/gtag"]')) return;
 
     // Load GA4 script
     var script = document.createElement('script');
@@ -124,6 +139,15 @@
     gtag('config', CONFIG.GA4_ID, {
       anonymize_ip: true,
       cookie_flags: 'SameSite=None;Secure'
+    });
+
+    // Update consent via gtag (ensures ad_storage is granted even on pages
+    // where the inline script only set consent to denied, like blog pages)
+    gtag('consent', 'update', {
+      'analytics_storage': 'granted',
+      'ad_storage': 'granted',
+      'ad_user_data': 'granted',
+      'ad_personalization': 'granted'
     });
   }
 
