@@ -1,443 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FAQ — CryptoLive</title>
-    <meta name="description" content="Frequently asked questions about cryptocurrency, market tracking, blockchain technology, and using CryptoLive's free real-time price tracker. Comprehensive crypto FAQ." />
-    <meta name="keywords" content="crypto FAQ, cryptocurrency questions, Bitcoin FAQ, crypto market explained, blockchain basics, crypto guide, altcoin questions" />
-    <link rel="canonical" href="https://cryptolive.space/faq.html" />
-    <meta name="robots" content="index, follow" />
-    <meta name="google-adsense-account" content="ca-pub-8228373593966913" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <!-- Open Graph -->
-    <meta property="og:title" content="Cryptocurrency FAQ — CryptoLive" />
-    <meta property="og:description" content="Answers to common questions about cryptocurrencies, market tracking, blockchain technology, and using CryptoLive's free real-time price tracker." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://cryptolive.space/faq.html" />
-    <meta property="og:image" content="https://cryptolive.space/logo.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions — CryptoLive Crypto FAQ</title>
+    <meta name="description" content="Find answers to common questions about cryptocurrency, blockchain, Bitcoin, Ethereum, DeFi, and using CryptoLive's tools and resources.">
+    <link rel="canonical" href="https://cryptolive.space/faq.html">
+    <link rel="icon" href="/logo.png" type="image/png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="robots" content="index, follow">
+    <meta name="google-adsense-account" content="ca-pub-8228373593966913">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Crypto FAQ — Answers to Common Cryptocurrency Questions">
+    <meta name="twitter:description" content="Get answers to the most frequently asked questions about cryptocurrency, blockchain, investing, security, taxes, and more.">
+
+    <meta property="og:title" content="Crypto FAQ — Answers to Common Cryptocurrency Questions">
+    <meta property="og:description" content="Get answers to the most frequently asked questions about cryptocurrency, blockchain, investing, security, taxes, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cryptolive.space/faq.html">
+    <meta property="og:image" content="https://cryptolive.space/logo.png">
+
+    <!-- JSON-LD Structured Data: FAQPage -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
-            {"@type":"Question","name":"What is cryptocurrency?","acceptedAnswer":{"@type":"Answer","text":"Cryptocurrency is a digital or virtual currency that uses cryptography for security and operates on decentralized networks called blockchains. Unlike traditional currencies, cryptocurrencies are not issued or controlled by central authorities."}},
-            {"@type":"Question","name":"How are cryptocurrency prices determined?","acceptedAnswer":{"@type":"Answer","text":"Cryptocurrency prices are primarily determined by supply and demand on exchanges. Factors include market sentiment, adoption rates, technology upgrades, macroeconomic factors, and supply mechanics."}},
-            {"@type":"Question","name":"What is market capitalization?","acceptedAnswer":{"@type":"Answer","text":"Market capitalization (market cap) is the total value of all coins of a particular cryptocurrency in circulation, calculated as Current Price × Circulating Supply."}},
-            {"@type":"Question","name":"Why are crypto prices so volatile?","acceptedAnswer":{"@type":"Answer","text":"Cryptocurrency markets are volatile due to their relative youth, lower liquidity compared to stock markets, sensitivity to news, speculative trading, and 24/7 trading."}},
-            {"@type":"Question","name":"Where does CryptoLive get its data?","acceptedAnswer":{"@type":"Answer","text":"CryptoLive fetches all price and market data from the CoinGecko API, which aggregates data from hundreds of cryptocurrency exchanges worldwide."}},
-            {"@type":"Question","name":"Is CryptoLive really free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free. CryptoLive has no premium tiers, no paid features, no registration fees, and no hidden costs."}},
-            {"@type":"Question","name":"What data does CryptoLive collect?","acceptedAnswer":{"@type":"Answer","text":"We collect minimal anonymous data through Google Analytics (GA4) including page views, device type, and approximate location. We do not collect personal information."}},
-            {"@type":"Question","name":"What is blockchain technology?","acceptedAnswer":{"@type":"Answer","text":"Blockchain is a distributed, decentralized digital ledger that records transactions across many computers. It is the underlying technology behind cryptocurrencies."}},
-            {"@type":"Question","name":"What is Bitcoin?","acceptedAnswer":{"@type":"Answer","text":"Bitcoin is the world's first cryptocurrency, created in 2009 by Satoshi Nakamoto. It introduced decentralized digital currency and remains the largest cryptocurrency by market cap."}},
-            {"@type":"Question","name":"What is the difference between Bitcoin and Ethereum?","acceptedAnswer":{"@type":"Answer","text":"Bitcoin is primarily a store of value and digital currency. Ethereum is a smart contract platform that enables developers to build decentralized applications (dApps) on its blockchain."}},
-            {"@type":"Question","name":"What is a stablecoin?","acceptedAnswer":{"@type":"Answer","text":"A stablecoin is a cryptocurrency designed to maintain a stable value by being pegged to a real-world asset like the US Dollar. Examples include USDT and USDC."}},
-            {"@type":"Question","name":"How do I choose which cryptocurrency to invest in?","acceptedAnswer":{"@type":"Answer","text":"When evaluating cryptocurrencies, consider market cap ranking, the project's technology and use case, the development team, community activity, trading volume, and the project's roadmap."}},
-            {"@type":"Question","name":"What is DeFi (Decentralized Finance)?","acceptedAnswer":{"@type":"Answer","text":"DeFi refers to financial applications built on blockchain technology that operate without intermediaries like banks. DeFi includes lending, borrowing, trading, and earning interest on crypto assets."}},
-            {"@type":"Question","name":"How often does CryptoLive update prices?","acceptedAnswer":{"@type":"Answer","text":"CryptoLive automatically refreshes price data every 60 seconds. The auto-refresh pauses when you switch browser tabs to save bandwidth."}},
-            {"@type":"Question","name":"What does 24h volume mean?","acceptedAnswer":{"@type":"Answer","text":"24h volume is the total amount of a cryptocurrency traded across all exchanges in the last 24 hours. Higher volume generally indicates higher liquidity and market activity."}},
-            {"@type":"Question","name":"What is Bitcoin Dominance?","acceptedAnswer":{"@type":"Answer","text":"Bitcoin Dominance is Bitcoin's market cap as a percentage of the total cryptocurrency market cap. It shows Bitcoin's relative strength compared to altcoins."}},
-            {"@type":"Question","name":"How do I stay safe from crypto scams?","acceptedAnswer":{"@type":"Answer","text":"Never share your private keys, use reputable exchanges, enable 2FA, avoid unsolicited investment offers, verify URLs before connecting wallets, and only invest what you can afford to lose."}},
-            {"@type":"Question","name":"What is a hardware wallet?","acceptedAnswer":{"@type":"Answer","text":"A hardware wallet is a physical device that stores your cryptocurrency private keys offline, protecting them from online hacking attempts. Popular options include Ledger and Trezor."}}
+            {
+                "@type": "Question",
+                "name": "What is cryptocurrency?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Cryptocurrency is a digital or virtual currency that uses cryptography for security and operates on a technology called blockchain. Unlike traditional currencies, cryptocurrencies are decentralized and not controlled by any government or financial institution."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How does blockchain technology work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Blockchain is a distributed ledger technology where transactions are recorded in blocks that are linked together in a chain. Each block contains a cryptographic hash of the previous block, making it virtually impossible to alter past transactions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Bitcoin?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Bitcoin (BTC) is the world's first cryptocurrency, created by the pseudonymous Satoshi Nakamoto in 2009. It is a decentralized digital currency that allows peer-to-peer transactions without the need for intermediaries like banks."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is Ethereum and how is it different from Bitcoin?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ethereum (ETH) is more than just a cryptocurrency — it's a decentralized computing platform that enables smart contracts and decentralized applications (dApps). While Bitcoin focuses primarily on being a digital currency, Ethereum provides a platform for building blockchain-based applications."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I buy cryptocurrency?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can buy cryptocurrency through centralized exchanges like Coinbase, Binance, or Kraken, or decentralized exchanges (DEXs). You'll typically need to create an account, verify your identity, deposit funds, and then place an order."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is a crypto wallet?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A cryptocurrency wallet stores your private keys and allows you to send, receive, and manage your digital assets. Wallets come in two main types: hot wallets (connected to the internet, convenient for everyday use) and cold wallets (offline storage, more secure for long-term holding)."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is DeFi (Decentralized Finance)?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "DeFi, or Decentralized Finance, refers to financial services built on blockchain technology that operate without traditional intermediaries like banks. DeFi platforms offer lending, borrowing, trading, and earning yield through smart contracts."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is staking and how does it work?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Staking involves locking up your cryptocurrency to support network operations like validating transactions in exchange for rewards. It's available on Proof-of-Stake (PoS) blockchains like Ethereum after The Merge."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How are cryptocurrency prices determined?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Cryptocurrency prices are primarily determined by supply and demand dynamics on exchanges. Factors that influence prices include market sentiment, adoption rates, regulatory news, technological developments, macroeconomic conditions, and overall market trends."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is impermanent loss?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Impermanent loss occurs when you provide liquidity to an automated market maker (AMM) pool, and the price ratio of the paired assets changes compared to when you deposited them. The loss is impermanent because it can reverse if prices return to their original ratio."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I keep my crypto safe?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Essential security practices include: using hardware wallets for long-term storage, enabling two-factor authentication (2FA), never sharing your private keys or seed phrases, using unique passwords, avoiding suspicious links and downloads, and keeping your software updated."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What are common crypto scams to avoid?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Common crypto scams include phishing attacks, Ponzi schemes, fake exchanges and wallets, rug pulls in DeFi, social media impersonation, and pump and dump schemes. Always verify URLs and never respond to unsolicited investment offers."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is CryptoLive safe to use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. CryptoLive is a purely educational website. All our tools run client-side in your browser — no data is sent to any server. We do not ask for personal information, private keys, or wallet connections."
+                }
+            }
         ]
     }
     </script>
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --bg: #0b0e17; --bg-card: #1a2332; --bg-card-hover: #1f2a3d;
-            --border: #1e2d3d; --text: #f0f4fa; --text-muted: #8892a8; --accent: #3b82f6;
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--bg); color: var(--text); line-height: 1.8; min-height: 100vh;
-        }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .page-wrap { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-        .top-nav { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; margin-bottom: 2rem; border-bottom: 1px solid var(--border); }
-        .top-nav .back-home { font-size: 0.85rem; color: var(--text-muted); }
-        .top-nav .back-home:hover { color: var(--accent); }
-        h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .subtitle { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; }
-        h2 { font-size: 1.2rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
-        p { color: #c8d0e0; margin-bottom: 1rem; }
-        ul, ol { margin: 0 0 1rem 1.5rem; }
-        li { color: #c8d0e0; margin-bottom: 0.5rem; }
-        strong { color: var(--text); }
-        .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-bottom: 0.75rem; }
-        .faq-item .question { font-weight: 600; font-size: 0.95rem; color: var(--text); }
-        .faq-item .answer { font-size: 0.88rem; color: #c8d0e0; margin-top: 0.6rem; line-height: 1.7; }
-        .faq-item .answer a { color: var(--accent); }
-        .toc { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem; margin-bottom: 2rem; }
-        .toc h3 { font-size: 0.95rem; margin-bottom: 0.75rem; }
-        .toc ol { margin: 0; }
-        .toc li { margin-bottom: 0.3rem; font-size: 0.88rem; }
-        .category-label { font-size: 0.75rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.75rem; }
-        .page-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.8rem; color: var(--text-muted); }
-        .page-footer a { color: var(--text-muted); }
-        .page-footer a:hover { color: var(--text); }
-        .page-footer .dot { margin: 0 0.4rem; }
-        @media (max-width: 480px) { .page-wrap { padding: 1.5rem 1rem 3rem; } h1 { font-size: 1.4rem; } }
-        .social-links { display:flex; justify-content:center; gap:0.85rem; margin:1rem 0 0.75rem; }
-        .social-links a { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--bg-card); border:1px solid var(--border); transition:all 0.2s; color:var(--text-muted); }
-        .social-links a:hover { background:var(--bg-card-hover); color:var(--accent); transform:translateY(-2px); text-decoration:none; }
-    
-        /* ===== CONSENT BANNER ===== */
-        #consentBanner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-            background: #131a2b;
-            border-top: 1px solid #1e2d3d;
-            padding: 1rem 1.5rem;
-            box-shadow: 0 -4px 24px rgba(0,0,0,0.4);
-            transform: translateY(0);
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-        #consentBanner.hidden {
-            transform: translateY(100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-        #consentBanner .banner-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        #consentBanner .banner-text { flex: 1; min-width: 200px; }
-        #consentBanner .banner-title {
-            color: #f0f4fa;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-        #consentBanner .banner-description {
-            color: #8892a8;
-            font-size: 0.78rem;
-            line-height: 1.5;
-        }
-        #consentBanner .banner-description a { color: #3b82f6; text-decoration: underline; }
-        #consentBanner .banner-actions {
-            display: flex;
-            gap: 0.6rem;
-            flex-shrink: 0;
-            flex-wrap: wrap;
-        }
-        #consentBanner .btn-reject {
-            background: transparent;
-            border: 1px solid #1e2d3d;
-            color: #8892a8;
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.82rem;
-            transition: all 0.15s;
-        }
-        #consentBanner .btn-reject:hover {
-            border-color: #3b82f6;
-            color: #f0f4fa;
-        }
-        #consentBanner .btn-accept {
-            background: #3b82f6;
-            border: none;
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.82rem;
-            font-weight: 600;
-            transition: opacity 0.15s;
-        }
-        #consentBanner .btn-accept:hover { opacity: 0.9; }
 
-</style>
-
-    <!-- Google Analytics (GA4) with Consent Mode -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5619GV6WJ6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('consent', 'default', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied',
-            'wait_for_update': 1000
-        });
-        gtag('set', 'ads_data_redaction', true);
-        gtag('config', 'G-5619GV6WJ6');
-    </script>
-    <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913" crossorigin="anonymous"></script>
-
-    </head>
+</head>
 <body>
-<div class="page-wrap">
-    <nav class="top-nav">
-        <a class="back-home" href="/">← Back to CryptoLive</a>
-    </nav>
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="container">
+                <a href="/" class="navbar-logo">
+                    <span class="logo-icon">📈</span>
+                    CryptoLive
+                </a>
+                <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="navbar-links" role="menubar">
+                    <li role="none"><a href="/" role="menuitem">Home</a></li>
+                    <li role="none"><a href="/about.html" role="menuitem">About</a></li>
+                    <li role="none"><a href="/tools.html" role="menuitem">Tools</a></li>
+                    <li role="none"><a href="/top-cryptocurrencies.html" role="menuitem">Top Cryptocurrencies</a></li>
+                    <li role="none"><a href="/faq.html" role="menuitem" class="active">FAQ</a></li>
+                    <li role="none"><a href="/how-to-use.html" role="menuitem">How to Use</a></li>
+                    <li role="none"><a href="/blog/" role="menuitem">Blog</a></li>
+                    <li role="none"><a href="/contact.html" role="menuitem">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <h1>Cryptocurrency FAQ</h1>
-    <p class="subtitle">Answers to common questions about cryptocurrencies, market data, blockchain technology, and using CryptoLive.</p>
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Frequently Asked Questions</h1>
+                <p>Answers to common questions about cryptocurrency, blockchain, and using CryptoLive.</p>
+            </div>
+        </section>
 
-    <div class="toc">
-        <h3>📑 Topics</h3>
-        <ol>
-            <li><a href="#what-is-crypto">What is cryptocurrency?</a></li>
-            <li><a href="#how-prices-work">How are cryptocurrency prices determined?</a></li>
-            <li><a href="#market-cap">What is market capitalization?</a></li>
-            <li><a href="#price-changes">Why are crypto prices so volatile?</a></li>
-            <li><a href="#data-source">Where does CryptoLive get its data?</a></li>
-            <li><a href="#delay">How fresh is the price data?</a></li>
-            <li><a href="#accuracy">Are the prices 100% accurate?</a></li>
-            <li><a href="#free">Is CryptoLive really free?</a></li>
-            <li><a href="#ads">Why are there ads on CryptoLive?</a></li>
-            <li><a href="#privacy">What data does CryptoLive collect?</a></li>
-            <li><a href="#blockchain">What is blockchain technology?</a></li>
-            <li><a href="#bitcoin">What is Bitcoin?</a></li>
-            <li><a href="#btc-vs-eth">What is the difference between Bitcoin and Ethereum?</a></li>
-            <li><a href="#stablecoin">What is a stablecoin?</a></li>
-            <li><a href="#choose-crypto">How do I choose which cryptocurrency to invest in?</a></li>
-            <li><a href="#defi">What is DeFi (Decentralized Finance)?</a></li>
-            <li><a href="#update-frequency">How often does CryptoLive update prices?</a></li>
-            <li><a href="#volume">What does 24h volume mean?</a></li>
-            <li><a href="#btc-dominance">What is Bitcoin Dominance?</a></li>
-            <li><a href="#scams">How do I stay safe from crypto scams?</a></li>
-            <li><a href="#hardware-wallet">What is a hardware wallet?</a></li>
-        </ol>
-    </div>
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-label">General</span>
+                    <h2>Cryptocurrency Basics</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What is cryptocurrency?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Cryptocurrency is a digital or virtual currency that uses cryptography for security and operates on a technology called blockchain. Unlike traditional currencies, cryptocurrencies are decentralized and not controlled by any government or financial institution. Bitcoin, created in 2009, was the first cryptocurrency. Learn more in our <a href="/blog/what-is-cryptocurrency.html">complete beginner's guide</a>.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            How does blockchain technology work?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Blockchain is a distributed ledger technology where transactions are recorded in "blocks" that are linked together in a chain. Each block contains a cryptographic hash of the previous block, making it virtually impossible to alter past transactions. This creates a transparent, secure, and immutable record of all transactions. For a detailed explanation, read our <a href="/blog/blockchain-explained.html">Blockchain Explained</a> guide.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What is Bitcoin?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Bitcoin (BTC) is the world's first cryptocurrency, created by the pseudonymous Satoshi Nakamoto in 2009. It is a decentralized digital currency that allows peer-to-peer transactions without the need for intermediaries like banks. Bitcoin is often called "digital gold" and is the largest cryptocurrency by market capitalization. Learn about <a href="/blog/bitcoin-as-inflation-hedge.html">Bitcoin as an inflation hedge</a> and <a href="/blog/bitcoin-etf-explained.html">Bitcoin ETFs</a>.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What is Ethereum and how is it different from Bitcoin?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ethereum (ETH) is more than just a cryptocurrency — it's a decentralized computing platform that enables smart contracts and decentralized applications (dApps). While Bitcoin focuses primarily on being a digital currency, Ethereum provides a platform for building blockchain-based applications. Smart contracts on Ethereum power DeFi, NFTs, and countless other innovations. Explore <a href="/blog/ethereum-layer-2-scaling-2026.html">Ethereum Layer 2 scaling solutions</a>.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            How do I buy cryptocurrency?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>You can buy cryptocurrency through centralized exchanges (like Coinbase, Binance, or Kraken) or decentralized exchanges (DEXs). You'll typically need to create an account, verify your identity, deposit funds, and then place an order. After purchasing, it's recommended to transfer your crypto to a personal wallet for security. Read our <a href="/blog/crypto-wallets-guide.html">crypto wallets guide</a> to learn about storage options.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What is a crypto wallet?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>A cryptocurrency wallet stores your private keys and allows you to send, receive, and manage your digital assets. Wallets come in two main types: hot wallets (connected to the internet, convenient for everyday use) and cold wallets (offline storage, more secure for long-term holding). For a detailed comparison, see our <a href="/blog/crypto-wallets-guide.html">complete crypto wallets guide</a>.</p>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="category-label">📖 Basics of Cryptocurrency</div>
+                <div class="section-header" style="margin-top: var(--space-4xl);">
+                    <span class="section-label">DeFi &amp; Trading</span>
+                    <h2>Decentralized Finance &amp; Trading</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What is DeFi (Decentralized Finance)?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>DeFi, or Decentralized Finance, refers to financial services built on blockchain technology that operate without traditional intermediaries like banks. DeFi platforms offer lending, borrowing, trading, and earning yield through smart contracts. These services are open to anyone with an internet connection. Learn about <a href="/blog/defi-lending-borrowing.html">DeFi lending and borrowing</a> and <a href="/blog/staking-yield-farming-guide.html">staking and yield farming</a>.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What is staking and how does it work?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Staking involves locking up your cryptocurrency to support network operations (like validating transactions) in exchange for rewards. It's available on Proof-of-Stake (PoS) blockchains like Ethereum (after The Merge). Staking is a way to earn passive income on your crypto holdings. Use our <a href="/tools.html">staking rewards calculator</a> to estimate potential earnings.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            How are cryptocurrency prices determined?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Cryptocurrency prices are primarily determined by supply and demand dynamics on exchanges. Factors that influence prices include market sentiment, adoption rates, regulatory news, technological developments, macroeconomic conditions, and overall market trends. Learn how to analyze markets in our <a href="/blog/crypto-market-analysis-strategies.html">market analysis strategies guide</a> and <a href="/blog/how-to-read-crypto-charts.html">crypto charts guide</a>.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What is impermanent loss?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Impermanent loss occurs when you provide liquidity to an automated market maker (AMM) pool, and the price ratio of the paired assets changes compared to when you deposited them. The loss is "impermanent" because it can reverse if prices return to their original ratio. Use our <a href="/tools.html">impermanent loss calculator</a> to estimate potential losses before providing liquidity.</p>
+                        </div>
+                    </div>
+                </div>
 
-    <div id="what-is-crypto" class="faq-item">
-        <div class="question">What is cryptocurrency?</div>
-        <div class="answer">
-            <p>Cryptocurrency is a <strong>digital or virtual currency</strong> that uses cryptography for security and operates on decentralized networks called <strong>blockchains</strong>. Unlike traditional currencies (like the US Dollar or Euro), cryptocurrencies are not issued or controlled by any central authority like a government or bank.</p>
-            <p>The first and most well-known cryptocurrency is <strong>Bitcoin</strong>, created in 2009 by an anonymous person or group using the name Satoshi Nakamoto. Today there are thousands of cryptocurrencies with various use cases — from digital cash (Bitcoin, Litecoin) to smart contract platforms (Ethereum, Solana) to decentralized finance applications. For a more in-depth explanation, read our <a href="blog/what-is-cryptocurrency.html">complete beginner's guide to cryptocurrency</a>.</p>
+                <div class="section-header" style="margin-top: var(--space-4xl);">
+                    <span class="section-label">Security</span>
+                    <h2>Security &amp; Best Practices</h2>
+                    <div class="section-divider"></div>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            How do I keep my crypto safe?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Essential security practices include: using hardware wallets for long-term storage, enabling two-factor authentication (2FA), never sharing your private keys or seed phrases, using unique passwords, avoiding suspicious links and downloads, and keeping your software updated. For a complete overview, read our <a href="/blog/crypto-security-tips.html">crypto security tips guide</a>.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            What are common crypto scams to avoid?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Common crypto scams include phishing attacks, Ponzi schemes, fake exchanges/wallets, rug pulls in DeFi, social media impersonation, and "pump and dump" schemes. Always verify URLs, never respond to unsolicited investment offers, and be skeptical of promises of guaranteed returns. If it sounds too good to be true, it probably is. Read our <a href="/blog/crypto-security-tips.html">security guide</a> for more details.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Is CryptoLive safe to use?
+                            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes. CryptoLive is a purely educational website. All our tools run client-side in your browser — no data is sent to any server. We do not ask for personal information, private keys, or wallet connections. We use cookies only for analytics and consent preferences, which you can manage through our consent banner. See our <a href="/privacy-policy.html">Privacy Policy</a> for details.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="navbar-logo">
+                        <span class="logo-icon">📈</span>
+                        CryptoLive
+                    </a>
+                    <p>Your trusted source for cryptocurrency education, interactive tools, and market insights.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/how-to-use.html">How to Use</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/tools.html">Crypto Tools</a></li>
+                        <li><a href="/top-cryptocurrencies.html">Top Cryptocurrencies</a></li>
+                        <li><a href="/blog/">Blog &amp; Guides</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span data-current-year></span> CryptoLive. All rights reserved.</p>
+                <p>Empowering crypto knowledge for everyone.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/himanshu-kathuria19/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://x.com/cryptolivespace" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/cryptolive2026/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div id="how-prices-work" class="faq-item">
-        <div class="question">How are cryptocurrency prices determined?</div>
-        <div class="answer">
-            <p>Cryptocurrency prices are primarily determined by <strong>supply and demand</strong> on exchanges — just like stocks, commodities, or any other traded asset. When more people want to buy a cryptocurrency than sell it, the price goes up. When more people want to sell, the price goes down.</p>
-            <p>Factors that influence crypto prices include market sentiment, adoption rates, technology upgrades, macroeconomic factors, and supply mechanics. CryptoLive aggregates price data from major exchanges via the CoinGecko API to show you a volume-weighted average price.</p>
-        </div>
-    </div>
-
-    <div id="market-cap" class="faq-item">
-        <div class="question">What is market capitalization?</div>
-        <div class="answer">
-            <p><strong>Market capitalization</strong> (or "market cap") is the total value of all coins of a particular cryptocurrency in circulation. It is calculated as: <strong>Market Cap = Current Price × Circulating Supply</strong>.</p>
-            <p>Market cap is used to rank cryptocurrencies and gives you an idea of a coin's relative size and stability. Generally, coins with larger market caps (like Bitcoin and Ethereum) are considered more established and less volatile than smaller "altcoins." For a detailed explanation, see our <a href="blog/crypto-market-cap-explained.html">guide to market capitalization</a>.</p>
-        </div>
-    </div>
-
-    <div id="price-changes" class="faq-item">
-        <div class="question">Why are crypto prices so volatile?</div>
-        <div class="answer">
-            <p>Cryptocurrency markets are known for their <strong>volatility</strong> — prices can change by 5-10% or more in a single day. This happens because crypto markets are still relatively young, some coins have lower liquidity making prices sensitive to large trades, the market is highly sensitive to news and regulatory announcements, many traders focus on short-term speculation, and crypto trades 24/7 including weekends and holidays.</p>
-        </div>
-    </div>
-
-    <div class="category-label">🔧 About CryptoLive</div>
-
-    <div id="data-source" class="faq-item">
-        <div class="question">Where does CryptoLive get its data?</div>
-        <div class="answer">
-            <p>CryptoLive fetches all price and market data from the <strong><a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko API</a></strong>, one of the most widely used free cryptocurrency data providers. CoinGecko aggregates data from hundreds of cryptocurrency exchanges worldwide and calculates volume-weighted average prices. We display the <strong>top 50 cryptocurrencies</strong> by market cap, updated every 60 seconds.</p>
-        </div>
-    </div>
-
-    <div id="delay" class="faq-item">
-        <div class="question">How fresh is the price data?</div>
-        <div class="answer">
-            <p>CryptoLive automatically refreshes price data <strong>every 60 seconds</strong>. However, there is always some inherent delay in the data pipeline — the CoinGecko API itself aggregates prices from exchanges, and there may be a delay of several seconds to a few minutes compared to real-time exchange prices. For active trading, always use your exchange's real-time order book.</p>
-        </div>
-    </div>
-
-    <div id="accuracy" class="faq-item">
-        <div class="question">Are the prices 100% accurate?</div>
-        <div class="answer">
-            <p>We strive to provide accurate data, but prices displayed on CryptoLive should be considered <strong>indicative</strong>, not definitive. Small discrepancies may exist between the prices shown here and the actual prices on specific exchanges due to different exchanges having slightly different prices (arbitrage), delays in data aggregation and API updates, and differences in trading pairs and liquidity across exchanges. Always verify critical price information on your exchange before making trading decisions.</p>
-        </div>
-    </div>
-
-    <div id="free" class="faq-item">
-        <div class="question">Is CryptoLive really free?</div>
-        <div class="answer">
-            <p><strong>Yes, 100% free.</strong> CryptoLive has no premium tiers, no paid features, no registration fees, and no hidden costs. There are no account requirements, no email signups, and no data selling. The site is supported by <strong>non-intrusive advertisements</strong> via Google AdSense, which allows us to keep the service free for everyone.</p>
-        </div>
-    </div>
-
-    <div id="ads" class="faq-item">
-        <div class="question">Why are there ads on CryptoLive?</div>
-        <div class="answer">
-            <p>Ads help cover the costs of running CryptoLive — including domain registration, hosting, API usage, and development time. We use <strong>Google AdSense</strong> to serve advertisements. We carefully choose ad placements to be non-intrusive and to not interfere with your browsing experience. The presence of ads does <strong>not</strong> mean we endorse any advertised product or service.</p>
-        </div>
-    </div>
-
-    <div id="privacy" class="faq-item">
-        <div class="question">What data does CryptoLive collect?</div>
-        <div class="answer">
-            <p>We collect <strong>minimal anonymous data</strong> through Google Analytics (GA4), including page views, device type, and approximate location (country level). This helps us understand how people use the site and how to improve it. We do <strong>not</strong> collect personal information, email addresses, or browsing history beyond what Google Analytics provides. Your favorite coins are stored locally in your browser (localStorage) and never sent to our servers. See our full <a href="privacy-policy.html">Privacy Policy</a> for detailed information.</p>
-        </div>
-    </div>
-
-    <div id="update-frequency" class="faq-item">
-        <div class="question">How often does CryptoLive update prices?</div>
-        <div class="answer">
-            <p>CryptoLive automatically fetches new data from the CoinGecko API <strong>every 60 seconds</strong>. The auto-refresh uses smart tab detection — it pauses when you switch to another browser tab (to save bandwidth and API credits) and resumes when you return. You can also manually refresh at any time by clicking the <strong>Refresh</strong> button in the header.</p>
-        </div>
-    </div>
-
-    <div id="volume" class="faq-item">
-        <div class="question">What does 24h volume mean?</div>
-        <div class="answer">
-            <p><strong>24h volume</strong> is the total amount of a cryptocurrency traded across all exchanges in the last 24 hours. It is an important metric because higher trading volume generally indicates higher <strong>liquidity</strong> — meaning you can buy or sell larger amounts without significantly affecting the price. Low volume coins may experience more price slippage when trading. On CryptoLive, you can see individual coin volumes in the expanded detail view and aggregate volume in the stats bar at the top.</p>
-        </div>
-    </div>
-
-    <div class="category-label">📚 Blockchain & Crypto Education</div>
-
-    <div id="blockchain" class="faq-item">
-        <div class="question">What is blockchain technology?</div>
-        <div class="answer">
-            <p><strong>Blockchain</strong> is the underlying technology behind most cryptocurrencies. It is a <strong>distributed, decentralized digital ledger</strong> that records transactions across many computers. Each "block" contains a group of transactions, and blocks are linked together in a "chain." Once recorded, data in a block cannot be altered retroactively without changing all subsequent blocks — which would require consensus from the majority of the network. This makes blockchain <strong>immutable</strong> and <strong>transparent</strong>. Learn more in our <a href="blog/blockchain-explained.html">complete blockchain explainer</a>.</p>
-        </div>
-    </div>
-
-    <div id="bitcoin" class="faq-item">
-        <div class="question">What is Bitcoin?</div>
-        <div class="answer">
-            <p><strong>Bitcoin (BTC)</strong> is the world's first cryptocurrency, created in 2009 by the pseudonymous Satoshi Nakamoto. It introduced the concept of a decentralized digital currency that operates without any central authority. Bitcoin uses proof-of-work consensus and has a fixed supply cap of <strong>21 million coins</strong>, making it a deflationary asset. Often called "digital gold," Bitcoin is primarily used as a <strong>store of value</strong> and a hedge against inflation. It has the largest market cap and strongest brand recognition of any cryptocurrency.</p>
-        </div>
-    </div>
-
-    <div id="btc-vs-eth" class="faq-item">
-        <div class="question">What is the difference between Bitcoin and Ethereum?</div>
-        <div class="answer">
-            <p>While both are leading cryptocurrencies, they serve fundamentally different purposes. <strong>Bitcoin</strong> is designed as a <strong>decentralized digital currency and store of value</strong> — it excels at being a secure, predictable monetary system. <strong>Ethereum</strong> is a <strong>smart contract platform</strong> that enables developers to build decentralized applications (dApps) on its blockchain. Ethereum's native currency, Ether (ETH), is used to pay for computation on the network. Ethereum transitioned from proof-of-work to proof-of-stake in 2022 (The Merge), reducing its energy consumption by ~99.9%. See our <a href="top-cryptocurrencies.html">Top Cryptocurrencies</a> page for more details on both.</p>
-        </div>
-    </div>
-
-    <div id="stablecoin" class="faq-item">
-        <div class="question">What is a stablecoin?</div>
-        <div class="answer">
-            <p>A <strong>stablecoin</strong> is a type of cryptocurrency designed to maintain a stable value by being pegged to a real-world asset, most commonly the US Dollar. Examples include <strong>Tether (USDT)</strong> and <strong>USD Coin (USDC)</strong>. Stablecoins play a crucial role in the crypto ecosystem by providing a stable medium of exchange and a safe haven during market volatility. Traders use them to move funds between exchanges without converting to traditional fiat currency, and they are widely used in DeFi applications for lending and borrowing.</p>
-        </div>
-    </div>
-
-    <div id="choose-crypto" class="faq-item">
-        <div class="question">How do I choose which cryptocurrency to invest in?</div>
-        <div class="answer">
-            <p>When evaluating cryptocurrencies, consider these factors: <strong>market cap ranking</strong> (larger cap coins are generally more established), the project's <strong>technology and use case</strong> (what problem does it solve?), the <strong>development team</strong> (are they transparent and experienced?), <strong>community activity</strong> (is there genuine interest and development?), <strong>trading volume and liquidity</strong>, and the project's <strong>roadmap and milestones</strong>. Remember that this is not financial advice — always do your own research (<strong>DYOR</strong>) and never invest more than you can afford to lose. See our <a href="blog/what-is-cryptocurrency.html">beginner's guide</a> for more context.</p>
-        </div>
-    </div>
-
-    <div id="defi" class="faq-item">
-        <div class="question">What is DeFi (Decentralized Finance)?</div>
-        <div class="answer">
-            <p><strong>DeFi</strong> refers to financial applications built on blockchain technology that operate without intermediaries like banks, brokerages, or insurance companies. DeFi platforms enable <strong>lending, borrowing, trading, and earning interest</strong> on crypto assets through smart contracts. Most DeFi applications run on Ethereum, Solana, and other smart contract platforms. While DeFi offers exciting opportunities for financial inclusion and innovation, it also comes with risks including smart contract bugs, hacks, and impermanent loss in liquidity pools.</p>
-        </div>
-    </div>
-
-    <div id="btc-dominance" class="faq-item">
-        <div class="question">What is Bitcoin Dominance?</div>
-        <div class="answer">
-            <p><strong>Bitcoin Dominance</strong> is Bitcoin's market cap as a percentage of the total cryptocurrency market cap. For example, if Bitcoin's market cap is $1 trillion and the total crypto market cap is $2 trillion, Bitcoin dominance is 50%. When Bitcoin dominance is high (50-70%), it suggests investors prefer Bitcoin over altcoins. When it is low (under 40%), it indicates an "altcoin season" where alternative cryptocurrencies are gaining market share. While CryptoLive does not currently display Bitcoin dominance directly, you can infer it by comparing Bitcoin's individual market cap to the total market cap shown at the top of the page.</p>
-        </div>
-    </div>
-
-    <div class="category-label">🛡️ Security & Safety</div>
-
-    <div id="scams" class="faq-item">
-        <div class="question">How do I stay safe from crypto scams?</div>
-        <div class="answer">
-            <p>Cryptocurrency security is essential. Follow these best practices: <strong>never share your private keys or seed phrase</strong> with anyone; use <strong>reputable exchanges</strong> with a proven track record; enable <strong>two-factor authentication (2FA)</strong> using an authenticator app (not SMS); be skeptical of <strong>unsolicited investment offers</strong> and "guaranteed returns"; always <strong>verify URLs</strong> before connecting your wallet to any website; use a <strong>hardware wallet</strong> for long-term storage of significant amounts; and <strong>send a small test transaction</strong> before transferring large amounts. For a comprehensive guide, read our <a href="blog/crypto-security-tips.html">crypto security tips</a>.</p>
-        </div>
-    </div>
-
-    <div id="hardware-wallet" class="faq-item">
-        <div class="question">What is a hardware wallet?</div>
-        <div class="answer">
-            <p>A <strong>hardware wallet</strong> is a physical device that stores your cryptocurrency private keys offline, protecting them from online hacking attempts. Popular options include <strong>Ledger</strong> and <strong>Trezor</strong>. Hardware wallets are considered the most secure way to store cryptocurrency because your private keys never touch the internet. When you need to make a transaction, you confirm it on the device itself. For any significant amount of cryptocurrency you plan to hold long-term, a hardware wallet is strongly recommended. Even if your computer is infected with malware, your funds remain safe in a hardware wallet.</p>
-        </div>
-    </div>
-
-    <footer class="page-footer">
-        <a href="/">Home</a><span class="dot">·</span>
-        <a href="/how-to-use.html">How to Use</a><span class="dot">·</span>
-        <a href="/faq.html">FAQ</a><span class="dot">·</span>
-        <a href="/top-cryptocurrencies.html">Top Cryptocurrencies</a><span class="dot">·</span>
-        <a href="/tools.html">Tools</a><span class="dot">·</span>
-        <a href="/about.html">About</a><span class="dot">·</span>
-        <a href="/contact.html">Contact</a><span class="dot">·</span>
-        <a href="/privacy-policy.html">Privacy</a><span class="dot">·</span>
-        <a href="/terms.html">Terms</a><span class="dot">·</span>
-        <a href="/disclaimer.html">Disclaimer</a>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/himanshu-kathuria19/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="https://x.com/cryptolivespace" target="_blank" rel="noopener" aria-label="X (Twitter)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/cryptolive2026/" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-        </div>
-        <p style="margin-top:0.75rem;">&copy; 2026 CryptoLive. All rights reserved.</p>
     </footer>
-</div>
 
-<script>
-(function() {
-    'use strict';
-    function initConsentBanner() {
-        const banner = document.getElementById('consentBanner');
-        const acceptBtn = document.getElementById('consentAccept');
-        const rejectBtn = document.getElementById('consentReject');
-        const savedConsent = localStorage.getItem('cryptolive_consent');
-        if (savedConsent === 'accepted' || savedConsent === 'rejected') {
-            banner.remove();
-            return;
-        }
-        banner.classList.remove('hidden');
-        acceptBtn.addEventListener('click', function() {
-            gtag('consent', 'update', {
-                'analytics_storage': 'granted',
-                'ad_storage': 'granted',
-                'ad_user_data': 'granted',
-                'ad_personalization': 'granted'
-            });
-            localStorage.setItem('cryptolive_consent', 'accepted');
-            banner.classList.add('hidden');
-            setTimeout(() => { banner.style.display = 'none'; }, 400);
-        });
-        rejectBtn.addEventListener('click', function() {
-            localStorage.setItem('cryptolive_consent', 'rejected');
-            banner.classList.add('hidden');
-            setTimeout(() => { banner.style.display = 'none'; }, 400);
-        });
-    }
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initConsentBanner);
-    } else {
-        initConsentBanner();
-    }
-})();
-</script>
+    <div class="consent-banner" id="consent-banner" role="dialog" aria-label="Cookie consent">
+        <div class="consent-content">
+            <p>We value your privacy. This website uses cookies to enhance your browsing experience. <a href="/privacy-policy.html">Learn more</a>.</p>
+            <div class="consent-actions">
+                <button id="consent-reject" class="btn btn-secondary btn-sm">Reject All</button>
+                <button id="consent-accept" class="btn btn-primary btn-sm">Accept All</button>
+            </div>
+        </div>
+    </div>
 
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">&#8593;</button>
+    <script src="/js/main.js"></script>
 </body>
 </html>

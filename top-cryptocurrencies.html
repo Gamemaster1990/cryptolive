@@ -1,488 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Cryptocurrencies by Market Cap — CryptoLive</title>
-    <meta name="description" content="Learn about the top cryptocurrencies by market cap. Comprehensive educational guide covering Bitcoin, Ethereum, Solana, and other leading digital assets with detailed explanations." />
-    <meta name="keywords" content="top cryptocurrencies, Bitcoin, Ethereum, Solana, crypto education, blockchain explained, altcoins, market cap rankings" />
-    <link rel="canonical" href="https://cryptolive.space/top-cryptocurrencies.html" />
-    <meta name="robots" content="index, follow" />
-    <meta name="google-adsense-account" content="ca-pub-8228373593966913" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <meta property="og:title" content="Top Cryptocurrencies — Comprehensive Educational Guide | CryptoLive" />
-    <meta property="og:description" content="A comprehensive educational guide to the top cryptocurrencies by market cap. Learn about Bitcoin, Ethereum, Solana, Cardano, and more." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://cryptolive.space/top-cryptocurrencies.html" />
-    <meta property="og:image" content="https://cryptolive.space/logo.png" />
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root { --bg: #0b0e17; --bg-card: #1a2332; --bg-card-hover: #1f2a3d; --border: #1e2d3d; --text: #f0f4fa; --text-muted: #8892a8; --accent: #3b82f6; --green: #00c853; --orange: #f7931a; --purple: #8b5cf6; }
-        html { scroll-behavior: smooth; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; min-height: 100vh; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        .page-wrap { max-width: 780px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
-        .top-nav { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; margin-bottom: 2rem; border-bottom: 1px solid var(--border); }
-        .top-nav .back-home { font-size: 0.85rem; color: var(--text-muted); }
-        h1 { font-size: 1.75rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .subtitle { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; }
-        h2 { font-size: 1.2rem; font-weight: 600; margin-top: 2.5rem; margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border); }
-        h3 { font-size: 1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; }
-        p { color: #c8d0e0; margin-bottom: 1rem; }
-        ul { margin: 0 0 1rem 1.5rem; }
-        li { color: #c8d0e0; margin-bottom: 0.5rem; }
-        strong { color: var(--text); }
-        .coin-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.25rem; transition: background 0.2s; }
-        .coin-card:hover { background: var(--bg-card-hover); }
-        .coin-card .coin-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
-        .coin-card .coin-rank { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; min-width: 1.5rem; }
-        .coin-card .coin-symbol { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; background: var(--bg); padding: 0.15rem 0.5rem; border-radius: 4px; }
-        .coin-card .coin-name { font-weight: 700; font-size: 1.1rem; }
-        .coin-card .coin-desc { font-size: 0.9rem; color: #c8d0e0; margin-bottom: 0.75rem; }
-        .coin-card .coin-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-muted); }
-        .coin-card .coin-stat-value { color: var(--text); font-weight: 600; }
-        .note { background: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent); border-radius: 10px; padding: 1rem 1.25rem; margin: 1.5rem 0; }
-        .note p { margin-bottom: 0; color: #c8d0e0; font-size: 0.9rem; }
-        .category-section { font-size: 0.8rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; }
-        .page-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); text-align: center; font-size: 0.8rem; color: var(--text-muted); }
-        .page-footer a { color: var(--text-muted); }
-        .page-footer a:hover { color: var(--text); }
-        .page-footer .dot { margin: 0 0.4rem; }
-        @media (max-width: 480px) { .page-wrap { padding: 1.5rem 1rem 3rem; } h1 { font-size: 1.4rem; } }
-        .social-links { display:flex; justify-content:center; gap:0.85rem; margin:1rem 0 0.75rem; }
-        .social-links a { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--bg-card); border:1px solid var(--border); transition:all 0.2s; color:var(--text-muted); }
-        .social-links a:hover { background:var(--bg-card-hover); color:var(--accent); transform:translateY(-2px); text-decoration:none; }
-    
-        /* ===== CONSENT BANNER ===== */
-        #consentBanner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-            background: #131a2b;
-            border-top: 1px solid #1e2d3d;
-            padding: 1rem 1.5rem;
-            box-shadow: 0 -4px 24px rgba(0,0,0,0.4);
-            transform: translateY(0);
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-        #consentBanner.hidden {
-            transform: translateY(100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-        #consentBanner .banner-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        #consentBanner .banner-text { flex: 1; min-width: 200px; }
-        #consentBanner .banner-title {
-            color: #f0f4fa;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-        #consentBanner .banner-description {
-            color: #8892a8;
-            font-size: 0.78rem;
-            line-height: 1.5;
-        }
-        #consentBanner .banner-description a { color: #3b82f6; text-decoration: underline; }
-        #consentBanner .banner-actions {
-            display: flex;
-            gap: 0.6rem;
-            flex-shrink: 0;
-            flex-wrap: wrap;
-        }
-        #consentBanner .btn-reject {
-            background: transparent;
-            border: 1px solid #1e2d3d;
-            color: #8892a8;
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.82rem;
-            transition: all 0.15s;
-        }
-        #consentBanner .btn-reject:hover {
-            border-color: #3b82f6;
-            color: #f0f4fa;
-        }
-        #consentBanner .btn-accept {
-            background: #3b82f6;
-            border: none;
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.82rem;
-            font-weight: 600;
-            transition: opacity 0.15s;
-        }
-        #consentBanner .btn-accept:hover { opacity: 0.9; }
+    <meta name="description" content="Browse the top cryptocurrencies ranked by market capitalization. Bitcoin, Ethereum, and leading altcoins with key metrics and educational resources.">
+    <link rel="canonical" href="https://cryptolive.space/top-cryptocurrencies.html">
+    <link rel="icon" href="/logo.png" type="image/png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="robots" content="index, follow">
+    <meta name="google-adsense-account" content="ca-pub-8228373593966913">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Top Cryptocurrencies by Market Cap — CryptoLive">
+    <meta name="twitter:description" content="Explore the top cryptocurrencies ranked by market cap. Live prices, charts, and key metrics for Bitcoin, Ethereum, and more.">
 
-</style>
+    <meta property="og:title" content="Top Cryptocurrencies by Market Cap — CryptoLive">
+    <meta property="og:description" content="Explore the top cryptocurrencies ranked by market cap. Live prices, charts, and key metrics for Bitcoin, Ethereum, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cryptolive.space/top-cryptocurrencies.html">
+    <meta property="og:image" content="https://cryptolive.space/logo.png">
 
-    <!-- Google Analytics (GA4) with Consent Mode -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5619GV6WJ6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('consent', 'default', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied',
-            'wait_for_update': 1000
-        });
-        gtag('set', 'ads_data_redaction', true);
-        gtag('config', 'G-5619GV6WJ6');
+    <!-- JSON-LD Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "CryptoLive",
+        "url": "https://cryptolive.space/",
+        "logo": "https://cryptolive.space/logo.png",
+        "description": "Free cryptocurrency education, interactive tools, and market insights.",
+        "email": "gamemastergameplayss@gmail.com",
+        "foundingDate": "2026",
+        "founder": {
+            "@type": "Person",
+            "name": "Himanshu Kathuria"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/himanshu-kathuria19/",
+            "https://x.com/cryptolivespace",
+            "https://www.instagram.com/cryptolive2026/"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "gamemastergameplayss@gmail.com",
+            "contactType": "customer service",
+            "availableLanguage": ["English"]
+        }
+    }
     </script>
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913" crossorigin="anonymous"></script>
 
-    </head>
-<body>
-<div class="page-wrap">
-    <nav class="top-nav">
-        <a class="back-home" href="/">← Back to CryptoLive</a>
-    </nav>
-
-    <h1>Top Cryptocurrencies by Market Cap</h1>
-    <p class="subtitle">A comprehensive educational guide to the leading cryptocurrencies — their purpose, technology, and role in the digital asset ecosystem.</p>
-
-    <p>The cryptocurrency market includes thousands of digital assets, but a handful of coins dominate by <strong>market capitalization, trading volume, and user adoption</strong>. Understanding these leading cryptocurrencies is essential for anyone looking to navigate the crypto space.</p>
-
-    <p>This guide covers the most significant cryptocurrencies in depth, organized by market cap category. For <strong>live prices</strong>, visit our <a href="/">real-time price tracker</a>. For a broader introduction, read our <a href="blog/what-is-cryptocurrency.html">beginner's guide to cryptocurrency</a>.</p>
-
-    <div class="note">
-        <strong>📚 Educational purpose only</strong>
-        <p>This page provides general educational information about cryptocurrencies. It does not constitute investment advice or recommendations. Cryptocurrency rankings change over time as prices fluctuate. Always do your own research before investing. See our <a href="disclaimer.html">full disclaimer</a>.</p>
-    </div>
-
-    <div class="category-section">🏆 Large Cap Coins — $10 Billion+</div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">#1</span>
-            <span class="coin-name">Bitcoin</span>
-            <span class="coin-symbol">BTC</span>
-        </div>
-        <div class="coin-desc">
-            <strong>Bitcoin</strong> is the world's first cryptocurrency, created in 2009 by the pseudonymous Satoshi Nakamoto. It introduced the revolutionary concept of a decentralized digital currency that operates without any central authority, bank, or government. Bitcoin's whitepaper, titled "Bitcoin: A Peer-to-Peer Electronic Cash System," laid the foundation for the entire cryptocurrency industry.
-        </div>
-        <div class="coin-desc">
-            Bitcoin uses a <strong>proof-of-work</strong> consensus mechanism, where miners compete to solve complex mathematical problems using specialized hardware (ASICs). The network has a fixed supply cap of <strong>21 million coins</strong>, making it a deflationary asset by design. Approximately 19.5 million BTC have already been mined, leaving less than 1.5 million to be mined over the next century-plus.
-        </div>
-        <div class="coin-desc">
-            Often called <strong>"digital gold,"</strong> Bitcoin is primarily used as a <strong>store of value</strong> and a hedge against inflation, similar to precious metals. It has the largest market cap, the most network participants, the strongest security (the Bitcoin blockchain has never been successfully hacked), and the strongest brand recognition of any cryptocurrency. Institutional adoption has grown significantly, with major corporations and even some governments holding Bitcoin on their balance sheets.
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">Store of Value / Digital Gold</span></div>
-            <div><span class="coin-stat-value">Launched: 2009</span></div>
-            <div><span class="coin-stat-value">Max Supply: 21M BTC</span></div>
-            <div><span class="coin-stat-value">Consensus: Proof-of-Work</span></div>
-        </div>
-    </div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">#2</span>
-            <span class="coin-name">Ethereum</span>
-            <span class="coin-symbol">ETH</span>
-        </div>
-        <div class="coin-desc">
-            <strong>Ethereum</strong>, launched in 2015 by Vitalik Buterin and a team of developers, is more than just a cryptocurrency — it is a <strong>decentralized computing platform</strong> that enables developers to build and deploy smart contracts and decentralized applications (dApps). This programmability is Ethereum's key innovation and what distinguishes it from Bitcoin.
-        </div>
-        <div class="coin-desc">
-            Ethereum's native currency, Ether (ETH), is used to pay for computation on the network (called <strong>"gas fees"</strong>). The platform underwent a historic transition from proof-of-work to <strong>proof-of-stake</strong> in September 2022 (a major upgrade known as "The Merge"), reducing its energy consumption by approximately 99.9%. Subsequent upgrades (Shanghai, Cancun-Deneb) have improved scalability and reduced fees.
-        </div>
-        <div class="coin-desc">
-            Ethereum hosts the vast majority of <strong>DeFi (Decentralized Finance)</strong> applications, NFT marketplaces, and Web3 projects. It has the largest ecosystem of any smart contract platform, with thousands of developers building on it. Major applications include Uniswap (DEX), Aave (lending), MakerDAO (stablecoin), and the ERC-20 token standard that powers countless tokens.
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">Smart Contract Platform</span></div>
-            <div><span class="coin-stat-value">Launched: 2015</span></div>
-            <div><span class="coin-stat-value">Consensus: Proof-of-Stake</span></div>
-            <div><span class="coin-stat-value">Gas Token: ETH</span></div>
-        </div>
-    </div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">#3</span>
-            <span class="coin-name">Tether</span>
-            <span class="coin-symbol">USDT</span>
-        </div>
-        <div class="coin-desc">
-            <strong>Tether (USDT)</strong> is the largest <strong>stablecoin</strong> — a cryptocurrency designed to maintain a stable value by being pegged to a real-world asset, in this case the US Dollar. Each USDT is intended to be backed by one dollar of reserves held by Tether Limited. Stablecoins like USDT and USDC play a crucial role in the crypto ecosystem by providing a stable medium of exchange and a safe haven during market volatility.
-        </div>
-        <div class="coin-desc">
-            Traders use USDT extensively to move funds between exchanges without converting to traditional fiat currency, to park value during market downturns, and to provide liquidity on DeFi platforms. USDT is available on multiple blockchain networks including Ethereum (ERC-20), Tron (TRC-20), Solana, and many others, making it highly versatile and widely accepted.
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">Stablecoin (USD-pegged)</span></div>
-            <div><span class="coin-stat-value">Launched: 2014</span></div>
-            <div><span class="coin-stat-value">Peg: 1 USDT = $1</span></div>
-        </div>
-    </div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">#4</span>
-            <span class="coin-name">XRP</span>
-            <span class="coin-symbol">XRP</span>
-        </div>
-        <div class="coin-desc">
-            <strong>XRP</strong> is the native cryptocurrency of the <strong>XRP Ledger</strong>, a decentralized blockchain technology developed by Ripple Labs. XRP is designed primarily for <strong>fast, low-cost cross-border payments</strong> and real-time settlement between financial institutions. Unlike Bitcoin and Ethereum, XRP does not use mining; transactions are validated through a <strong>consensus protocol</strong> that is faster and more energy-efficient.
-        </div>
-        <div class="coin-desc">
-            XRP transactions settle in <strong>3-5 seconds</strong> with fees of fractions of a cent. The XRP Ledger can handle approximately 1,500 transactions per second. XRP has gained significant traction with financial institutions for cross-border payment corridors, offering a faster and cheaper alternative to the traditional SWIFT banking system.
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">Payment / Settlement</span></div>
-            <div><span class="coin-stat-value">Launched: 2012</span></div>
-            <div><span class="coin-stat-value">Speed: 3-5 second txs</span></div>
-            <div><span class="coin-stat-value">TPS: ~1,500</span></div>
-        </div>
-    </div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">#5</span>
-            <span class="coin-name">Solana</span>
-            <span class="coin-symbol">SOL</span>
-        </div>
-        <div class="coin-desc">
-            <strong>Solana</strong> is a high-performance blockchain platform launched in 2020, designed to support <strong>scalable decentralized applications</strong> and cryptocurrencies. It uses a unique combination of proof-of-stake and a novel technology called <strong>Proof of History (PoH)</strong> to achieve high throughput without sacrificing security or decentralization.
-        </div>
-        <div class="coin-desc">
-            Solana can theoretically process over <strong>65,000 transactions per second</strong> (TPS) with sub-cent fees, making it one of the fastest blockchain networks in production. Its low costs have made it a popular choice for DeFi applications, NFT marketplaces, and Web3 gaming. The Solana ecosystem includes major projects like Serum (DEX), Magic Eden (NFT marketplace), and Helium (decentralized wireless network). Despite facing network outages during periods of high activity, the development team has implemented improvements to enhance reliability.
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">High-Performance Smart Contracts</span></div>
-            <div><span class="coin-stat-value">Launched: 2020</span></div>
-            <div><span class="coin-stat-value">Consensus: PoS + PoH</span></div>
-            <div><span class="coin-stat-value">TPS: Up to 65,000</span></div>
-        </div>
-    </div>
-
-    <div class="category-section">💎 Mid & Small Cap — Notable Coins ($100M-$10B+)</div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">~#6</span>
-            <span class="coin-name">USD Coin</span>
-            <span class="coin-symbol">USDC</span>
-        </div>
-        <div class="coin-desc">
-            <strong>USDC</strong> is a major stablecoin issued by Circle, a regulated financial services company. Unlike Tether, USDC is subject to regular audits and full reserve attestations, making it a preferred choice for institutional users who require transparency. USDC is widely used in DeFi applications and is natively supported by many blockchain networks including Ethereum, Solana, Avalanche, and Polygon.
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">Stablecoin (USD-pegged)</span></div>
-            <div><span class="coin-stat-value">Launched: 2018</span></div>
-            <div><span class="coin-stat-value">Audited: Monthly</span></div>
-        </div>
-    </div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">~#7</span>
-            <span class="coin-name">BNB</span>
-            <span class="coin-symbol">BNB</span>
-        </div>
-        <div class="coin-desc">
-            <strong>BNB</strong> is the native token of the Binance ecosystem, originally created as an ERC-20 token on Ethereum before migrating to the BNB Chain (formerly Binance Chain). BNB is used for trading fee discounts on Binance exchange, powering applications on BNB Smart Chain, transaction fees on BNB Chain, and participating in token sales on Binance Launchpad. BNB undergoes regular "burns" (permanent removal from supply), creating deflationary pressure.
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">Exchange Token / Smart Chain</span></div>
-            <div><span class="coin-stat-value">Launched: 2017</span></div>
-            <div><span class="coin-stat-value">Chain: BNB Chain</span></div>
-        </div>
-    </div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">~#8</span>
-            <span class="coin-name">Cardano</span>
-            <span class="coin-symbol">ADA</span>
-        </div>
-        <div class="coin-desc">
-            <strong>Cardano (ADA)</strong> is a proof-of-stake blockchain platform founded by Charles Hoskinson, one of Ethereum's co-founders. Cardano is distinguished by its <strong>academic peer-reviewed approach</strong> to development, with all protocol changes undergoing rigorous academic scrutiny before implementation. The platform uses a unique consensus mechanism called Ouroboros and has a multi-layer architecture that separates the settlement layer from the computation layer for enhanced security.
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">Smart Contract Platform</span></div>
-            <div><span class="coin-stat-value">Launched: 2017</span></div>
-            <div><span class="coin-stat-value">Consensus: PoS (Ouroboros)</span></div>
-        </div>
-    </div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">~#9</span>
-            <span class="coin-name">Dogecoin</span>
-            <span class="coin-symbol">DOGE</span>
-        </div>
-        <div class="coin-desc">
-            <strong>Dogecoin (DOGE)</strong> was created in 2013 as a joke by software engineers Billy Markus and Jackson Palmer, featuring the Shiba Inu dog from the "Doge" meme as its logo. Despite its humorous origins, Dogecoin has grown into one of the most traded and recognized cryptocurrencies with a large, passionate community. It uses a scrypt-based proof-of-work algorithm and has an inflationary supply (approximately 5 billion new DOGE per year).
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">Meme Coin / Payments</span></div>
-            <div><span class="coin-stat-value">Launched: 2013</span></div>
-            <div><span class="coin-stat-value">Supply: Inflationary</span></div>
-        </div>
-    </div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">~#10</span>
-            <span class="coin-name">Polkadot</span>
-            <span class="coin-symbol">DOT</span>
-        </div>
-        <div class="coin-desc">
-            <strong>Polkadot (DOT)</strong> is a multi-chain network founded by Dr. Gavin Wood, another Ethereum co-founder. Polkadot enables different blockchains (called "parachains") to <strong>interoperate and share information securely</strong> within a single ecosystem. Its relay chain architecture provides shared security across all connected parachains, allowing them to communicate and transfer value without relying on centralized bridges.
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">Multi-Chain Interoperability</span></div>
-            <div><span class="coin-stat-value">Launched: 2020</span></div>
-            <div><span class="coin-stat-value">Founder: Gavin Wood</span></div>
-        </div>
-    </div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">~#11</span>
-            <span class="coin-name">Chainlink</span>
-            <span class="coin-symbol">LINK</span>
-        </div>
-        <div class="coin-desc">
-            <strong>Chainlink (LINK)</strong> is a <strong>decentralized oracle network</strong> that connects smart contracts with real-world data, APIs, and payment systems. Oracles are essential infrastructure for blockchain applications because blockchains cannot natively access external data (e.g., price feeds, weather data, sports scores). Chainlink uses a network of node operators to fetch and verify real-world data, ensuring it is accurate and tamper-proof before delivering it to smart contracts. It is the most widely used oracle network in DeFi.
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">Decentralized Oracle Network</span></div>
-            <div><span class="coin-stat-value">Launched: 2017</span></div>
-            <div><span class="coin-stat-value">Data: Real-world feeds</span></div>
-        </div>
-    </div>
-
-    <div class="coin-card">
-        <div class="coin-header">
-            <span class="coin-rank">~#12</span>
-            <span class="coin-name">Avalanche</span>
-            <span class="coin-symbol">AVAX</span>
-        </div>
-        <div class="coin-desc">
-            <strong>Avalanche (AVAX)</strong> is a fast, low-cost smart contract platform designed for launching decentralized applications and custom blockchain networks. It uses a novel consensus protocol called <strong>Snowman</strong> that achieves high throughput (up to 4,500 TPS) with near-instant finality (under 2 seconds). Avalanche's subnet architecture allows developers to create custom, application-specific blockchains that can interoperate within the Avalanche ecosystem.
-        </div>
-        <div class="coin-stats">
-            <div><span class="coin-stat-value">Smart Contract Platform</span></div>
-            <div><span class="coin-stat-value">Launched: 2020</span></div>
-            <div><span class="coin-stat-value">Consensus: Snowman</span></div>
-            <div><span class="coin-stat-value">TPS: Up to 4,500</span></div>
-        </div>
-    </div>
-
-    <h2>Understanding Cryptocurrency Categories</h2>
-    <p>Cryptocurrencies can be broadly categorized by their primary function. Here is how the major categories differ:</p>
-    <ul>
-        <li><strong>Store of Value</strong> (Bitcoin) — Designed to preserve purchasing power over time, typically with limited supplies</li>
-        <li><strong>Smart Contract Platforms</strong> (Ethereum, Solana, Cardano, Avalanche) — Enable developers to build decentralized applications on top of their blockchains</li>
-        <li><strong>Stablecoins</strong> (USDT, USDC) — Pegged to stable assets like the US Dollar, providing price stability for trading and DeFi</li>
-        <li><strong>Payment / Settlement</strong> (XRP, Litecoin) — Optimized for fast, low-cost transactions for daily use or cross-border payments</li>
-        <li><strong>Exchange Tokens</strong> (BNB) — Native tokens of cryptocurrency exchanges, used for fee discounts and ecosystem participation</li>
-        <li><strong>Oracle Networks</strong> (Chainlink) — Provide real-world data to smart contracts, essential infrastructure for DeFi</li>
-        <li><strong>Interoperability</strong> (Polkadot, Cosmos) — Enable different blockchains to communicate and share data with each other</li>
-        <li><strong>Meme Coins</strong> (Dogecoin, Shiba Inu) — Often started as jokes but have developed significant communities and market presence</li>
-    </ul>
-
-    <h2>How Cryptocurrency Rankings Change</h2>
-    <p>Cryptocurrency rankings by market cap are <strong>dynamic and can shift significantly</strong> over time. New projects can rise rapidly during bull markets, while established coins can lose ground during market corrections. Factors that influence rankings include:</p>
-    <ul>
-        <li>Overall market conditions (bull vs. bear markets affect all coins differently)</li>
-        <li>Technological developments and network upgrades</li>
-        <li>Regulatory news affecting specific coins or categories</li>
-        <li>Adoption and partnership announcements</li>
-        <li>Community growth and developer activity</li>
-    </ul>
-    <p>For the <strong>most up-to-date rankings and live prices</strong>, visit our <a href="/">real-time cryptocurrency price tracker</a>.</p>
-
-    <div class="note">
-        <strong>⚠️ Not Financial Advice</strong>
-        <p>This page is for educational and informational purposes only. It does not constitute investment advice, a recommendation to buy or sell any cryptocurrency, or an endorsement of any project. Cryptocurrency investments carry significant risk, and prices can be highly volatile. Always consult with a qualified financial advisor before making investment decisions. See our <a href="disclaimer.html">full disclaimer</a> and read our <a href="blog/what-is-cryptocurrency.html">beginner's guide</a> to learn more.</p>
-    </div>
-
-    <footer class="page-footer">
-        <a href="/">Home</a><span class="dot">·</span>
-        <a href="/how-to-use.html">How to Use</a><span class="dot">·</span>
-        <a href="/faq.html">FAQ</a><span class="dot">·</span>
-        <a href="/top-cryptocurrencies.html">Top Cryptocurrencies</a><span class="dot">·</span>
-        <a href="/tools.html">Tools</a><span class="dot">·</span>
-        <a href="/about.html">About</a><span class="dot">·</span>
-        <a href="/contact.html">Contact</a><span class="dot">·</span>
-        <a href="/privacy-policy.html">Privacy</a><span class="dot">·</span>
-        <a href="/terms.html">Terms</a><span class="dot">·</span>
-        <a href="/disclaimer.html">Disclaimer</a>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/himanshu-kathuria19/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="https://x.com/cryptolivespace" target="_blank" rel="noopener" aria-label="X (Twitter)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/cryptolive2026/" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
-        </div>
-        <p style="margin-top:0.75rem;">&copy; 2026 CryptoLive. All rights reserved.</p>
-    </footer>
-</div>
-
-<script>
-(function() {
-    'use strict';
-    function initConsentBanner() {
-        const banner = document.getElementById('consentBanner');
-        const acceptBtn = document.getElementById('consentAccept');
-        const rejectBtn = document.getElementById('consentReject');
-        const savedConsent = localStorage.getItem('cryptolive_consent');
-        if (savedConsent === 'accepted' || savedConsent === 'rejected') {
-            banner.remove();
-            return;
+    <!-- JSON-LD Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://cryptolive.space/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Top Cryptocurrencies",
+            "item": "https://cryptolive.space/top-cryptocurrencies.html"
         }
-        banner.classList.remove('hidden');
-        acceptBtn.addEventListener('click', function() {
-            gtag('consent', 'update', {
-                'analytics_storage': 'granted',
-                'ad_storage': 'granted',
-                'ad_user_data': 'granted',
-                'ad_personalization': 'granted'
-            });
-            localStorage.setItem('cryptolive_consent', 'accepted');
-            banner.classList.add('hidden');
-            setTimeout(() => { banner.style.display = 'none'; }, 400);
-        });
-        rejectBtn.addEventListener('click', function() {
-            localStorage.setItem('cryptolive_consent', 'rejected');
-            banner.classList.add('hidden');
-            setTimeout(() => { banner.style.display = 'none'; }, 400);
-        });
+        ]
     }
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initConsentBanner);
-    } else {
-        initConsentBanner();
-    }
-})();
-</script>
+    </script>
 
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="container">
+                <a href="/" class="navbar-logo">
+                    <span class="logo-icon">📈</span>
+                    CryptoLive
+                </a>
+                <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="navbar-links" role="menubar">
+                    <li role="none"><a href="/" role="menuitem">Home</a></li>
+                    <li role="none"><a href="/about.html" role="menuitem">About</a></li>
+                    <li role="none"><a href="/tools.html" role="menuitem">Tools</a></li>
+                    <li role="none"><a href="/top-cryptocurrencies.html" role="menuitem" class="active">Top Cryptocurrencies</a></li>
+                    <li role="none"><a href="/faq.html" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="/how-to-use.html" role="menuitem">How to Use</a></li>
+                    <li role="none"><a href="/blog/" role="menuitem">Blog</a></li>
+                    <li role="none"><a href="/contact.html" role="menuitem">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Top Cryptocurrencies</h1>
+                <p>Leading digital assets ranked by market capitalization with key metrics and educational resources.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="content" style="max-width: 900px; margin: 0 auto;">
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Symbol</th>
+                                    <th>Category</th>
+                                    <th>Learn More</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><strong>Bitcoin</strong></td>
+                                    <td>BTC</td>
+                                    <td>Store of Value</td>
+                                    <td><a href="/blog/what-is-cryptocurrency.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><strong>Ethereum</strong></td>
+                                    <td>ETH</td>
+                                    <td>Smart Contracts</td>
+                                    <td><a href="/blog/smart-contracts-explained.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><strong>Tether</strong></td>
+                                    <td>USDT</td>
+                                    <td>Stablecoin</td>
+                                    <td><a href="/blog/stablecoins-vs-cbdc.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td><strong>XRP</strong></td>
+                                    <td>XRP</td>
+                                    <td>Payments</td>
+                                    <td><a href="/blog/blockchain-explained.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td><strong>BNB</strong></td>
+                                    <td>BNB</td>
+                                    <td>Exchange / Utility</td>
+                                    <td><a href="/blog/web3-dapps-guide.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td><strong>USD Coin</strong></td>
+                                    <td>USDC</td>
+                                    <td>Stablecoin</td>
+                                    <td><a href="/blog/stablecoins-vs-cbdc.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td><strong>Solana</strong></td>
+                                    <td>SOL</td>
+                                    <td>Layer 1</td>
+                                    <td><a href="/blog/ethereum-layer-2-scaling-2026.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td><strong>Cardano</strong></td>
+                                    <td>ADA</td>
+                                    <td>Layer 1</td>
+                                    <td><a href="/blog/blockchain-explained.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td><strong>Dogecoin</strong></td>
+                                    <td>DOGE</td>
+                                    <td>Memecoin</td>
+                                    <td><a href="/blog/memecoin-guide-2026.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>10</td>
+                                    <td><strong>TRON</strong></td>
+                                    <td>TRX</td>
+                                    <td>Smart Contracts</td>
+                                    <td><a href="/blog/blockchain-explained.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>11</td>
+                                    <td><strong>Avalanche</strong></td>
+                                    <td>AVAX</td>
+                                    <td>Layer 1</td>
+                                    <td><a href="/blog/ethereum-layer-2-scaling-2026.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>12</td>
+                                    <td><strong>Chainlink</strong></td>
+                                    <td>LINK</td>
+                                    <td>Oracle</td>
+                                    <td><a href="/blog/smart-contracts-explained.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>13</td>
+                                    <td><strong>Polkadot</strong></td>
+                                    <td>DOT</td>
+                                    <td>Interoperability</td>
+                                    <td><a href="/blog/cross-chain-interoperability.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>14</td>
+                                    <td><strong>Polygon</strong></td>
+                                    <td>MATIC</td>
+                                    <td>Layer 2</td>
+                                    <td><a href="/blog/ethereum-layer-2-scaling-2026.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>15</td>
+                                    <td><strong>Shiba Inu</strong></td>
+                                    <td>SHIB</td>
+                                    <td>Memecoin</td>
+                                    <td><a href="/blog/memecoin-guide-2026.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>16</td>
+                                    <td><strong>Dai</strong></td>
+                                    <td>DAI</td>
+                                    <td>Stablecoin</td>
+                                    <td><a href="/blog/stablecoins-vs-cbdc.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>17</td>
+                                    <td><strong>Uniswap</strong></td>
+                                    <td>UNI</td>
+                                    <td>DeFi / DEX</td>
+                                    <td><a href="/blog/defi-lending-borrowing.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>18</td>
+                                    <td><strong>Litecoin</strong></td>
+                                    <td>LTC</td>
+                                    <td>Payments</td>
+                                    <td><a href="/blog/what-is-cryptocurrency.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>19</td>
+                                    <td><strong>Bitcoin Cash</strong></td>
+                                    <td>BCH</td>
+                                    <td>Payments</td>
+                                    <td><a href="/blog/what-is-cryptocurrency.html">Guide &rarr;</a></td>
+                                </tr>
+                                <tr>
+                                    <td>20</td>
+                                    <td><strong>Toncoin</strong></td>
+                                    <td>TON</td>
+                                    <td>Layer 1</td>
+                                    <td><a href="/blog/blockchain-explained.html">Guide &rarr;</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p style="margin-top: var(--space-xl); font-size: 0.85rem; color: var(--text-secondary);">Rankings are based on approximate market capitalization and are for educational reference only. Prices and rankings change frequently. Always verify current data from reliable sources.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="navbar-logo">
+                        <span class="logo-icon">📈</span>
+                        CryptoLive
+                    </a>
+                    <p>Your trusted source for cryptocurrency education, interactive tools, and market insights.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/how-to-use.html">How to Use</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/tools.html">Crypto Tools</a></li>
+                        <li><a href="/top-cryptocurrencies.html">Top Cryptocurrencies</a></li>
+                        <li><a href="/blog/">Blog &amp; Guides</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span data-current-year></span> CryptoLive. All rights reserved.</p>
+                <p>Empowering crypto knowledge for everyone.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/himanshu-kathuria19/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://x.com/cryptolivespace" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/cryptolive2026/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="consent-banner" id="consent-banner" role="dialog" aria-label="Cookie consent">
+        <div class="consent-content">
+            <p>We value your privacy. This website uses cookies to enhance your browsing experience. <a href="/privacy-policy.html">Learn more</a>.</p>
+            <div class="consent-actions">
+                <button id="consent-reject" class="btn btn-secondary btn-sm">Reject All</button>
+                <button id="consent-accept" class="btn btn-primary btn-sm">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">&#8593;</button>
+    <script src="/js/main.js"></script>
 </body>
 </html>

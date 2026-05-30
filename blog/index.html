@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Blog & Educational Guides — CryptoLive</title>
+    <meta name="description" content="Explore 23 expert-written crypto guides covering blockchain, DeFi, trading, security, NFTs, and more. Your complete cryptocurrency education hub.">
+    <link rel="canonical" href="https://cryptolive.space/blog/">
+    <link rel="icon" href="/logo.png" type="image/png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="google-adsense-account" content="ca-pub-8228373593966913">
+    <meta property="og:title" content="Crypto Blog & Educational Guides — CryptoLive">
+    <meta property="og:description" content="Explore 23+ expert-written guides on cryptocurrency, blockchain, DeFi, NFTs, trading strategies, security, and market analysis.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cryptolive.space/blog/">
+    <meta property="og:image" content="https://cryptolive.space/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Crypto Blog & Educational Guides — CryptoLive">
+    <meta name="twitter:description" content="Explore 23+ expert-written guides on cryptocurrency, blockchain, DeFi, NFTs, trading strategies, security, and market analysis.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Google Analytics (GA4) with Consent Mode -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5619GV6WJ6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 1000
+        });
+        gtag('set', 'ads_data_redaction', true);
+        gtag('config', 'G-5619GV6WJ6');
+    </script>
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913" crossorigin="anonymous"></script>
+    <style>
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--space-lg); margin-top: var(--space-lg); }
+        .blog-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: var(--space-lg); transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+        .blog-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--accent-primary); }
+        .blog-card h2 { font-size: 1.1rem; margin-bottom: var(--space-sm); }
+        .blog-card h2 a { color: var(--text-primary); text-decoration: none; }
+        .blog-card h2 a:hover { color: var(--accent-primary); }
+        .blog-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: var(--space-md); flex: 1; }
+        .blog-card .card-meta { font-size: 0.8rem; color: var(--text-muted); }
+        .blog-card .card-meta a { color: var(--accent-primary); text-decoration: none; font-weight: 500; }
+        .blog-card .card-meta a:hover { text-decoration: underline; }
+        .blog-search { display: flex; flex-wrap: wrap; gap: var(--space-md); margin-bottom: var(--space-lg); align-items: center; }
+        .blog-search input { flex: 1; min-width: 200px; padding: 0.65rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-card); color: var(--text-primary); font-size: 0.9rem; outline: none; transition: border-color 0.2s, box-shadow 0.2s; }
+        .blog-search input:focus { border-color: var(--accent-primary); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+        .blog-search input::placeholder { color: var(--text-muted); }
+        .blog-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .blog-filters button { padding: 0.5rem 1rem; border: 1px solid var(--border-color); border-radius: 999px; background: var(--bg-card); color: var(--text-secondary); font-size: 0.85rem; cursor: pointer; transition: all 0.2s; white-space: nowrap; font-weight: 500; }
+        .blog-filters button:hover { border-color: var(--accent-primary); color: var(--accent-primary); }
+        .blog-filters button.active { background: var(--accent-primary); border-color: var(--accent-primary); color: #fff; }
+        .blog-card.hidden { display: none; }
+        @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } .blog-search { flex-direction: column; align-items: stretch; } }
+    </style>
+
+    <!-- JSON-LD Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "CryptoLive",
+        "url": "https://cryptolive.space/",
+        "logo": "https://cryptolive.space/logo.png",
+        "description": "Free cryptocurrency education, interactive tools, and market insights.",
+        "email": "gamemastergameplayss@gmail.com",
+        "foundingDate": "2026",
+        "founder": {
+            "@type": "Person",
+            "name": "Himanshu Kathuria"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/himanshu-kathuria19/",
+            "https://x.com/cryptolivespace",
+            "https://www.instagram.com/cryptolive2026/"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "gamemastergameplayss@gmail.com",
+            "contactType": "customer service",
+            "availableLanguage": ["English"]
+        }
+    }
+    </script>
+
+    <!-- JSON-LD Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://cryptolive.space/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://cryptolive.space/blog/"
+        }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="container">
+                <a href="/" class="navbar-logo">
+                    <span class="logo-icon">📈</span>
+                    CryptoLive
+                </a>
+                <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="navbar-links" role="menubar">
+                    <li role="none"><a href="/" role="menuitem">Home</a></li>
+                    <li role="none"><a href="/about.html" role="menuitem">About</a></li>
+                    <li role="none"><a href="/tools.html" role="menuitem">Tools</a></li>
+                    <li role="none"><a href="/top-cryptocurrencies.html" role="menuitem">Top Cryptocurrencies</a></li>
+                    <li role="none"><a href="/faq.html" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="/how-to-use.html" role="menuitem">How to Use</a></li>
+                    <li role="none"><a href="/blog/" role="menuitem" aria-current="page">Blog</a></li>
+                    <li role="none"><a href="/contact.html" role="menuitem">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <p class="breadcrumbs">
+                    <a href="/">Home</a>
+                    <span class="sep">/</span>
+                    <span>Blog</span>
+                </p>
+                <h1>Crypto Blog &amp; Educational Guides</h1>
+                <p>23 expert-written guides to help you master cryptocurrency, blockchain, DeFi, and more. Updated for 2026.</p>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="blog-search">
+                    <input type="text" id="blogSearchInput" placeholder="🔍  Search articles by keyword..." aria-label="Search blog articles">
+                    <div class="blog-filters" id="blogFilters">
+                        <button class="active" data-filter="all">All</button>
+                        <button data-filter="beginners">Beginners</button>
+                        <button data-filter="defi">DeFi &amp; Web3</button>
+                        <button data-filter="trading">Trading</button>
+                        <button data-filter="technology">Technology</button>
+                        <button data-filter="security">Security &amp; Tax</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+
+                <div class="blog-grid">
+
+                    <div class="blog-card" data-category="beginners">
+                        <h2><a href="/blog/what-is-cryptocurrency.html">What Is Cryptocurrency? A Beginner's Guide to Digital Money</a></h2>
+                        <p>Learn what cryptocurrency is, how blockchain works, and everything beginners need to know about digital currencies. A comprehensive educational guide to get you started.</p>
+                        <div class="card-meta"><a href="/blog/what-is-cryptocurrency.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="beginners,technology">
+                        <h2><a href="/blog/blockchain-explained.html">Blockchain Explained Simply</a></h2>
+                        <p>Blockchain explained in simple terms. Understand how distributed ledger technology works, what makes it secure, and why it matters beyond just cryptocurrency.</p>
+                        <div class="card-meta"><a href="/blog/blockchain-explained.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="beginners,technology">
+                        <h2><a href="/blog/smart-contracts-explained.html">Smart Contracts Explained: A Beginner's Guide</a></h2>
+                        <p>Learn how smart contracts work, their real-world applications, and why they are the building blocks of decentralized finance and Web3 applications.</p>
+                        <div class="card-meta"><a href="/blog/smart-contracts-explained.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="beginners,security">
+                        <h2><a href="/blog/crypto-wallets-guide.html">Crypto Wallets Guide 2026: Hot vs Cold Storage Explained</a></h2>
+                        <p>Complete guide to crypto wallets in 2026. Compare hot wallets, cold wallets, hardware wallets, and software wallets. Learn how to choose and secure your crypto storage.</p>
+                        <div class="card-meta"><a href="/blog/crypto-wallets-guide.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="defi">
+                        <h2><a href="/blog/daos-explained.html">DAOs Explained: A Complete Guide to Decentralized Autonomous Organizations</a></h2>
+                        <p>Complete guide to DAOs in 2026. Learn how decentralized autonomous organizations work, their governance models, and how to participate in DAO communities.</p>
+                        <div class="card-meta"><a href="/blog/daos-explained.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="defi">
+                        <h2><a href="/blog/staking-yield-farming-guide.html">Staking and Yield Farming Guide 2026: Passive Income in DeFi</a></h2>
+                        <p>Complete guide to staking and yield farming in 2026. Learn how to earn passive income through proof-of-stake networks, liquidity pools, and DeFi protocols.</p>
+                        <div class="card-meta"><a href="/blog/staking-yield-farming-guide.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="defi">
+                        <h2><a href="/blog/defi-lending-borrowing.html">DeFi Lending and Borrowing: A Complete Guide</a></h2>
+                        <p>Complete guide to DeFi lending and borrowing in 2026. Understand how to earn interest on deposits, borrow assets, and navigate DeFi protocols safely.</p>
+                        <div class="card-meta"><a href="/blog/defi-lending-borrowing.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="defi">
+                        <h2><a href="/blog/web3-dapps-guide.html">Web3 and dApps Guide 2026: The Decentralized Internet</a></h2>
+                        <p>Complete guide to Web3 and dApps in 2026. Explore decentralized applications, how they work, and how to interact with the Web3 ecosystem.</p>
+                        <div class="card-meta"><a href="/blog/web3-dapps-guide.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="technology">
+                        <h2><a href="/blog/crypto-mining-guide-2026.html">Crypto Mining Guide 2026: How to Mine Cryptocurrency</a></h2>
+                        <p>Complete guide to mining in 2026. Learn about proof-of-work, ASIC vs GPU mining, mining pools, cloud mining services, and profitability calculations.</p>
+                        <div class="card-meta"><a href="/blog/crypto-mining-guide-2026.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="technology">
+                        <h2><a href="/blog/ethereum-layer-2-scaling-2026.html">Ethereum Layer 2 Scaling Solutions Compared 2026</a></h2>
+                        <p>Compare Ethereum Layer 2 solutions in 2026. Understand rollups (Optimistic and ZK), sidechains, Plasma, and state channels — and which ones to use.</p>
+                        <div class="card-meta"><a href="/blog/ethereum-layer-2-scaling-2026.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="technology">
+                        <h2><a href="/blog/cross-chain-interoperability.html">Cross-Chain Interoperability: How Blockchain Bridges Work</a></h2>
+                        <p>Learn how cross-chain bridges work, the different types of interoperability solutions, and the risks and benefits of moving assets between blockchains.</p>
+                        <div class="card-meta"><a href="/blog/cross-chain-interoperability.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="beginners,defi">
+                        <h2><a href="/blog/stablecoins-vs-cbdc.html">Stablecoins vs CBDCs: Key Differences Explained for 2026</a></h2>
+                        <p>Compare stablecoins and CBDCs in 2026. Understand the key differences between algorithmic stablecoins, fiat-backed stablecoins, and central bank digital currencies.</p>
+                        <div class="card-meta"><a href="/blog/stablecoins-vs-cbdc.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="trading">
+                        <h2><a href="/blog/bitcoin-etf-explained.html">Bitcoin ETFs Explained: A Complete Guide for 2026</a></h2>
+                        <p>Complete guide to Bitcoin ETFs in 2026. Learn how spot Bitcoin ETFs work, their tax implications, and how to invest in Bitcoin through traditional brokerages.</p>
+                        <div class="card-meta"><a href="/blog/bitcoin-etf-explained.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="trading">
+                        <h2><a href="/blog/bitcoin-as-inflation-hedge.html">Is Bitcoin Still a Hedge Against Inflation in 2026?</a></h2>
+                        <p>Analyze Bitcoin's role as an inflation hedge in 2026. Explore its correlation with macroeconomic factors, historical performance, and comparison with traditional hedges like gold.</p>
+                        <div class="card-meta"><a href="/blog/bitcoin-as-inflation-hedge.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="defi">
+                        <h2><a href="/blog/rwa-tokenization-2026.html">RWA Tokenization 2026: Real-World Assets on the Blockchain</a></h2>
+                        <p>Learn how RWA tokenization is transforming finance in 2026. Explore how real estate, commodities, and traditional assets are being brought onto the blockchain.</p>
+                        <div class="card-meta"><a href="/blog/rwa-tokenization-2026.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="defi,technology">
+                        <h2><a href="/blog/ai-in-defi-2026.html">AI Agents in DeFi 2026: How Artificial Intelligence is Transforming Finance</a></h2>
+                        <p>Explore how AI agents are transforming DeFi in 2026. Learn about automated trading, AI-powered yield optimization, risk management, and the future of intelligent finance.</p>
+                        <div class="card-meta"><a href="/blog/ai-in-defi-2026.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="defi">
+                        <h2><a href="/blog/nft-market-trends-2026.html">NFT Market Trends 2026: Digital Collectibles and Utility Tokens</a></h2>
+                        <p>Explore NFT market trends in 2026. Learn about digital collectibles, utility NFTs, gaming assets, and how the NFT space has evolved beyond just profile pictures.</p>
+                        <div class="card-meta"><a href="/blog/nft-market-trends-2026.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="trading">
+                        <h2><a href="/blog/memecoin-guide-2026.html">Memecoin Guide 2026: Risks, Rewards, and How to Trade</a></h2>
+                        <p>Complete guide to memecoins in 2026. Learn what drives memecoin prices, how to identify scams, trading strategies, and the risks involved in this volatile sector.</p>
+                        <div class="card-meta"><a href="/blog/memecoin-guide-2026.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="trading">
+                        <h2><a href="/blog/how-to-read-crypto-charts.html">How to Read Crypto Charts: A Beginner's Technical Analysis Guide</a></h2>
+                        <p>Learn how to read crypto price charts in 2026. Master candlestick patterns, support and resistance, moving averages, RSI, and other essential technical analysis tools.</p>
+                        <div class="card-meta"><a href="/blog/how-to-read-crypto-charts.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="beginners,trading">
+                        <h2><a href="/blog/crypto-market-cap-explained.html">Cryptocurrency Market Cap Explained: What It Really Means</a></h2>
+                        <p>Learn what market capitalization means in crypto, how it differs from stock market cap, and why fully diluted valuation matters when evaluating cryptocurrency projects.</p>
+                        <div class="card-meta"><a href="/blog/crypto-market-cap-explained.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="trading">
+                        <h2><a href="/blog/crypto-market-analysis-strategies.html">Crypto Market Analysis Strategies for 2026</a></h2>
+                        <p>Learn crypto market analysis in 2026. Master fundamental analysis, on-chain metrics, sentiment analysis, and the tools professional traders use to evaluate the market.</p>
+                        <div class="card-meta"><a href="/blog/crypto-market-analysis-strategies.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="security">
+                        <h2><a href="/blog/crypto-taxation-guide-2026.html">Crypto Taxation Guide 2026: How to Report and Minimize Taxes</a></h2>
+                        <p>Complete guide to crypto taxation in 2026. Learn about capital gains, staking rewards, DeFi income reporting, tax-loss harvesting, and how to stay compliant with the IRS.</p>
+                        <div class="card-meta"><a href="/blog/crypto-taxation-guide-2026.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                    <div class="blog-card" data-category="security">
+                        <h2><a href="/blog/crypto-security-tips.html">Cryptocurrency Security Tips: How to Protect Your Digital Assets</a></h2>
+                        <p>Essential security tips to protect your cryptocurrency assets. Learn about phishing prevention, hardware wallets, seed phrase safety, and common crypto scams to avoid in 2026.</p>
+                        <div class="card-meta"><a href="/blog/crypto-security-tips.html">Read Guide &rarr;</a></div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo-icon">📈</span>
+                    <span style="font-size:1.2rem;font-weight:700;color:var(--text-primary);margin-left:0.5rem;">CryptoLive</span>
+                    <p>Free, real-time cryptocurrency price tracker and educational platform. No signup required.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/himanshu-kathuria19/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                        <a href="https://x.com/cryptolivespace" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/cryptolive2026/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="/">Live Tracker</a></li>
+                        <li><a href="/tools.html">Crypto Tools</a></li>
+                        <li><a href="/top-cryptocurrencies.html">Top Cryptocurrencies</a></li>
+                        <li><a href="/how-to-use.html">How to Use</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/blog/">Blog &amp; Guides</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span data-current-year></span> CryptoLive. All rights reserved.</p>
+                <p>Empowering crypto knowledge for everyone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="consent-banner" id="consent-banner" role="dialog" aria-label="Cookie consent">
+        <div class="consent-content">
+            <p>We value your privacy. This website uses cookies to enhance your browsing experience. <a href="/privacy-policy.html">Learn more</a>.</p>
+            <div class="consent-actions">
+                <button id="consent-reject" class="btn btn-secondary btn-sm">Reject All</button>
+                <button id="consent-accept" class="btn btn-primary btn-sm">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">&uarr;</button>
+    <script src="/js/main.js"></script>
+    <script>
+        (function() {
+            var searchInput = document.getElementById('blogSearchInput');
+            var filterButtons = document.querySelectorAll('#blogFilters button');
+            var blogCards = document.querySelectorAll('.blog-card');
+            var activeFilter = 'all';
+
+            function filterBlogs() {
+                var query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+                blogCards.forEach(function(card) {
+                    var categories = (card.getAttribute('data-category') || '').toLowerCase();
+                    var title = (card.querySelector('h2') ? card.querySelector('h2').textContent.toLowerCase() : '');
+                    var desc = (card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '');
+
+                    var matchesCategory = (activeFilter === 'all') || categories.split(',').includes(activeFilter);
+                    var matchesSearch = !query || title.indexOf(query) !== -1 || desc.indexOf(query) !== -1;
+
+                    card.classList.toggle('hidden', !(matchesCategory && matchesSearch));
+                });
+            }
+
+            // Search input handler
+            if (searchInput) {
+                searchInput.addEventListener('input', filterBlogs);
+            }
+
+            // Filter button handlers
+            filterButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    filterButtons.forEach(function(b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+                    activeFilter = btn.getAttribute('data-filter');
+                    filterBlogs();
+                });
+            });
+        })();
+    </script>
+</body>
+</html>

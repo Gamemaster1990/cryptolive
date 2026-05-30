@@ -1,337 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Disclaimer — CryptoLive</title>
-    <meta name="description" content="Disclaimer — CryptoLive provides crypto prices for informational purposes only. Not financial advice." />
-    <link rel="canonical" href="https://cryptolive.space/disclaimer.html" />
-    <meta name="robots" content="index, follow" />
-    <meta name="google-adsense-account" content="ca-pub-8228373593966913" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <!-- Open Graph -->
-    <meta property="og:title" content="Disclaimer — CryptoLive" />
-    <meta property="og:description" content="CryptoLive disclaimer — prices for informational purposes only. Not financial advice." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://cryptolive.space/disclaimer.html" />
-    <meta property="og:image" content="https://cryptolive.space/logo.png" />
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        :root {
-            --bg: #0b0e17;
-            --bg-card: #1a2332;
-            --bg-card-hover: #1f2a3d;
-            --border: #1e2d3d;
-            --text: #f0f4fa;
-            --text-muted: #8892a8;
-            --accent: #3b82f6;
-            --red: #ff5252;
-            --red-bg: rgba(255, 82, 82, 0.1);
-        }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.8;
-            min-height: 100vh;
-        }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
+    <meta name="description" content="Important disclaimers about the educational content and tools provided on CryptoLive. Please read before using our website.">
+    <link rel="canonical" href="https://cryptolive.space/disclaimer.html">
+    <link rel="icon" href="/logo.png" type="image/png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="robots" content="index, follow">
+    <meta name="google-adsense-account" content="ca-pub-8228373593966913">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Disclaimer — CryptoLive">
+    <meta name="twitter:description" content="Important disclaimers about CryptoLive's educational content. Our guides and tools are for informational purposes only, not financial advice.">
 
-        .page-wrap {
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem 4rem;
-        }
+    <meta property="og:title" content="Disclaimer — CryptoLive">
+    <meta property="og:description" content="Important disclaimers about CryptoLive's educational content. Our guides and tools are for informational purposes only, not financial advice.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cryptolive.space/disclaimer.html">
+    <meta property="og:image" content="https://cryptolive.space/logo.png">
 
-        .top-nav {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 0.75rem 0;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
+    <!-- JSON-LD Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "CryptoLive",
+        "url": "https://cryptolive.space/",
+        "logo": "https://cryptolive.space/logo.png",
+        "description": "Free cryptocurrency education, interactive tools, and market insights.",
+        "email": "gamemastergameplayss@gmail.com",
+        "foundingDate": "2026",
+        "founder": {
+            "@type": "Person",
+            "name": "Himanshu Kathuria"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/in/himanshu-kathuria19/",
+            "https://x.com/cryptolivespace",
+            "https://www.instagram.com/cryptolive2026/"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "gamemastergameplayss@gmail.com",
+            "contactType": "customer service",
+            "availableLanguage": ["English"]
         }
-        .top-nav .back-home { font-size: 0.85rem; color: var(--text-muted); }
-        .top-nav .back-home:hover { color: var(--accent); }
-
-        h1 {
-            font-size: 1.75rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .last-updated {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 2rem;
-        }
-
-        .notice {
-            background: var(--red-bg);
-            border: 1px solid var(--red);
-            border-radius: 10px;
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 2rem;
-        }
-        .notice strong { color: var(--red); }
-        .notice p { color: #f0d0d0; margin-bottom: 0; font-size: 0.9rem; }
-
-        h2 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-top: 2.5rem;
-            margin-bottom: 0.75rem;
-            padding-bottom: 0.4rem;
-            border-bottom: 1px solid var(--border);
-        }
-        p { color: #c8d0e0; margin-bottom: 1rem; }
-        ul { margin: 0 0 1rem 1.5rem; }
-        li { color: #c8d0e0; margin-bottom: 0.4rem; }
-        strong { color: var(--text); }
-
-        .page-footer {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-        .page-footer a { color: var(--text-muted); }
-        .page-footer a:hover { color: var(--text); }
-        .page-footer .dot { margin: 0 0.4rem; }
-
-        @media (max-width: 480px) {
-            .page-wrap { padding: 1.5rem 1rem 3rem; }
-            h1 { font-size: 1.4rem; }
-        }
-        .social-links { display:flex; justify-content:center; gap:0.85rem; margin:1rem 0 0.75rem; }
-        .social-links a { display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--bg-card); border:1px solid var(--border); transition:all 0.2s; color:var(--text-muted); }
-        .social-links a:hover { background:var(--bg-card-hover); color:var(--accent); transform:translateY(-2px); text-decoration:none; }
-    
-        /* ===== CONSENT BANNER ===== */
-        #consentBanner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-            background: #131a2b;
-            border-top: 1px solid #1e2d3d;
-            padding: 1rem 1.5rem;
-            box-shadow: 0 -4px 24px rgba(0,0,0,0.4);
-            transform: translateY(0);
-            transition: transform 0.4s ease, opacity 0.4s ease;
-        }
-        #consentBanner.hidden {
-            transform: translateY(100%);
-            opacity: 0;
-            pointer-events: none;
-        }
-        #consentBanner .banner-inner {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 1.5rem;
-        }
-        #consentBanner .banner-text { flex: 1; min-width: 200px; }
-        #consentBanner .banner-title {
-            color: #f0f4fa;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-        #consentBanner .banner-description {
-            color: #8892a8;
-            font-size: 0.78rem;
-            line-height: 1.5;
-        }
-        #consentBanner .banner-description a { color: #3b82f6; text-decoration: underline; }
-        #consentBanner .banner-actions {
-            display: flex;
-            gap: 0.6rem;
-            flex-shrink: 0;
-            flex-wrap: wrap;
-        }
-        #consentBanner .btn-reject {
-            background: transparent;
-            border: 1px solid #1e2d3d;
-            color: #8892a8;
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.82rem;
-            transition: all 0.15s;
-        }
-        #consentBanner .btn-reject:hover {
-            border-color: #3b82f6;
-            color: #f0f4fa;
-        }
-        #consentBanner .btn-accept {
-            background: #3b82f6;
-            border: none;
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.82rem;
-            font-weight: 600;
-            transition: opacity 0.15s;
-        }
-        #consentBanner .btn-accept:hover { opacity: 0.9; }
-
-</style>
-
-    <!-- Google Analytics (GA4) with Consent Mode -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5619GV6WJ6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('consent', 'default', {
-            'analytics_storage': 'denied',
-            'ad_storage': 'denied',
-            'ad_user_data': 'denied',
-            'ad_personalization': 'denied',
-            'wait_for_update': 1000
-        });
-        gtag('set', 'ads_data_redaction', true);
-        gtag('config', 'G-5619GV6WJ6');
+    }
     </script>
-    <!-- Google AdSense -->
+
+    <!-- JSON-LD Structured Data: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://cryptolive.space/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Disclaimer",
+            "item": "https://cryptolive.space/disclaimer.html"
+        }
+        ]
+    }
+    </script>
+
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8228373593966913" crossorigin="anonymous"></script>
-
-    </head>
+</head>
 <body>
-<div class="page-wrap">
+    <header>
+        <nav class="navbar" aria-label="Main navigation">
+            <div class="container">
+                <a href="/" class="navbar-logo">
+                    <span class="logo-icon">📈</span>
+                    CryptoLive
+                </a>
+                <button class="navbar-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="navbar-links" role="menubar">
+                    <li role="none"><a href="/" role="menuitem">Home</a></li>
+                    <li role="none"><a href="/about.html" role="menuitem">About</a></li>
+                    <li role="none"><a href="/tools.html" role="menuitem">Tools</a></li>
+                    <li role="none"><a href="/top-cryptocurrencies.html" role="menuitem">Top Cryptocurrencies</a></li>
+                    <li role="none"><a href="/faq.html" role="menuitem">FAQ</a></li>
+                    <li role="none"><a href="/how-to-use.html" role="menuitem">How to Use</a></li>
+                    <li role="none"><a href="/blog/" role="menuitem">Blog</a></li>
+                    <li role="none"><a href="/contact.html" role="menuitem">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-    <nav class="top-nav">
-        <a class="back-home" href=".">← Back to CryptoLive</a>
-    </nav>
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Disclaimer</h1>
+                <p>Last updated: January 2026</p>
+            </div>
+        </section>
 
-    <h1>Disclaimer</h1>
-    <p class="last-updated">Last updated: May 2026</p>
+        <section class="section">
+            <div class="container">
+                <div class="content" style="max-width: 780px; margin: 0 auto;">
+                    <h2>General Information Only</h2>
+                    <p>The content provided on CryptoLive is for <strong>general informational and educational purposes only</strong>. It is not intended to be, and should not be construed as, financial, investment, legal, tax, or any other type of professional advice.</p>
 
-    <div class="notice">
-        <strong>⚠️ NOT FINANCIAL ADVICE</strong>
-        <p>The information provided on CryptoLive is for general informational and educational purposes only. It does not constitute financial advice, investment advice, or a recommendation to buy or sell any cryptocurrency.</p>
-    </div>
+                    <h2>No Financial Advice</h2>
+                    <p>Nothing on CryptoLive constitutes a solicitation, recommendation, endorsement, or offer to buy or sell any securities, cryptocurrencies, or other financial instruments. The information on this website does not take into account your personal financial situation, objectives, or risk tolerance.</p>
+                    <p><strong>You should not make any financial decisions based solely on the content provided on this website.</strong> Always conduct your own research and consult with qualified financial, legal, and tax professionals before making any investment decisions.</p>
 
-    <h2>1. No Financial Advice</h2>
-    <p>CryptoLive does not provide personalized financial advice, investment recommendations, or trading signals. Cryptocurrency markets are highly volatile and carry significant risk. You should consult with a qualified financial advisor before making any investment decisions.</p>
+                    <h2>Accuracy of Information</h2>
+                    <p>While we strive to provide accurate and up-to-date information, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of any information on this website. Cryptocurrency markets are highly volatile and information can change rapidly.</p>
 
-    <h2>2. Accuracy of Data</h2>
-    <p>While we strive to provide accurate and up-to-date information through the CoinGecko API, we make no guarantees about the accuracy, completeness, or timeliness of the data displayed. Prices may be delayed and may differ from real-time market prices on exchanges.</p>
-    <ul>
-        <li>Price data is sourced from the CoinGecko API and may be delayed by up to 60 seconds or more</li>
-        <li>Market cap and volume figures may not reflect the most current data</li>
-        <li>We are not responsible for any errors, omissions, or discrepancies in the data</li>
-    </ul>
+                    <h2>Tools Are for Educational Use</h2>
+                    <p>All calculators and tools provided on CryptoLive are for <strong>educational and simulation purposes only</strong>. They provide estimates and should not be used for actual trading or investment decisions. The calculations may not reflect actual market conditions, fees, slippage, or other real-world factors.</p>
 
-    <h2>3. No Liability</h2>
-    <p>Under no circumstances shall CryptoLive, its operators, or contributors be liable for any direct, indirect, incidental, consequential, or special damages arising from:</p>
-    <ul>
-        <li>Your use of or inability to use the website</li>
-        <li>Decisions made based on information from the website</li>
-        <li>Any errors or interruptions in service</li>
-        <li>Any losses incurred from cryptocurrency trading or investing</li>
-    </ul>
+                    <h2>Investment Risks</h2>
+                    <p>Investing in cryptocurrencies involves substantial risk, including the potential loss of your entire investment. Past performance is not indicative of future results. Cryptocurrency prices are highly volatile and can fluctuate significantly in short periods. You should never invest more than you can afford to lose.</p>
 
-    <h2>4. Third-Party Links</h2>
-    <p>CryptoLive may contain links to third-party websites (such as CoinGecko). These links are provided for convenience only. We do not endorse or take responsibility for the content, accuracy, or practices of these third-party sites.</p>
+                    <h2>Third-Party Links</h2>
+                    <p>This website may contain links to third-party websites for your convenience. These links do not imply endorsement by CryptoLive of the content, products, or services offered on those sites. We are not responsible for the content or practices of third-party websites.</p>
 
-    <h2>5. Advertising</h2>
-    <p>CryptoLive displays advertisements via Google AdSense. The presence of ads does not imply endorsement of any advertised product or service. We are not responsible for the content of advertisements.</p>
+                    <h2>Limitation of Liability</h2>
+                    <p>To the fullest extent permitted by applicable law, CryptoLive and its owners shall not be liable for any loss or damage, including without limitation, indirect or consequential loss or damage, arising from the use of this website or reliance on any information provided herein.</p>
 
-    <h2>6. No Professional Relationship</h2>
-    <p>Use of CryptoLive does not create any professional relationship (financial advisor-client, accountant-client, or attorney-client) between you and the operators of CryptoLive.</p>
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions about this disclaimer, please <a href="/contact.html">contact us</a>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <h2>7. Investment Risks</h2>
-    <p>Cryptocurrency investments carry inherent risks including but not limited to:</p>
-    <ul>
-        <li>Market volatility and price fluctuations</li>
-        <li>Regulatory changes</li>
-        <li>Security vulnerabilities and hacking risks</li>
-        <li>Liquidity risks</li>
-        <li>Potential loss of all invested capital</li>
-    </ul>
-    <p><strong>Never invest more than you can afford to lose.</strong> Past performance does not guarantee future results.</p>
-
-    <h2>8. Changes to This Disclaimer</h2>
-    <p>We reserve the right to update this disclaimer at any time. Changes will be posted on this page with an updated "Last updated" date.</p>
-
-    <h2>9. Contact</h2>
-    <p>If you have questions about this disclaimer, please <a href="contact.html">contact us</a>.</p>
-
-    <footer class="page-footer">
-        <a href=".">Home</a><span class="dot">·</span>
-        <a href="how-to-use.html">How to Use</a><span class="dot">·</span>
-        <a href="faq.html">FAQ</a><span class="dot">·</span>
-        <a href="top-cryptocurrencies.html">Top Cryptos</a><span class="dot">·</span>
-        <a href="tools.html">Tools</a><span class="dot">·</span>
-        <a href="about.html">About</a><span class="dot">·</span>
-        <a href="contact.html">Contact</a><span class="dot">·</span>
-        <a href="privacy-policy.html">Privacy</a><span class="dot">·</span>
-        <a href="terms.html">Terms</a><span class="dot">·</span>
-        <a href="disclaimer.html">Disclaimer</a>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/himanshu-kathuria19/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </a>
-            <a href="https://x.com/cryptolivespace" target="_blank" rel="noopener" aria-label="X (Twitter)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            </a>
-            <a href="https://www.instagram.com/cryptolive2026/" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-            </a>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="navbar-logo">
+                        <span class="logo-icon">📈</span>
+                        CryptoLive
+                    </a>
+                    <p>Your trusted source for cryptocurrency education, interactive tools, and market insights.</p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/about.html">About Us</a></li>
+                        <li><a href="/how-to-use.html">How to Use</a></li>
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/tools.html">Crypto Tools</a></li>
+                        <li><a href="/top-cryptocurrencies.html">Top Cryptocurrencies</a></li>
+                        <li><a href="/blog/">Blog &amp; Guides</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                        <li><a href="/disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span data-current-year></span> CryptoLive. All rights reserved.</p>
+                <p>Empowering crypto knowledge for everyone.</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/himanshu-kathuria19/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://x.com/cryptolivespace" target="_blank" rel="noopener" aria-label="X (Twitter)">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/cryptolive2026/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                </div>
+            </div>
         </div>
-        <p style="margin-top:0.75rem;">&copy; 2026 CryptoLive. All rights reserved.</p>
     </footer>
 
-</div>
+    <div class="consent-banner" id="consent-banner" role="dialog" aria-label="Cookie consent">
+        <div class="consent-content">
+            <p>We value your privacy. This website uses cookies to enhance your browsing experience. <a href="/privacy-policy.html">Learn more</a>.</p>
+            <div class="consent-actions">
+                <button id="consent-reject" class="btn btn-secondary btn-sm">Reject All</button>
+                <button id="consent-accept" class="btn btn-primary btn-sm">Accept All</button>
+            </div>
+        </div>
+    </div>
 
-<script>
-(function() {
-    'use strict';
-    function initConsentBanner() {
-        const banner = document.getElementById('consentBanner');
-        const acceptBtn = document.getElementById('consentAccept');
-        const rejectBtn = document.getElementById('consentReject');
-        const savedConsent = localStorage.getItem('cryptolive_consent');
-        if (savedConsent === 'accepted' || savedConsent === 'rejected') {
-            banner.remove();
-            return;
-        }
-        banner.classList.remove('hidden');
-        acceptBtn.addEventListener('click', function() {
-            gtag('consent', 'update', {
-                'analytics_storage': 'granted',
-                'ad_storage': 'granted',
-                'ad_user_data': 'granted',
-                'ad_personalization': 'granted'
-            });
-            localStorage.setItem('cryptolive_consent', 'accepted');
-            banner.classList.add('hidden');
-            setTimeout(() => { banner.style.display = 'none'; }, 400);
-        });
-        rejectBtn.addEventListener('click', function() {
-            localStorage.setItem('cryptolive_consent', 'rejected');
-            banner.classList.add('hidden');
-            setTimeout(() => { banner.style.display = 'none'; }, 400);
-        });
-    }
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initConsentBanner);
-    } else {
-        initConsentBanner();
-    }
-})();
-</script>
-
+    <button id="back-to-top" class="back-to-top" aria-label="Scroll to top">&#8593;</button>
+    <script src="/js/main.js"></script>
 </body>
 </html>
