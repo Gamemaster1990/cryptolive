@@ -231,6 +231,37 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- New articles added June 14, 2026 -->
+  <url>
+    <loc>https://cryptolive.space/blog/bitcoin-layer-2-guide-2026.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cryptolive.space/blog/1099-da-crypto-tax-compliance-2026.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cryptolive.space/blog/zero-knowledge-proofs-guide-2026.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cryptolive.space/blog/crypto-airdrop-guide-2026.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cryptolive.space/blog/socialfi-decentralized-social-media-2026.html</loc>
+    <lastmod>2026-06-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://cryptolive.space/tools.html</loc>
     <lastmod>2026-05-30</lastmod>
